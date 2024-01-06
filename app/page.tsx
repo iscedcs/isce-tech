@@ -1,18 +1,18 @@
+import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
 	return (
-		<main className='flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-800 to-blue-950 text-white p-4'>
-			<h1 className='text-4xl font-bold mb-4 flex flex-col gap-5 items-center space-x-2'>
+		<main className='flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-950 to-foreground text-white p-4'>
+			<h1 className='text-4xl mb-4 flex flex-col items-center space-x-2'>
 				<Image
 					alt='Company Logo'
-					className='invert'
+					className='mb-2'
 					height='200'
-					src='/vercel.svg'
+					src='/fi-white.webp'
 					width='200'
 				/>
-				<div>ISCE Digital Concept</div>
 				<div>Under Construction</div>
 			</h1>
 			<p className='text-center mb-8'>
@@ -21,87 +21,13 @@ export default function Home() {
 			</p>
 
 			<div className='flex space-x-4'>
-				<Link href='#'>
-					<FacebookIcon className='h-6 w-6 text-blue-600' />
-				</Link>
-				<Link href='#'>
+				<Link href='https://twitter.com/isceapp/'>
 					<TwitterIcon className='h-6 w-6 text-blue-400' />
 				</Link>
-				<Link href='#'>
+				<Link href='https://www.instagram.com/isce.app/'>
 					<InstagramIcon className='h-6 w-6 text-pink-600' />
 				</Link>
 			</div>
 		</main>
-	);
-}
-
-function FacebookIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns='http://www.w3.org/2000/svg'
-			width='24'
-			height='24'
-			viewBox='0 0 24 24'
-			fill='none'
-			stroke='currentColor'
-			strokeWidth='2'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		>
-			<path d='M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' />
-		</svg>
-	);
-}
-
-function InstagramIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns='http://www.w3.org/2000/svg'
-			width='24'
-			height='24'
-			viewBox='0 0 24 24'
-			fill='none'
-			stroke='currentColor'
-			strokeWidth='2'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		>
-			<rect
-				width='20'
-				height='20'
-				x='2'
-				y='2'
-				rx='5'
-				ry='5'
-			/>
-			<path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z' />
-			<line
-				x1='17.5'
-				x2='17.51'
-				y1='6.5'
-				y2='6.5'
-			/>
-		</svg>
-	);
-}
-
-function TwitterIcon(props: any) {
-	return (
-		<svg
-			{...props}
-			xmlns='http://www.w3.org/2000/svg'
-			width='24'
-			height='24'
-			viewBox='0 0 24 24'
-			fill='none'
-			stroke='currentColor'
-			strokeWidth='2'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		>
-			<path d='M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z' />
-		</svg>
 	);
 }
