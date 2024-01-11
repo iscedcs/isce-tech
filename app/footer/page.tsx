@@ -75,8 +75,8 @@ export default function footer() {
         <Separator />
         <div className="flex justify-between gap-10  ">
           <div className="max-w-96">
-            Glide's mission is to put the power, beauty, and magic of software
-            development into the hands of a billion new creators.
+            {`Glide's mission is to put the power, beauty, and magic of software
+            development into the hands of a billion new creators.`}
             <span className="text-blue-500">Join Us</span>
           </div>
           <div className="flex gap-5">
