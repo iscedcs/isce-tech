@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CarouselDisplay({
+export default function HeaderCarouselDisplay({
   header,
   content,
   link,

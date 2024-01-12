@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import CarouselDisplay from "./carouseldisplay";
+import HeaderCarouselDisplay from "./carouseldisplay";
 
-export function CarouselComp() {
+export function HeaderCarouselComp() {
   return (
     <Carousel
       opts={{
@@ -28,7 +28,7 @@ export function CarouselComp() {
     >
       <CarouselContent>
         <CarouselItem>
-          <CarouselDisplay
+          <HeaderCarouselDisplay
             header="ISCE Tech"
             content="ISCE is a tech company that primarily leverages in NFC technology to
           simplify daily living by contactless solutions to anyone."
@@ -38,7 +38,7 @@ export function CarouselComp() {
           />
         </CarouselItem>
         <CarouselItem>
-          <CarouselDisplay
+          <HeaderCarouselDisplay
             header="A header"
             content="ISCE is a tech company that primarily leverages in NFC technology to
           simplify daily living by contactless solutions to anyone."
@@ -48,7 +48,7 @@ export function CarouselComp() {
           />
         </CarouselItem>
         <CarouselItem>
-          <CarouselDisplay
+          <HeaderCarouselDisplay
             header="ISCE Tech"
             content="ISCE is a tech company that primarily leverages in NFC technology to
           simplify daily living by contactless solutions to anyone."
@@ -58,7 +58,7 @@ export function CarouselComp() {
           />
         </CarouselItem>
         <CarouselItem>
-          <CarouselDisplay
+          <HeaderCarouselDisplay
             header="ISCE Tech"
             content="ISCE is a tech company that primarily leverages in NFC technology to
           simplify daily living by contactless solutions to anyone."
@@ -68,7 +68,7 @@ export function CarouselComp() {
           />
         </CarouselItem>
         <CarouselItem>
-          <CarouselDisplay
+          <HeaderCarouselDisplay
             header="ISCE Tech"
             content="ISCE is a tech company that primarily leverages in NFC technology to
           simplify daily living by contactless solutions to anyone."

@@ -5,3 +5,10 @@ interface ICAROUSELDISPLAY {
   className?: string;
   buttonTitle: string;
 }
+
+interface IReview {
+  name: string;
+  review: string;
+  title: string;
+  image: string;
+}
