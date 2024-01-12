@@ -21,17 +21,17 @@ export default function ServiceRendered() {
     {
       title: "Custom Unified Feedback Taxonomy",
       description:
-        "Give structure to unstructured customer feedback - customized just for you. Taxonomy adapts to changes in feedback over time.",
+        "Give structure to unstructured customer feedback  customized just for you. Taxonomy adapts to changes in feedback over time.",
     },
     {
       title: "Powerful semantic search",
       description:
-        "Uncomplicated Google-like search across all of your feedback. Search for what the user meant, not just how the user said it.",
+        "Uncomplicated Google like search across all of your feedback. Search for what the user meant, not just how the user said it.",
     },
     {
       title: "User-friendly analytics suite",
       description:
-        "Built for powerful insights but easy for non-technical operators with pleasant UI, easy to build dashboards, and automated summaries of relevant data.",
+        "Built for powerful insights but easy for non technical operators with pleasant UI, easy to build dashboards, and automated summaries of relevant data.",
     },
     {
       title: "Partners",
@@ -41,7 +41,7 @@ export default function ServiceRendered() {
     {
       title: "Unlimited user seats",
       description:
-        "Bring your entire team into Enterpret without prohibitive costs and foster a culture of customer-centric strategy.",
+        "Bring your entire team into Enterpret without prohibitive costs and foster a culture of customer centric strategy.",
     },
   ];
 
@@ -52,8 +52,8 @@ export default function ServiceRendered() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (
-          <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-t rounded-b-lg">
-          <Card key={index} className="bg-gray-800 back w-full mt-1 rounded-b-lg rounded-t-none border-none text-white">
+          <div key={index} className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-t rounded-b-lg">
+          <Card className="bg-gray-800 back w-full mt-1 rounded-b-lg rounded-t-none border-none text-white">
             <CardHeader>
               <CardTitle className="h-10">{service.title}</CardTitle>
             </CardHeader>

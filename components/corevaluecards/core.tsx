@@ -46,8 +46,8 @@ export default function Core() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {coreValues.map((value, index) => (
-          <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-t rounded-b-lg">
-          <Card key={index} className="w-full bg-gray-800 back mt-1 ml-1 rounded-b-lg rounded-t-none border-none text-white mb-4 sm:mb-0">
+          <div key={index} className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white rounded-t rounded-b-lg">
+          <Card className="w-full bg-gray-800 back mt-1 ml-1 rounded-b-lg rounded-t-none border-none text-white mb-4 sm:mb-0">
             <CardHeader>
               {value.icon}
               <CardTitle className="h-10">{value.title}</CardTitle>
