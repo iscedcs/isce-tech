@@ -23,12 +23,12 @@ export default function VideoHeader() {
 					</p>
 					<div className='flex gap-2 justify-center mt-3'>
 						<a href=''>
-							<button className='transition-all duration-[0.3s] hover:bg-white hover:text-black bg-black py-3 px-5'>
+							<button className='transition-all duration-300 hover:bg-white hover:text-black bg-black py-3 px-5'>
 								Explore Services
 							</button>
 						</a>
 						<a href=''>
-							<button className='transition-all duration-[0.3s] hover:bg-black hover:text-white bg-[#fff] text-black py-3 px-5'>
+							<button className='transition-all duration-300 hover:bg-black hover:text-white bg-[#fff] text-black py-3 px-5'>
 								Contact Us
 							</button>
 						</a>
