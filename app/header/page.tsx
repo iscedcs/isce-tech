@@ -1,8 +1,6 @@
 import BrandCarousel from '@/components/brandCarousel';
 import { HeaderCarouselComp } from '@/components/carousel';
 import CarouselReview from '@/components/carouselReview';
-import Reviews from '@/components/reviews';
-import Image from 'next/image';
 import React from 'react';
 
 export default function Header() {
