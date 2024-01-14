@@ -22,31 +22,25 @@ const NavComp: React.FC = () => {
             height={100} />
         </div>
         <div className="hidden md:flex space-x-4 gap-3">
-
           <a href="#" className="text-secondary">{`Home`}</a>
           <a href="#" className="text-secondary">{`About Us`}</a>
-
           <div className="group">
-           <a href="#" className="text-secondary">{`Product And Services`}</a>
+            <a href="#" className="text-secondary">{`Product And Services`}</a>
             <div className="hidden absolute group-hover:block bg-primary mt-5 p-2 space-y-4">
               <h2 className="text-secondary font-bold">{`ISCE Card For Student`}</h2>
-             <a href="#" className="text-secondary text-sm">{`Connect for Student`}</a>
+              <a href="#" className="text-secondary text-sm">{`Connect for Student`}</a>
               <h2 className="text-secondary font-bold ">{`Connect for Business`}</h2>
               <div className='flex flex-col gap-2'>
-
-               <a href="#" className="text-secondary text-sm">{`Digital Card for Business`}</a>
-               <a href="#" className="text-secondary text-sm">{`Connect your Business`}</a>
-
+                <a href="#" className="text-secondary text-sm">{`Digital Card for Business`}</a>
+                <a href="#" className="text-secondary text-sm">{`Connect your Business`}</a>
               </div>
             </div>
           </div>
-
-         <a href="#" className="text-secondary">{`Store`}</a>
-         <a href="#" className="text-secondary">{`Academy`}</a>
-         <a href="#" className="text-secondary">{`Contact Us`}</a>
-         <a href="#" className="text-secondary">{`Team`}</a>
-         <a href="#" className="text-secondary">{`Blog`}</a>
-
+          <a href="#" className="text-secondary">{`Store`}</a>
+          <a href="#" className="text-secondary">{`Academy`}</a>
+          <a href="#" className="text-secondary">{`Contact Us`}</a>
+          <a href="#" className="text-secondary">{`Team`}</a>
+          <a href="#" className="text-secondary">{`Blog`}</a>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-secondary">
@@ -55,14 +49,14 @@ const NavComp: React.FC = () => {
           {isMenuOpen && (
 
             <div className=" fixed  top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-primary p-4 space-y-4">
-              <div>
               <Image
                 src='/assts/close.svg'
+                width={20}
+                height={20}
                 alt="close"
                 className="absolute top-4 right-4 w-[28px] h-[28px]  object-contain cursor-pointer"
                 onClick={toggleMenu}
               />
-              </div>
               <div>
                 <ul className="list-none  flex flex-col mt-6 gap-6 items-center">
                   <li ><a href="#" className="text-secondary" onClick={closeMenu}>{`Home`}</a></li>
