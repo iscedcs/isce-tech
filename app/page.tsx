@@ -1,3 +1,4 @@
+import Gallery from '@/components/pages/home/gallery';
 import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,11 +14,11 @@ export default function Home() {
 					src='/fi-white.webp'
 					width='200'
 				/>
-				<div>Under Construction</div>
+				<div>{`Under Construction`}</div>
 			</h1>
 			<p className='text-center mb-8'>
-				We are currently working on this website and it will be
-				ready soon. Thank you for your patience!
+				{`We are currently working on this website and it will be
+				ready soon. Thank you for your patience!`}
 			</p>
 
 			<div className='flex space-x-4'>
@@ -28,6 +29,10 @@ export default function Home() {
 					<InstagramIcon className='h-6 w-6 text-pink-600' />
 				</Link>
 			</div>
+			<div className='w-full h-full mt-8'>
+			<Gallery/>
+			</div>
+			
 		</main>
 	);
 }
