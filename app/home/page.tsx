@@ -6,6 +6,7 @@ import TrustedBrands from '@/components/home-page/trusted-brands';
 import VideoHeader from '@/components/home-page/video-header';
 import WhyChooseIsce from '@/components/home-page/why';
 import Footer from '@/components/layout/footer';
+import Gallery from '@/components/pages/home/gallery';
 import React from 'react';
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
 			<HeaderCarouselComp />
 			<WhyChooseIsce />
 			<Core />
+			<Gallery />
 			<ServiceRendered />
 			<HappyCustomers />
 			<TrustedBrands />
