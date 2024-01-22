@@ -27,7 +27,7 @@ export function HeaderCarouselComp() {
             content="We are providing world changing technology to empower your world."
             link=""
             className="bg-[url('/images/first.jpg')]"
-            buttonTitle="Call to action"
+            buttonTitle="Explore Services"
           />
         </CarouselItem>
         <CarouselItem>
@@ -36,7 +36,7 @@ export function HeaderCarouselComp() {
             content="Be bold, unique and different; individuality is what makes us."
             link=""
             className="bg-[url('/images/second.jpg')]"
-            buttonTitle="Call to action"
+            buttonTitle="Contact Us"
           />
         </CarouselItem>
         <CarouselItem>
