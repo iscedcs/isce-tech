@@ -2,8 +2,8 @@ import React from "react";
 
 export default function VideoHeader() {
   return (
-    <div className=' bg-[url("/images/bgimg.")] bg-fixed  bg-cover bg-center'>
-      <div className="  bg-gradient-to-r from-[#000000] to-[#13121299] opacity-90"></div>
+    <div className="w-full  bg-fixed h-screen bg-cover bg-center">
+      <div className="w-full h-screen bg-gradient-to-r from-[#000000] to-[#13121299] opacity-90"></div>
       {/* <video
 				src={COMPANY_PROFILE.heroVideo}
 				autoPlay

@@ -6,7 +6,7 @@ import React from 'react';
 export default function Header() {
 	return (
 		<>
-			<div className='w-full bg-[url("/images/bgimg.gif")] bg-fixed h-screen bg-cover bg-center'>
+			<div className='w-full bg-fixed h-screen bg-cover bg-center'>
 				<div className='w-full h-screen bg-gradient-to-r from-[#000000] to-[#13121200] opacity-90'></div>
 				<div className='flex justify-center items-center'>
 					<div className='text-white text-center w-full mx-auto absolute top-[50%] translate-y-[-50%]'>
@@ -14,9 +14,9 @@ export default function Header() {
 							ISCE TECH
 						</h1>
 						<p className='lg:w-[40%] w-[90%] mx-auto'>
-							ISCE is a tech company that primarily
+							{`ISCE is a tech company that primarily
 							leverages in NFC technology to simplify daily
-							living by contactless solutions to anyone.
+							living by contactless solutions to anyone.`}
 						</p>
 						<div className='flex gap-2 justify-center mt-3'>
 							<a href=''>
