@@ -1,12 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import {
-  ArrowRightIcon,
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { ArrowRightIcon, Github, Linkedin, Twitter } from "lucide-react";
 import MaxWidthContainer from "../ui/container";
 import Link from "next/link";
 import { InstagramIcon } from "@/lib/svg";
@@ -81,7 +76,7 @@ export default function Footer() {
                 <Link href="/#">Academy</Link>
               </div>
               <div className="">
-                <Link href="/blog">Blog</Link>
+                <Link href="/blog">Blog</Link>{" "}
               </div>
             </div>
           </div>

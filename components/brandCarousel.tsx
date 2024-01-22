@@ -19,7 +19,7 @@ export default function BrandCarousel() {
 					delay: 2000,
 				}),
 			]}
-			className='mx-auto w-full'
+			className='mx-auto w-full items-center justify-center'
 		>
 			<CarouselContent>
 				{[0, 1].map((_, b) => (
@@ -27,7 +27,7 @@ export default function BrandCarousel() {
 						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
 							<div className='p-1'>
 								<Image
-									src='/images/one.png'
+									src='/images/brands/airs.png'
 									width='150'
 									height='150'
 									alt='one'
@@ -37,7 +37,7 @@ export default function BrandCarousel() {
 						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
 							<div className='p-1'>
 								<Image
-									src='/images/two.png'
+									src='/images/brands/anambra.png'
 									width='150'
 									height='150'
 									alt='one'
@@ -47,7 +47,7 @@ export default function BrandCarousel() {
 						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
 							<div className='p-1'>
 								<Image
-									src='/images/three.png'
+									src='/images/brands/ariarialogo.png'
 									width='150'
 									height='150'
 									alt='one'
@@ -57,7 +57,77 @@ export default function BrandCarousel() {
 						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
 							<div className='p-1'>
 								<Image
-									src='/images/four.png'
+									src='/images/brands/flutterwave.png'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/mobilemech.jpg'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/netplus.png'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/transparent.png'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/transpaywhite.png'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/twinty.png'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/whitenLighten.png'
+									width='150'
+									height='150'
+									alt='one'
+								></Image>
+							</div>
+						</CarouselItem>
+						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
+							<div className='p-1'>
+								<Image
+									src='/images/brands/yoma.png'
 									width='150'
 									height='150'
 									alt='one'

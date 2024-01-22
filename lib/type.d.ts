@@ -20,8 +20,15 @@ interface IPROJECT{
   weblink: string;
   figlink: string;
 }
+
 interface CoreValues {
 	icon: React.ReactNode;
 	title: string;
 	description: string;
 }
+
+interface IService {
+	title: string;
+	description: string;
+}
+ 
