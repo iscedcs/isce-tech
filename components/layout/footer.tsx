@@ -6,7 +6,6 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Youtube,
 } from "lucide-react";
 import MaxWidthContainer from "../ui/container";
 import Link from "next/link";
@@ -82,7 +81,7 @@ export default function Footer() {
                 <Link href="/#">Academy</Link>
               </div>
               <div className="">
-                <Link href="/blog">Blog</Link>{" "}
+                <Link href="/blog">Blog</Link>
               </div>
             </div>
           </div>
