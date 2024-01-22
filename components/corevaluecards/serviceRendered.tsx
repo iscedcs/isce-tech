@@ -37,7 +37,7 @@ export default function ServiceRendered() {
 								</CardTitle>
 							</CardHeader>
 							<CardContent>
-								<CardDescription className=' line-clamp-3'>
+								<CardDescription className=' line-clamp-6'>
 									{service.description}
 								</CardDescription>
 							</CardContent>
