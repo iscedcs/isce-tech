@@ -55,7 +55,7 @@ const NavComp: React.FC = () => {
                 height={20}
                 alt="close"
                 className="absolute top-4 right-4 w-[28px] h-[28px]  object-contain cursor-pointer"
-                onClick={toggleMenu}
+                onClick={closeMenu}
               />
               <div>
                 <ul className="list-none  flex flex-col mt-6 gap-6 items-center">
