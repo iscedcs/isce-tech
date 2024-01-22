@@ -20,3 +20,8 @@ interface IPROJECT{
   weblink: string;
   figlink: string;
 }
+interface CoreValues {
+	icon: React.ReactNode;
+	title: string;
+	description: string;
+}
