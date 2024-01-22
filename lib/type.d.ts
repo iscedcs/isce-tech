@@ -21,14 +21,17 @@ interface IPROJECT{
   figlink: string;
 }
 
+interface ICOREVALUE{
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+interface IService {
+	title: string;
+	description: string;
+}
 interface CoreValues {
 	icon: React.ReactNode;
 	title: string;
 	description: string;
 }
-
-interface IService {
-	title: string;
-	description: string;
-}
- 

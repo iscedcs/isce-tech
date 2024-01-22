@@ -1,4 +1,11 @@
-import { UserPlusIcon, HeartPulseIcon, LightbulbIcon } from "lucide-react";
+import {
+  Customer,
+  Data,
+  Empowerment,
+  Research,
+  Innovation,
+  Result,
+} from "./svg";
 
 export const PROJECT_ITEM: IPROJECT[] = [
   {
@@ -28,27 +35,6 @@ export const PROJECT_ITEM: IPROJECT[] = [
     figlink: "",
   },
 ];
-
-export const coreValues: CoreValues[] = [
-  {
-    icon: <UserPlusIcon className="text-[#bd1e59] text-4xl mb-4" />,
-    title: "Effortless Connectivity",
-    description:
-      "ISCE harnesses the power of NFC technology to create an ecosystem where devices seamlessly communicate with a simple tap. Enjoy the convenience of effortless connectivity, making daily tasks smoother and more efficient.",
-  },
-  {
-    icon: <HeartPulseIcon className="text-[#bd1e59] text-4xl mb-4" />,
-    title: "Contactless Solutions for All",
-    description:
-      "ISCE is dedicated to bringing the benefits of contactless technology to everyone. Whether its secure payments access control or smart interactions ISCEs solutions cater to diverse needs, ensuring a user-friendly experience for individuals and businesses alike",
-  },
-  {
-    icon: <LightbulbIcon className="text-[#bd1e59] text-4xl mb-4" />,
-    title: "Innovative Applications",
-    description:
-      " ISCE goes beyond the ordinary by integrating NFC into innovative applications that redefine daily routines. From smart homes to connected workplaces, ISCE's solutions open doors to a world where technology enhances, rather than complicates, our lives ",
-  },
-];
 export const services: IService[] = [
   {
     title: "Tech Solutions",
@@ -73,5 +59,44 @@ export const services: IService[] = [
   {
     title: "Smart Works",
     description: `Transform your workspace into a smart, connected environment with ISCE's Smart Works solutions. Enhance efficiency, optimize workflows, and create a connected workplace that adapts to your needs. Our Smart Works services encompass smart office solutions, IoT integrations, and advanced technologies to elevate your work environment.`,
+  },
+];
+
+export const CORE_VALUES: ICOREVALUE[] = [
+  {
+    icon: Data,
+    title: "Data Security & Privacy",
+    description:
+      "Prioritizing the security and privacy of user data, adhering to industry best practices and compliance standards.",
+  },
+  {
+    icon: Customer,
+    title: "Customer Centric Approach",
+    description:
+      "Placing clients at the center of decision-making processes, understanding their needs, and delivering solutions that exceed expectations.",
+  },
+  {
+    icon: Empowerment,
+    title: "Empowerment",
+    description:
+      "Empowering individuals within the organization to contribute their best ideas, skills, and efforts, fostering a sense of ownership and achievement.",
+  },
+  {
+    icon: Research,
+    title: "Research",
+    description:
+      "Demonstrating a steadfast commitment to advancing knowledge through continuous research initiatives, ensuring that ISCE Tech remains at the forefront of technological innovation.",
+  },
+  {
+    icon: Innovation,
+    title: "Innovation",
+    description:
+      "Fostering a culture of continuous innovation to stay at the forefront of technological advancements and provide cutting-edge solutions.",
+  },
+  {
+    icon: Result,
+    title: "Result Driven",
+    description:
+      "Focusing on delivering tangible results and measurable impact, aligning efforts with organizational goals and objectives.",
   },
 ];
