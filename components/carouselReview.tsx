@@ -13,9 +13,21 @@ import MaxWidthContainer from './ui/container';
 
 const reviews: IReview[] = [
 	{
-		name: '<FULL NAME>',
-		review: 'Dolor ea anim tempor veniam culpa sunt velit voluptate commodo adipisicing excepteur reprehenderit in. Commodo ullamco excepteur sunt exercitation. Lorem aliqua consectetur consectetur enim nostrud veniam consequat consectetur pariatur.Ullamco laborum elit nulla non et dolore elit anim mollit aute fugiat aute do. Occaecat est est aute labore elit laboris consequat. Nostrud ad non sunt occaecat est labore elit anim deserunt commodo quis minim cupidatat.Minim minim commodo magna cupidatat proident. Nisi proident culpa dolore eiusmod consequat ut ullamco culpa velit dolore dolore. Velit enim cupidatat duis labore. Ex nostrud do magna Lorem eiusmod labore nulla adipisicing voluptate cillum minim.Dolor ipsum Lorem elit aliquip laboris deserunt. Deserunt magna in veniam eu. Excepteur officia ullamco pariatur ut minim cupidatat ea et consectetur. Sit voluptate Lorem ad incididunt non laboris sint cupidatat velit dolore elit quis ex sint. Dolor velit adipisicing ex ex in ut. Elit veniam ipsum id nulla cupidatat non in duis excepteur laborum ipsum commodo dolore officia.',
-		title: 'A Person, World',
+		name: 'Ariaria',
+		review: `ISCE Tech's creation for Ariaria stands out as a seamless e-commerce website and app. The user interface is intuitive, making navigation a breeze. The robust backend ensures smooth transactions, making it a top-notch solution for our online shopping.`,
+		title: 'Founder',
+		image: '/images/person.jpg',
+	},
+	{
+		name: 'Yoma Care',
+		review: `ISCE Tech's project delivery for Yoma Care exemplify efficiency and purpose. Amazing job!`,
+		title: 'CEO/Founder',
+		image: '/images/person.jpg',
+	},
+	{
+		name: 'Transpay',
+		review: `ISCE Tech's website and management system for Yoma Care exemplify efficiency and purpose.`,
+		title: 'Minister Of Transportation',
 		image: '/images/person.jpg',
 	},
 ];

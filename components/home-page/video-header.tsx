@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function VideoHeader() {
 	return (
-		<div className='w-full bg-[url("/images/bgimg.gif")] bg-fixed h-screen bg-cover bg-center'>
+		<div className='w-full  bg-fixed h-screen bg-cover bg-center'>
 			<div className='w-full h-screen bg-gradient-to-r from-[#000000] to-[#13121299] opacity-90'></div>
 			{/* <video
 				src={COMPANY_PROFILE.heroVideo}

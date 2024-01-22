@@ -1,5 +1,4 @@
-import Gallery from '@/components/pages/home/gallery';
-import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
+import { InstagramIcon, TwitterIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -29,9 +28,7 @@ export default function Home() {
 					<InstagramIcon className='h-6 w-6 text-pink-600' />
 				</Link>
 			</div>
-			<div>
-				<Gallery/>
-			</div>
+			
 		</main>
 	);
 }
