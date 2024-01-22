@@ -29,7 +29,9 @@ export default function Home() {
 					<InstagramIcon className='h-6 w-6 text-pink-600' />
 				</Link>
 			</div>
-			
+			<div>
+				<Gallery/>
+			</div>
 		</main>
 	);
 }
