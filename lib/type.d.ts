@@ -12,3 +12,11 @@ interface IReview {
   title: string;
   image: string;
 }
+
+interface IPROJECT{
+  image: string;
+  title: string;
+  description: string;
+  weblink: string;
+  figlink: string;
+}
