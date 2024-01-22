@@ -9,9 +9,6 @@ function coreValues() {
 			<div>
 				<Core />
 			</div>
-			<div className=''>
-				<ServiceRendered />
-			</div>
 		</main>
 	);
 }

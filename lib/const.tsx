@@ -1,3 +1,12 @@
+import {
+  Customer,
+  Data,
+  Empowerment,
+  Research,
+  Innovation,
+  Result,
+} from "./svg";
+
 export const PROJECT_ITEM: IPROJECT[] = [
   {
     image: "/images/ariaria.png",
@@ -24,5 +33,44 @@ export const PROJECT_ITEM: IPROJECT[] = [
       "A description that i came up with, I am still thinkng about a content",
     weblink: "https://www.purplepack.co.uk/",
     figlink: "",
+  },
+];
+
+export const CORE_VALUES: ICOREVALUE[] = [
+  {
+    icon: Data,
+    title: "Data Security & Privacy",
+    description:
+      "Prioritizing the security and privacy of user data, adhering to industry best practices and compliance standards.",
+  },
+  {
+    icon: Customer,
+    title: "Customer Centric Approach",
+    description:
+      "Placing clients at the center of decision-making processes, understanding their needs, and delivering solutions that exceed expectations.",
+  },
+  {
+    icon: Empowerment,
+    title: "Empowerment",
+    description:
+      "Empowering individuals within the organization to contribute their best ideas, skills, and efforts, fostering a sense of ownership and achievement.",
+  },
+  {
+    icon: Research,
+    title: "Research",
+    description:
+      "Demonstrating a steadfast commitment to advancing knowledge through continuous research initiatives, ensuring that ISCE Tech remains at the forefront of technological innovation.",
+  },
+  {
+    icon: Innovation,
+    title: "Innovation",
+    description:
+      "Fostering a culture of continuous innovation to stay at the forefront of technological advancements and provide cutting-edge solutions.",
+  },
+  {
+    icon: Result,
+    title: "Result Driven",
+    description:
+      "Focusing on delivering tangible results and measurable impact, aligning efforts with organizational goals and objectives.",
   },
 ];
