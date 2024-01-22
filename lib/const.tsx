@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   Customer,
   Data,
@@ -6,6 +7,9 @@ import {
   Innovation,
   Result,
 } from "./svg";
+=======
+import { UserPlusIcon, HeartPulseIcon, LightbulbIcon } from "lucide-react";
+>>>>>>> 053c69c4082a5f674e578bc71cf661a27a3ebc3f
 
 export const PROJECT_ITEM: IPROJECT[] = [
   {
@@ -35,6 +39,7 @@ export const PROJECT_ITEM: IPROJECT[] = [
     figlink: "",
   },
 ];
+<<<<<<< HEAD
 export const services: IService[] = [
   {
     title: 'Tech Solutions',
@@ -93,5 +98,25 @@ export const CORE_VALUES: ICOREVALUE[] = [
     title: "Result Driven",
     description:
       "Focusing on delivering tangible results and measurable impact, aligning efforts with organizational goals and objectives.",
+=======
+export const coreValues: CoreValues[] = [
+  {
+    icon: <UserPlusIcon className="text-[#bd1e59] text-4xl mb-4" />,
+    title: "Effortless Connectivity",
+    description:
+      "ISCE harnesses the power of NFC technology to create an ecosystem where devices seamlessly communicate with a simple tap. Enjoy the convenience of effortless connectivity, making daily tasks smoother and more efficient.",
+  },
+  {
+    icon: <HeartPulseIcon className="text-[#bd1e59] text-4xl mb-4" />,
+    title: "Contactless Solutions for All",
+    description:
+      "ISCE is dedicated to bringing the benefits of contactless technology to everyone. Whether its secure payments access control or smart interactions ISCEs solutions cater to diverse needs, ensuring a user-friendly experience for individuals and businesses alike",
+  },
+  {
+    icon: <LightbulbIcon className="text-[#bd1e59] text-4xl mb-4" />,
+    title: "Innovative Applications",
+    description:
+      " ISCE goes beyond the ordinary by integrating NFC into innovative applications that redefine daily routines. From smart homes to connected workplaces, ISCE's solutions open doors to a world where technology enhances, rather than complicates, our lives ",
+>>>>>>> 053c69c4082a5f674e578bc71cf661a27a3ebc3f
   },
 ];
