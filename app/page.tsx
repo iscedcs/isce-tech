@@ -1,5 +1,4 @@
-import Gallery from '@/components/pages/home/gallery';
-import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
+import { InstagramIcon, TwitterIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
