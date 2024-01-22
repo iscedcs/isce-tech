@@ -19,12 +19,15 @@ export default function HeaderCarouselDisplay({
 						{header}
 					</h1>
 					<p className='w-[80%] lg:w-[60%]'>{content}</p>
+					<div className='flex '>
 					<Button
 						asChild
 						className='transition-all duration-300 hover:bg-black hover:text-white hover:border border-white text-black bg-white py-3 px-5 w-min'
 					>
 						<Link href={link}>{buttonTitle}</Link>
 					</Button>
+					
+					</div>
 				</MaxWidthContainer>
 			</div>
 		</div>

@@ -1,12 +1,11 @@
-import React from 'react';
-import { Button } from '../ui/button';
-import { Separator } from '../ui/separator';
+import React from "react";
+import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
 import {
 	ArrowRightIcon,
 	Github,
 	Linkedin,
 	Twitter,
-	Youtube,
 } from 'lucide-react';
 import MaxWidthContainer from '../ui/container';
 import Link from 'next/link';
@@ -64,10 +63,10 @@ export default function Footer() {
 
 				</div>
 
-				<Separator />
-				<div className='flex flex-col md:flex-row justify-between gap-10  '>
-					<div className='max-w-96'>
-						{`ISCE's mission is to put the power, beauty, and magic of software
+        <Separator />
+        <div className="flex flex-col md:flex-row justify-between gap-10  ">
+          <div className="max-w-96">
+            {`ISCE's mission is to put the power, beauty, and magic of software
             development into the hands of a billion new creators. `}
 						<span className='text-blue-500'>Join Us</span>
 					</div>
