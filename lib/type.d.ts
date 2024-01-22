@@ -20,3 +20,7 @@ interface IPROJECT{
   weblink: string;
   figlink: string;
 }
+interface IService {
+	title: string;
+	description: string;
+}
