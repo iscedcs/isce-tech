@@ -1,5 +1,4 @@
-import BrandCarousel from '../brandCarousel';
-import CarouselReview from '../carouselReview';
+import CarouselReview from "./carouselReview";
 
 export default function HappyCustomers() {
 	return (

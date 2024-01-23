@@ -1,6 +1,7 @@
+import MaxWidthContainer from '@/components/ui/container';
 import React from 'react';
-import MaxWidthContainer from '../ui/container';
-import BrandCarousel from '../brandCarousel';
+import BrandCarousel from './brandCarousel';
+
 
 export default function TrustedBrands() {
 	return (

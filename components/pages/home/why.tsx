@@ -1,5 +1,5 @@
 import React from "react";
-import MaxWidthContainer from "../ui/container";
+import MaxWidthContainer from "../../ui/container";
 import { coreValues } from "@/lib/const";
 import {
   Card,
@@ -7,7 +7,7 @@ import {
   CardTitle,
   CardContent,
   CardDescription,
-} from "../ui/card";
+} from "../../ui/card";
 
 export default function WhyChooseIsce() {
   return (

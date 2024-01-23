@@ -84,7 +84,7 @@ const NavComp: React.FC = () => {
           {isMenuOpen && (
             <div className=" fixed  top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-primary p-4 space-y-4">
               <Image
-                src="/assts/close.svg"
+                src="/assets/close.svg"
                 width={20}
                 height={20}
                 alt="close"
@@ -101,7 +101,6 @@ const NavComp: React.FC = () => {
                     >{`Home`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -109,7 +108,6 @@ const NavComp: React.FC = () => {
                     >{`About Us`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -117,7 +115,6 @@ const NavComp: React.FC = () => {
                     >{`Services`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -125,7 +122,6 @@ const NavComp: React.FC = () => {
                     >{`Products`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -133,7 +129,6 @@ const NavComp: React.FC = () => {
                     >{`Store`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -141,7 +136,6 @@ const NavComp: React.FC = () => {
                     >{`Academy`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -149,7 +143,6 @@ const NavComp: React.FC = () => {
                     >{`Contact Us`}</Link>
                   </li>
                   <li>
-                    {" "}
                     <Link
                       href="/#"
                       className="text-secondary"
