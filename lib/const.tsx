@@ -44,7 +44,7 @@ export const coreValues: CoreValues[] = [
     icon: <UserPlusIcon className="text-[#bd1e59] text-4xl mb-4" />,
     title: "Effortless Connectivity",
     description:
-      "ISCE harnesses the power of NFC technology to create an ecosystem where devices seamlessly communicate with a simple tap. Enjoy the convenience of effortless connectivity, making daily tasks smoother and more efficient.",
+      "ISCE harnesses the power of NFC technology to create an ecosystem where devices seamlessly communicate with a simple tap. Enjoy the convenience of effortless connectivity, making daily tasks smoother and more efficient. Our committment to redefining daily living.",
   },
   {
     icon: <HeartPulseIcon className="text-[#bd1e59] text-4xl mb-4" />,
@@ -65,7 +65,7 @@ export const services: IService[] = [
     description: `Harness the full potential of technology with ISCE's comprehensive Tech Solutions. From optimizing business processes to enhancing personal experiences, we offer a range of innovative solutions tailored to meet your unique needs. Unlock efficiency, connectivity, and seamless integration with our cutting-edge tech solutions.`,
   },
   {
-    title: "Tech Consultancy",
+    title: "Consultancy",
     description: `Leverage the expertise of ISCE's Tech Consultancy services to navigate the rapidly evolving tech landscape. Our seasoned consultants provide strategic insights, helping you make informed decisions and stay ahead in the dynamic world of technology. From planning to implementation, we guide you towards technological excellence.`,
   },
   {
@@ -115,12 +115,12 @@ export const CORE_VALUES: ICOREVALUE[] = [
     icon: Innovation,
     title: "Innovation",
     description:
-      "Fostering a culture of continuous innovation to stay at the forefront of technological advancements and provide cutting-edge solutions.",
+      "Fostering a culture of continuous innovation to stay at the forefront of technological advancements and provide cutting-edge solutions. From secure mobile payment to smart interactions.",
   },
   {
     icon: Result,
     title: "Result Driven",
     description:
-      "Focusing on delivering tangible results and measurable impact, aligning efforts with organizational goals and objectives.",
+      "Focusing on delivering tangible results and measurable impact, aligning efforts with organizational goals and objectives.Our solutions tailored to empower our clients",
   },
 ];

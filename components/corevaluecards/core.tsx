@@ -2,6 +2,8 @@ import MaxWidthContainer from "../ui/container";
 import { CORE_VALUES } from "@/lib/const";
 import React from "react";
 import CoreItem from "./coreitem";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 // Core component
 export default function Core() {
@@ -21,6 +23,11 @@ export default function Core() {
             description={value.description}
           />
         ))}
+      </div>
+      <div className="items-center justify-center grid mt-4">
+        <Button asChild type="button" className="">
+          <Link href='/#'>Read More</Link>
+        </Button>
       </div>
     </MaxWidthContainer>
   );
