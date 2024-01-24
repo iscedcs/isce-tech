@@ -32,7 +32,7 @@ const NavComp: React.FC = () => {
 
 	return (
     <nav
-      className={`transition-all w-full fixed z-50 ${
+      className={`transition-all w-full fixed z-40 ${
         scrolling ? "bg-primary" : "backdrop-blur-md"
       } `}
     >

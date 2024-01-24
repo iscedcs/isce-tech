@@ -17,12 +17,12 @@ export default function WhyChooseIsce() {
       </div>
       <div className="grid md:grid-cols-2 gap-10 justify-center py-20">
         <div className="flex flex-col max-w-[500px]">
-          <h1 className=" text-5xl leading-normal ">
-            {`We are building `}
-            <span className="uppercase bg-clip-text bg-gradient-to-br from-blue-600 via-purple-600 to-blue-600 text-transparent">
+          <div className="flex flex-col gap-2 font-bold lg:text-5xl text-[34px] leading-normal ">
+            <span>{`We are building `}</span>
+            <span className="font-normal uppercase bg-clip-text  bg-gradient-to-br from-blue-600 via-[#f15a24] to-blue-600 text-transparent">
               {`Revolutionizing Daily Living with NFC Technology`}
             </span>
-          </h1>
+          </div>
         </div>
         <div className="flex flex-col gap-5 text-2xl">
           <h1 className="font-bold"></h1>
@@ -38,7 +38,7 @@ export default function WhyChooseIsce() {
         {coreValues.map((value, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-600 text-white rounded-t rounded-b-lg"
+            className="bg-gradient-to-br from-blue-600 via-[#f15a24] to-blue-600 text-white rounded-t rounded-b-lg"
           >
             <Card className="w-full bg-gray-800 back mt-1 ml-1 rounded-b-lg rounded-t-none border-none text-white mb-4 sm:mb-0">
               <CardHeader>
@@ -46,7 +46,7 @@ export default function WhyChooseIsce() {
                 <CardTitle className="h-10">{value.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className=" line-clamp-6">
+                <CardDescription className="text-white line-clamp-6">
                   {value.description}
                 </CardDescription>
               </CardContent>
