@@ -19,7 +19,7 @@ export default function HomePage() {
       <HappyCustomers />
       <TrustedBrands />
       <div className="py-10"></div>
-      <Footer />
+      
     </div>
   );
 }

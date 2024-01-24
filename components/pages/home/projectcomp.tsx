@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function Projectcomp({
@@ -22,14 +23,14 @@ export default function Projectcomp({
         <p className="text-[14px] w-[80%]">{description}</p>
         <div className="flex justify-between mt-[10px]">
           <button className="rounded text-[14px] px-[20px] py-[10px] bg-white text-black">
-            <a target="__blank" href={weblink}>
-              Visit the website
-            </a>
+            <Link target="__blank" href={weblink}>
+            {`Visit the website`}
+            </Link>
           </button>
           <button className="rounded text-[14px] px-[20px] py-[10px] border border-white text-white">
-            <a target="__blank" href={figlink}>
-              View Figma file
-            </a>
+            <Link target="__blank" href={figlink}>
+              {`View Figma file`}
+            </Link>
           </button>
         </div>
       </div>
