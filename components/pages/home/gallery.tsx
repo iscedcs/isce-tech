@@ -3,6 +3,7 @@ import MaxWidthContainer from '@/components/ui/container';
 import Image from 'next/image';
 
 import Projectitem from "./projectitem";
+import Link from "next/link";
 
 export default function Gallery() {
   return (
@@ -15,6 +16,15 @@ export default function Gallery() {
         </p>
         <div className="text-white">
           <Projectitem />
+        </div>
+        <div className="items-center justify-center grid mt-6">
+          <Button
+            asChild
+            type="button"
+            className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200"
+          >
+            <Link href="/#">Read More</Link>
+          </Button>
         </div>
       </MaxWidthContainer>
     </div>

@@ -11,6 +11,9 @@ import TrustedBrands from "@/components/pages/home/trusted-brands";
 export default function HomePage() {
   return (
     <div className="bg-foreground">
+      {/* <div className="pt-[100px] text-white font-bold">
+        humans suck
+      </div> */}
       <HeaderCarouselComp />
       <WhyChooseIsce />
       <Core />
