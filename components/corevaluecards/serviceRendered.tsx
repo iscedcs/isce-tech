@@ -8,7 +8,6 @@ import {
 
 import MaxWidthContainer from '../ui/container';
 import { services } from '@/lib/const';
-import Link from 'next/link';
 
 
 export default function ServiceRendered() {

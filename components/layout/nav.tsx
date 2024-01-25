@@ -102,7 +102,7 @@ const NavComp: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/#"
+                      href="/about"
                       className="text-secondary"
                       onClick={closeMenu}
                     >{`About Us`}</Link>
