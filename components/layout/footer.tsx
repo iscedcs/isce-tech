@@ -13,26 +13,31 @@ export default function Footer() {
         className=" grid gap-5
 			"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5  ">
           <div className="grid gap-3 ">
             <div className="text-lg font-bold ">Product</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">ISCE Digital Card</Link>
+                <Link href="/#">Digital Card For Individual</Link>
               </div>
               <div className="">
                 <Link href="/#">Digital Card For Business</Link>
               </div>
             </div>
+
             <Button
               variant="link"
               className=" justify-start px-0 font-bold text-accent-foreground gap-2"
             >
-              <Link href="/contact">
+
+              <Link href="/contact" className="flex flex-row gap-2 items-center ">
                 Contact sales
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
+
             </Button>
+
+
           </div>
           <div className="grid gap-3">
             <div className="text-lg font-bold"> Solutions</div>
@@ -66,17 +71,34 @@ export default function Footer() {
               </div>
             </div>
           </div>
+
+
           <div className="grid gap-3">
             <div className="text-lg font-bold">Resources </div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">Customer Stories</Link>
+                <Link href="/#">Customers</Link>
               </div>
               <div className="">
-                <Link href="/#">Academy</Link>
+                <Link href="/#">Pricing</Link>
               </div>
               <div className="">
-                <Link href="/blog">Blog</Link>{" "}
+                <Link href="/#">Privacy Policy</Link>
+              </div>
+
+            </div>
+          </div>
+          <div className="grid gap-3">
+            <div className="text-lg font-bold">Company</div>
+            <div className="grid gap-5">
+              <div className="">
+                <Link href="/#">About</Link>
+              </div>
+              <div className="">
+                <Link href="/#">Careers</Link>
+              </div>
+              <div className="">
+                <Link href="/blog">Blog</Link>
               </div>
             </div>
           </div>
@@ -87,16 +109,14 @@ export default function Footer() {
           <div className="max-w-96">
             {`ISCE's mission is to put the power, beauty, and magic of software
             development into the hands of a billion new creators. `}
-            <span className="text-blue-500">Join Us</span>
+            <Link href='/#'><span className="text-blue-500">Join Us</span></Link>
           </div>
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex flex-wrap gap-5">
               <div className="">
                 <Link href="/#">Terms of use</Link>
               </div>
-              <div className="">
-                <Link href="/#">Privacy</Link>
-              </div>
+
               <div className="">
                 <Link href="/#">Cookies Policy</Link>
               </div>

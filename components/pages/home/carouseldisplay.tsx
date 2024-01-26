@@ -29,7 +29,7 @@ export default function HeaderCarouselDisplay({
           <p className="w-[80%] lg:w-[60%] text-[17px]">{content}</p>
           <Button
             asChild
-            className="transition-all duration-300 hover:bg-black hover:text-white hover:border border-white text-black bg-white py-3 px-5 w-min"
+            className="transition-all duration-300 cursor-pointer hover:bg-black hover:text-white hover:border border-white text-black bg-white py-3 px-5 w-min"
           >
             <Link className="cursor-pointer" href={link}>
               {buttonTitle}

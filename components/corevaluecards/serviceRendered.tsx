@@ -1,7 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/otMb92B3vzj
- */
 import {
 	CardTitle,
 	CardHeader,
@@ -13,7 +9,6 @@ import {
 import MaxWidthContainer from '../ui/container';
 import { services } from '@/lib/const';
 
-// Interface for Service
 
 export default function ServiceRendered() {
 	

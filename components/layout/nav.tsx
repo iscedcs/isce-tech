@@ -47,8 +47,8 @@ const NavComp: React.FC = () => {
           />
         </div>
         <div className="hidden md:flex space-x-4 gap-3">
-          <Link href="/#" className="text-secondary py-6">{`Home`}</Link>
-          <Link href="/#" className="text-secondary py-6">{`About Us`}</Link>
+          <Link href="/" className="text-secondary py-6">{`Home`}</Link>
+          <Link href="/about" className="text-secondary py-6">{`About Us`}</Link>
           <Link href="/#" className="text-secondary py-6">{`Services`}</Link>
           <div className="group pt-6">
             <Link href="/#" className="text-secondary py-6">{`Products`}</Link>
@@ -72,7 +72,7 @@ const NavComp: React.FC = () => {
             </div>
           </div>
           <Link href="/#" className="text-secondary py-6">{`Store`}</Link>
-          <Link href="/#" className="text-secondary py-6">{`Academy`}</Link>
+          <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link>
           <Link href="/#" className="text-secondary py-6">{`Contact Us`}</Link>
           <Link href="/#" className="text-secondary py-6">{`Team`}</Link>
           <Link href="/#" className="text-secondary py-6">{`Blog`}</Link>
@@ -102,7 +102,7 @@ const NavComp: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/#"
+                      href="/about"
                       className="text-secondary"
                       onClick={closeMenu}
                     >{`About Us`}</Link>
@@ -133,7 +133,7 @@ const NavComp: React.FC = () => {
                       href="/#"
                       className="text-secondary"
                       onClick={closeMenu}
-                    >{`Academy`}</Link>
+                    >{`Join Us`}</Link>
                   </li>
                   <li>
                     <Link

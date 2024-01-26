@@ -19,13 +19,13 @@ export default function BrandCarousel() {
 					delay: 2000,
 				}),
 			]}
-			className='mx-auto w-full '
+			className='mx-auto w-full'
 		>
 			<CarouselContent className='items-center justify-center'>
 				{[0, 1].map((_, b) => (
 					<Fragment key={b}>
 						<CarouselItem className='basis-1/2 sm:basis-1/3 lg:basis-1/6'>
-							<div className='p-1'>
+							<div className='p-1 '>
 								<Image
 									src='/images/brands/airs.png'
 									width='150'
