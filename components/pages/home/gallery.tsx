@@ -8,7 +8,6 @@ import Link from "next/link";
 export default function Gallery() {
   return (
     <div>
-      <div className="absolute bg-foreground/30 w-full h-full top-0 left-0"></div>
       <MaxWidthContainer className="relative">
         <h2 className="text-background text-center text-5xl font-bold">{`Our Projects`}</h2>
         <p className="text-background mt-4 text-center text-lg">

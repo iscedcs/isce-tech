@@ -35,7 +35,6 @@ export const PROJECT_ITEM: IPROJECT[] = [
     description:
       "A description that i came up with, I am still thinkng about a content",
     weblink: "https://www.purplepack.co.uk/",
-    figlink: "",
   },
 ];
 

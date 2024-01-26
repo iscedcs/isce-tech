@@ -18,7 +18,7 @@ interface IPROJECT{
   title: string;
   description: string;
   weblink: string;
-  figlink: string;
+  figlink?: string;
 }
 
 interface ICOREVALUE{
