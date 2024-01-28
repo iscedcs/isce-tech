@@ -13,6 +13,7 @@ export default function Projectitem() {
           description={project.description}
           weblink={project.weblink}
           figlink={project.figlink}
+          hasFigLink
         />
       ))}
     </div>

@@ -19,6 +19,7 @@ interface IPROJECT{
   description: string;
   weblink: string;
   figlink?: string;
+  hasFigLink: boolean;
 }
 
 interface ICOREVALUE{
