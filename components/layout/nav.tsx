@@ -56,7 +56,7 @@ const NavComp: React.FC = () => {
 						className='text-secondary py-6'
 					>{`About Us`}</Link>
 					<Link
-						href='/#'
+						href='/services'
 						className='text-secondary py-6'
 					>{`Services`}</Link>
 					<div className='group pt-6'>
