@@ -15,7 +15,7 @@ export default function ServiceRendered() {
 	return (
     <MaxWidthContainer className="text-white">
       <div className="flex justify-center mb-6 md:mb-12">
-        <h1 className="text-4xl md:text-6xl font-bold">SERVICES RENDERED</h1>
+        <h1 className="text-4xl md:text-6xl font-bold">Services Rendered</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => (

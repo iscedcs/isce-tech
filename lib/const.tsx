@@ -14,28 +14,28 @@ export const PROJECT_ITEM: IPROJECT[] = [
   {
     image: "/images/ariaria.png",
     title: "Ariaria NG",
-    description:
-      "An e-commerce website",
+    description: "An e-commerce website",
     weblink: "https://www.ariariang.com/",
     figlink:
       "https://www.figma.com/file/RFbWimhXksL0rVeMUTLfTO/ARIARIA-NG.COM-(Copy)?type=design&node-id=3%3A2&mode=design&t=2utpT2hM5PbwnjOG-1",
+    hasFigLink: true,
   },
   {
     image: "/images/transpay.png",
     title: "Transpay",
-    description:
-      "Transport revenue system",
+    description: "Transport revenue system",
     weblink: "https://www.transpaytms.com/",
     figlink:
       "https://www.figma.com/file/g1s1367l2cGU1yL59q8wkt/TRANSPAY?type=design&node-id=131%3A1112&mode=design&t=FfpPS5wV9Ds378Zp-1",
+    hasFigLink: true,
   },
   {
     image: "/images/purplepack.png",
     title: "Purple Pack",
-    description:
-      "Resturant Website",
+    description: "Resturant Website",
     weblink: "https://www.purplepack.co.uk/",
     figlink: "",
+    hasFigLink: false,
   },
 ];
 
@@ -75,10 +75,6 @@ export const services: IService[] = [
   {
     title: "Hardware",
     description: `Seamlessly integrate hardware solutions into your tech ecosystem with ISCE's Hardware Integrations service. Whether it's connecting devices for improved functionality or optimizing hardware performance, we ensure that your hardware components work harmoniously to enhance overall efficiency and productivity.`,
-  },
-  {
-    title: "NFC ",
-    description: `Explore the potential of contactless living with ISCE's NFC solutions. From secure mobile payments to smart interactions, our NFC technology services redefine convenience. Embrace the future with secure, efficient, and innovative NFC solutions that simplify daily interactions and transactions.`,
   },
   {
     title: "Smart Works",

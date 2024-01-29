@@ -11,7 +11,7 @@ import TrustedBrands from "@/components/pages/home/trusted-brands";
 export default function HomePage() {
   return (
     <div className="bg-foreground">
-      <HeaderCarouselComp />
+      <HeaderCarouselComp/>
       <WhyChooseIsce />
       <Core />
       <Gallery />

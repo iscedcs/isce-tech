@@ -8,12 +8,14 @@ import {
   CardContent,
   CardDescription,
 } from "../../ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function WhyChooseIsce() {
   return (
     <MaxWidthContainer className="text-background grid gap-5">
       <div className="text-center">
-        <div className="text-5xl font-bold ">{`WHY CHOOSE ISCE`}</div>
+        <div className="text-5xl font-bold ">{`Why Choose ISCE`}</div>
       </div>
       <div className="grid md:grid-cols-2 gap-10 justify-center py-20">
         <div className="flex flex-col max-w-[500px]">
@@ -53,6 +55,11 @@ export default function WhyChooseIsce() {
             </Card>
           </div>
         ))}
+      </div>
+      <div className="items-center justify-center grid mt-4">
+        <Button asChild type="button" className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200">
+          <Link href="/#">Read More</Link>
+        </Button>
       </div>
     </MaxWidthContainer>
   );

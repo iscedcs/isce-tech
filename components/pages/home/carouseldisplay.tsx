@@ -22,7 +22,7 @@ export default function HeaderCarouselDisplay({
         quality={100}
         className="relative w-full h-full object-cover"
       />
-      <div className="w-full h-screen bg-gradient-to-t absolute top-0 from-[#000000] to-[#13121200] z-10"></div>
+      <div className="w-full h-screen bg-gradient-to-t absolute top-0 from-[#000000] to-[#13121200]"></div>
       <div className="text-white absolute bottom-0 w-full z-20">
         <MaxWidthContainer className="flex flex-col gap-3">
           <h1 className="font-bold text-[50px] lg:text-[100px]">{header}</h1>

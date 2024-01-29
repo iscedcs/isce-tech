@@ -24,14 +24,16 @@ export default function Projectcomp({
         <div className="flex justify-between mt-[10px]">
           <button className="rounded text-[14px] px-[20px] py-[10px] bg-white text-black">
             <Link target="__blank" href={weblink}>
-            {`Visit the website`}
+              {`Visit the website`}
             </Link>
           </button>
-          <button className="rounded text-[14px] px-[20px] py-[10px] border border-white text-white">
-            <Link target="__blank" href={figlink}>
-              {`View Figma file`}
-            </Link>
-          </button>
+          {figlink && (
+            <button className="rounded text-[14px] px-[20px] py-[10px] border border-white text-white">
+              <Link target="__blank" href={figlink}>
+                {`View Figma file`}
+              </Link>
+            </button>
+          )}
         </div>
       </div>
     </div>
