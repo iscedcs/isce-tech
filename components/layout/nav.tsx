@@ -76,17 +76,13 @@ const NavComp: React.FC = () => {
 									href='/#'
 									className='text-secondary text-sm'
 								>{`For Business`}</Link>
-								<Link
-									href='/#'
-									className='text-secondary text-sm'
-								>{`For Business`}</Link>
 							</div>
 						</div>
 					</div>
 					{/* <Link href="/#" className="text-secondary py-6">{`Store`}</Link> */}
 					{/* <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link> */}
 					<Link
-						href='/#'
+						href='/contact'
 						className='text-secondary py-6'
 					>{`Contact Us`}</Link>
 					<Link
@@ -158,7 +154,7 @@ const NavComp: React.FC = () => {
                   </li> */}
 									<li>
 										<Link
-											href='/#'
+											href='/contact'
 											className='text-secondary'
 											onClick={closeMenu}
 										>{`Contact Us`}</Link>
