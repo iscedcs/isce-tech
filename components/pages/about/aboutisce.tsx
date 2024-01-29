@@ -38,7 +38,7 @@ export default function AboutIsce() {
 						</div>
 					</div>
 					<Separator orientation='vertical' />
-					<div className='w-2/3 text-xl '>
+					<div className='xl:w-2/3 w-full text-xl '>
 						<p className='text-white py-3 font-normal'>
 							{`At ISCE Tech, our journey began in 2021, fueled by a collective passion for innovation and a vision to redefine the landscape of technology. From humble beginnings, we embarked on a mission to simplify and enhance daily living through cutting-edge solutions.`}
 						</p>
