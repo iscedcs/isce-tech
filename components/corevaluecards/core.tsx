@@ -65,7 +65,7 @@ export default function Core() {
 						key={index}
 						className='bg-gradient-to-br from-blue-600 via-purple-600 to-blue-600 text-white rounded-t rounded-b-lg'
 					>
-						<Card className='w-full bg-gray-800 back mt-1 ml-1 rounded-b-lg rounded-t-none border-none text-white mb-4 sm:mb-0'>
+						<Card className='w-full bg-gray-800 back mt-1 ml-1 rounded-b-lg rounded-t-none border-none text-white mb-0 sm:mb-0'>
 							<CardHeader>
 								{value.icon}
 								<CardTitle className='h-10'>
