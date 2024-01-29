@@ -77,10 +77,6 @@ export const services: IService[] = [
     description: `Seamlessly integrate hardware solutions into your tech ecosystem with ISCE's Hardware Integrations service. Whether it's connecting devices for improved functionality or optimizing hardware performance, we ensure that your hardware components work harmoniously to enhance overall efficiency and productivity.`,
   },
   {
-    title: "NFC ",
-    description: `Explore the potential of contactless living with ISCE's NFC solutions. From secure mobile payments to smart interactions, our NFC technology services redefine convenience. Embrace the future with secure, efficient, and innovative NFC solutions that simplify daily interactions and transactions.`,
-  },
-  {
     title: "Smart Works",
     description: `Transform your workspace into a smart, connected environment with ISCE's Smart Works solutions. Enhance efficiency, optimize workflows, and create a connected workplace that adapts to your needs. Our Smart Works services encompass smart office solutions, IoT integrations, and advanced technologies to elevate your work environment.`,
   },

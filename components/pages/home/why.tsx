@@ -15,7 +15,7 @@ export default function WhyChooseIsce() {
   return (
     <MaxWidthContainer className="text-background grid gap-5">
       <div className="text-center">
-        <div className="text-5xl font-bold ">{`WHY CHOOSE ISCE`}</div>
+        <div className="text-5xl font-bold ">{`Why Choose ISCE`}</div>
       </div>
       <div className="grid md:grid-cols-2 gap-10 justify-center py-20">
         <div className="flex flex-col max-w-[500px]">
