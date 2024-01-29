@@ -49,7 +49,7 @@ const NavComp: React.FC = () => {
         <div className="hidden md:flex space-x-4 gap-3">
           <Link href="/" className="text-secondary py-6">{`Home`}</Link>
           <Link href="/about" className="text-secondary py-6">{`About Us`}</Link>
-          <Link href="/#" className="text-secondary py-6">{`Services`}</Link>
+          <Link href="/services" className="text-secondary py-6">{`Services`}</Link>
           <div className="group pt-6">
             <Link href="/#" className="text-secondary py-6">{`Products`}</Link>
             <div className="hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4">
