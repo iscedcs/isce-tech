@@ -71,8 +71,8 @@ const NavComp: React.FC = () => {
               </div>
             </div>
           </div>
-          <Link href="/#" className="text-secondary py-6">{`Store`}</Link>
-          <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link>
+          {/* <Link href="/#" className="text-secondary py-6">{`Store`}</Link> */}
+          {/* <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link> */}
           <Link href="/#" className="text-secondary py-6">{`Contact Us`}</Link>
           <Link href="/#" className="text-secondary py-6">{`Team`}</Link>
           <Link href="/#" className="text-secondary py-6">{`Blog`}</Link>
@@ -121,7 +121,7 @@ const NavComp: React.FC = () => {
                       onClick={closeMenu}
                     >{`Products`}</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       href="/#"
                       className="text-secondary"
@@ -134,7 +134,7 @@ const NavComp: React.FC = () => {
                       className="text-secondary"
                       onClick={closeMenu}
                     >{`Join Us`}</Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       href="/#"

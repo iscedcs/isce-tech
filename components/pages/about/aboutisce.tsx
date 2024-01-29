@@ -11,12 +11,12 @@ export default function AboutIsce() {
             <div className='mt-20 '>
                 <div className=' text-white py-2 '>
                     <h4 className='text-start font-normal py-2 text-xl'>{`OUR STORY`}</h4>
-                    <h1 className='text-start font-bold py-2 text-5xl w-1/2'>{`We’re a passionate group of people working together to build the future of innovation.`}</h1>
+                    <h1 className='text-start font-bold py-2 xl:text-5xl xl:w-1/2 w-full text-3xl '>{`We’re a passionate group of people working together to build the future of innovation.`}</h1>
                 </div>
                 <div className='space-y-6 w-full justify-center items-center '>
                     <Image width={1200} height={1200} src='/images/group.jpg' alt='' className='w-full h-full' />
                 </div>
-                <div className="  p-6 shadow-lg rounded-lg mx-auto justify-center  items-center flex flex-col lg:flex-row lg:space-x-6">
+                <div className="  p-6 shadow-lg rounded-lg mx-auto justify-center  items-center flex flex-row lg:flex-row lg:space-x-6">
                     <div className="space-y-4 gap-6 lg:w-1/3">
                         <div className="space-y-2">
                             <p className="font-bold text-white">{`2021`}</p>
@@ -91,10 +91,10 @@ export default function AboutIsce() {
                 <Separator orientation='horizontal' />
                 <div className='items-center text-center space-y-3  justify-center mx-auto text-white '>
                     <h1 className='font-normal py-2 my-4 text-xl'>{`Our Vision`}</h1>
-                    <h1 className='font-bold text-5xl '>{`It’s all about the people`}</h1>
-                    <p className='w-1/2 mx-auto py-4 font-normal text-lg'>{`To be global leader in innovative software solutiions; Empowering individual and businesses through cutting-edge technology to enhance efficiency, security, and connectivity.`}</p>
+                    <h1 className='font-bold xl:text-5xl text-2xl'>{`It’s all about the people`}</h1>
+                    <p className='xl:w-1/2 w-full mx-auto py-4 font-normal text-lg'>{`To be global leader in innovative software solutiions; Empowering individual and businesses through cutting-edge technology to enhance efficiency, security, and connectivity.`}</p>
                     <div className='space-y-6 w-full mb-6 justify-center items-center '>
-                        <Image width={850} height={850} src='/images/build.png' alt='' className='w-full h-full mx-auto' />
+                        <Image width={850} height={850} src='/images/Build.png' alt='' className='w-full h-full mx-auto' />
                     </div>
                 </div>
             </div>
