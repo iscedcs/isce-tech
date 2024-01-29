@@ -1,30 +1,13 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/8vOZaqFBHsP
- */
-import {
-	CardTitle,
-	CardHeader,
-	CardContent,
-	Card,
-	CardDescription,
-} from '@/components/ui/card';
-import { HeartIcon, LightbulbIcon, UserPlusIcon } from '@/lib/svg';
-import { HeartPulseIcon } from 'lucide-react';
-import MaxWidthContainer from '../ui/container';
-
-// Constant for background color
-const BG_COLOR = '#0c0e16';
-
-// Interface for CoreValues
-interface CoreValues {
-	icon: React.ReactNode;
-	title: string;
-	description: string;
-}
+import MaxWidthContainer from "../ui/container";
+import { CORE_VALUES } from "@/lib/const";
+import React from "react";
+import CoreItem from "./coreitem";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 // Core component
 export default function Core() {
+<<<<<<< HEAD
 	const coreValues: CoreValues[] = [
 		{
 			icon: <UserPlusIcon className='text-[#bd1e59] text-4xl mb-4' />,
@@ -83,4 +66,30 @@ export default function Core() {
 			</div>
 		</MaxWidthContainer>
 	);
+=======
+  return (
+    <MaxWidthContainer className={`rounded-[20px] bg-white text-black`}>
+      <h1 className={`text-5xl font-bold text-center `}>Core Values</h1>
+      <p className="mt-[20px] text-center">
+        From client satisfaction to timely delivery, our goal is to live up to
+        the tenets of our CORE VALUES.
+      </p>
+      <div className="grid-cols-1 pt-[20px] grid gap-[20px] md:grid-cols-2 lg:grid-cols-3">
+        {CORE_VALUES.map((value, k) => (
+          <CoreItem
+            key={k}
+            icon={value.icon}
+            title={value.title}
+            description={value.description}
+          />
+        ))}
+      </div>
+      <div className="items-center justify-center grid mt-4">
+        <Button asChild type="button" className="">
+          <Link href='/#'>Read More</Link>
+        </Button>
+      </div>
+    </MaxWidthContainer>
+  );
+>>>>>>> 5e5dfb6e24e9353b208675253b1f538a272b0972
 }
