@@ -172,3 +172,24 @@ export const SERVICEMAIN: ISERVICEMAIN[] = [
       "In the digital age, user experience (UX) is a key differentiator for online success. Uncover the transformative capabilities of ISCE in UX design, committed to creating seamless and delightful interactions for your audience.",
   },
 ];
+
+export const REVIEWS: IReview[] = [
+  {
+    name: "Ariaria",
+    review: `ISCE Tech's creation for Ariaria stands out as a seamless e-commerce website and app. The user interface is intuitive, making navigation a breeze. The robust backend ensures smooth transactions, making it a top-notch solution for our online shopping.`,
+    title: "Founder",
+    image: "/images/ariariayoungwoman.jpg",
+  },
+  {
+    name: "Yoma Care",
+    review: `ISCE Tech's project delivery for Yoma Care exemplify efficiency and purpose. Amazing job!`,
+    title: "CEO/Founder",
+    image: "/images/person.jpg",
+  },
+  {
+    name: "Transpay",
+    review: `ISCE Tech's website and management system for Yoma Care exemplify efficiency and purpose.`,
+    title: "Minister Of Transportation",
+    image: "/images/yomacareboss.jpg",
+  },
+];

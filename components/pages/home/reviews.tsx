@@ -11,7 +11,7 @@ export default function Reviews({ review, name, title, image }: IReview) {
 					width='100'
 					height='100'
 					alt='Person'
-					className='rounded-[300px]'
+					className='rounded-full'
 				></Image>
 				<div className='text-left'>
 					<p className='text-[30px] font-bold'>{name}</p>
