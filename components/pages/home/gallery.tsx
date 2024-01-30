@@ -14,15 +14,6 @@ export default function Gallery() {
         <div className="text-white">
           <Projectitem />
         </div>
-        <div className="items-center justify-center grid mt-6">
-          <Button
-            asChild
-            type="button"
-            className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200"
-          >
-            <Link href="/#">Read More</Link>
-          </Button>
-        </div>
       </MaxWidthContainer>
     </div>
   );

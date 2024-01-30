@@ -8,6 +8,14 @@ import {
   Result,
   LightbulbIcon,
   UserPlusIcon,
+  TwitterIcon,
+  WebIcon,
+  MobileIcon,
+  DomainIcon,
+  AcademyIcon,
+  DigitalIcon,
+  GraphicIcon,
+  UXIcon,
 } from "./svg";
 
 export const PROJECT_ITEM: IPROJECT[] = [
@@ -258,4 +266,69 @@ export const REMOTE_IMAGES = [
 		name: 'mbway',
 		src: 'https://images.prismic.io/vivadotcom/6b13fd75-63e5-4593-81d3-d48877bdab28_mbway-logo-white-01.svg',
 	},
+];
+
+export const SERVICEMAIN: ISERVICEMAIN[] = [
+  {
+    icon: WebIcon,
+    title: "Web Development",
+    description:
+      "In today's digital age, a robust online presence is non-negotiable. Explore the prowess of ISCE in web development, offering innovative designs, tailored solutions, and a holistic approach to propel your business forward.",
+  },
+  {
+    icon: MobileIcon,
+    title: "Mobile Development",
+    description:
+      "In the mobile-dominated landscape, a strong mobile presence is paramount. Uncover the expertise of ISCE in mobile development, offering innovative solutions to catapult your brand into the hands of your audience.",
+  },
+  {
+    icon: DomainIcon,
+    title: "Hosting and Domains",
+    description:
+      "In the digital realm, reliable hosting and domain services are the backbone of a successful online presence. Explore the capabilities of ISCE in hosting and domains, providing a robust foundation for your website's performance and identity.",
+  },
+  {
+    icon: AcademyIcon,
+    title: "Institution and Tech Training",
+    description: "This comprehensive service is designed to cater to the unique needs of educational institutions, businesses, and individuals seeking to enhance their technological proficiency.",
+  },
+  {
+    icon: DigitalIcon,
+    title: "Digital Marketing and SEO",
+    description:
+      "In the crowded digital landscape, effective digital marketing and SEO are paramount for business success. Discover the prowess of ISCE in comprehensive digital marketing and SEO services, designed to elevate your brand visibility and drive meaningful online engagement.",
+  },
+  {
+    icon: GraphicIcon,
+    title: "Grapic Design",
+    description:
+      "Visual appeal is a powerful tool in making a lasting impression online. Explore the creative prowess of ISCE in graphic design, offering bespoke visual solutions to enhance your brand identity and captivate your audience.",
+  },
+  {
+    icon: UXIcon,
+    title: "User Experience Design",
+    description:
+      "In the digital age, user experience (UX) is a key differentiator for online success. Uncover the transformative capabilities of ISCE in UX design, committed to creating seamless and delightful interactions for your audience.",
+  },
+];
+
+export const REVIEWS: IReview[] = [
+  {
+    name: "Ariaria",
+    review: `ISCE Tech's creation for Ariaria stands out as a seamless e-commerce website and app. The user interface is intuitive, making navigation a breeze. The robust backend ensures smooth transactions, making it a top-notch solution for our online shopping.`,
+    title: "Founder",
+    image: "/images/ariariayoungwoman.jpg",
+  },
+  {
+    name: "Yoma Care",
+    review: `ISCE Tech's project delivery for Yoma Care exemplify efficiency and purpose. Amazing job!`,
+    title: "CEO/Founder",
+    image: "/images/person.jpg",
+  },
+  {
+    name: "Transpay",
+    review: `ISCE Tech's website and management system for Yoma Care exemplify efficiency and purpose.`,
+    title: "Minister Of Transportation",
+    image: "/images/yomacareboss.jpg",
+  },
 ];

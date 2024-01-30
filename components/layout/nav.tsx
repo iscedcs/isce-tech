@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import MaxWidthContainer from '../ui/container';
 import Link from 'next/link';
+import { AlignJustify } from 'lucide-react';
 
 const NavComp: React.FC = () => {
 	const [isMenuOpen, setMenuOpen] = useState(false);
@@ -55,12 +56,12 @@ const NavComp: React.FC = () => {
 						className='text-secondary py-6'
 					>{`About Us`}</Link>
 					<Link
-						href='/#'
+						href='/services'
 						className='text-secondary py-6'
 					>{`Services`}</Link>
 					<div className='group pt-6'>
 						<Link
-							href='/#'
+							href='/services'
 							className='text-secondary py-6'
 						>{`Products`}</Link>
 						<div className='hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4'>
@@ -70,6 +71,15 @@ const NavComp: React.FC = () => {
 								href='/individual'
 								className='text-secondary text-sm'
 							>{`For Individual`}</Link>
+<<<<<<< HEAD
+=======
+							<h2 className='text-secondary font-bold '>{`For Individual`}</h2>
+							<div className='flex flex-col gap-2'>
+								<Link
+									href='/#'
+									className='text-secondary text-sm'
+								>{`For Business`}</Link>
+>>>>>>> 0b2b7d9ff1bd2e9c995b886a0a1b95ba62f916b7
 							</div>
 							<div className="">
 							<Link
@@ -83,7 +93,7 @@ const NavComp: React.FC = () => {
 					{/* <Link href="/#" className="text-secondary py-6">{`Store`}</Link> */}
 					{/* <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link> */}
 					<Link
-						href='/#'
+						href='/contact'
 						className='text-secondary py-6'
 					>{`Contact Us`}</Link>
 					<Link
@@ -95,9 +105,9 @@ const NavComp: React.FC = () => {
 				<div className='md:hidden'>
 					<button
 						onClick={toggleMenu}
-						className='text-secondary py-6'
+						className='text-secondary py-6 w-full'
 					>
-						☰
+						<AlignJustify className='h-8 w-8' />
 					</button>
 					{isMenuOpen && (
 						<div className=' fixed  top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-primary p-4 space-y-4'>
@@ -106,7 +116,7 @@ const NavComp: React.FC = () => {
 								width={20}
 								height={20}
 								alt='close'
-								className='absolute top-4 right-4 w-[28px] h-[28px]  object-contain cursor-pointer'
+								className='absolute top-4 right-4 w-10 h-10 pr-4  object-contain cursor-pointer'
 								onClick={toggleMenu}
 							/>
 							<div>
@@ -114,7 +124,7 @@ const NavComp: React.FC = () => {
 									<li>
 										<Link
 											href='/#'
-											className='text-secondary'
+											className='text-secondary '
 											onClick={closeMenu}
 										>{`Home`}</Link>
 									</li>
@@ -127,7 +137,7 @@ const NavComp: React.FC = () => {
 									</li>
 									<li>
 										<Link
-											href='/#'
+											href='/services'
 											className='text-secondary'
 											onClick={closeMenu}
 										>{`Services`}</Link>
@@ -155,7 +165,7 @@ const NavComp: React.FC = () => {
                   </li> */}
 									<li>
 										<Link
-											href='/#'
+											href='/contact'
 											className='text-secondary'
 											onClick={closeMenu}
 										>{`Contact Us`}</Link>

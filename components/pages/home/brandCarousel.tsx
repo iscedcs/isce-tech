@@ -97,6 +97,7 @@ export default function BrandCarousel() {
                   width="150"
                   height="150"
                   alt="one"
+                  className="h-20 w-full object-contain"
                 ></Image>
               </div>
             </CarouselItem>
@@ -107,6 +108,7 @@ export default function BrandCarousel() {
                   width="150"
                   height="150"
                   alt="one"
+                  className="h-20 w-full object-contain"
                 ></Image>
               </div>
             </CarouselItem>
@@ -117,6 +119,7 @@ export default function BrandCarousel() {
                   width="150"
                   height="150"
                   alt="one"
+                  className="h-20 w-full object-contain"
                 ></Image>
               </div>
             </CarouselItem>
@@ -127,6 +130,7 @@ export default function BrandCarousel() {
                   width="150"
                   height="150"
                   alt="one"
+                  className="h-20 w-full object-contain"
                 ></Image>
               </div>
             </CarouselItem>

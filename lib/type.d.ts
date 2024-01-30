@@ -57,3 +57,8 @@ interface ClickBtnP {
 	selected: boolean;
 	setSelected: React.Dispatch<React.SetStateAction>;
 }
+interface ISERVICEMAIN {
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
+}
