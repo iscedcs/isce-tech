@@ -71,15 +71,6 @@ const NavComp: React.FC = () => {
 								href='/individual'
 								className='text-secondary text-sm'
 							>{`For Individual`}</Link>
-<<<<<<< HEAD
-=======
-							<h2 className='text-secondary font-bold '>{`For Individual`}</h2>
-							<div className='flex flex-col gap-2'>
-								<Link
-									href='/#'
-									className='text-secondary text-sm'
-								>{`For Business`}</Link>
->>>>>>> 0b2b7d9ff1bd2e9c995b886a0a1b95ba62f916b7
 							</div>
 							<div className="">
 							<Link
