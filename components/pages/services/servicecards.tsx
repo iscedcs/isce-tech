@@ -7,6 +7,7 @@ export default function ServiceCards() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:-mt-[70px] lg:mx-[20px]">
       {SERVICEMAIN.map((card, k) => [
         <ServiceCard
+          key={k}
           title={card.title}
           description={card.description}
           icon={card.icon}
