@@ -161,25 +161,25 @@ export const CLICK_BUTTON = [
 	{
 		id: 0,
 		text: "With the softpos.com | Terminal, you can easily receive money using your existing bank account. No need to open a new account or switch banks. (Coming soon to your devices).",
-		image: "/images/effortless.png",
+		image: "/images/Effortless.png",
 		button: "Effortless",
 	},
 	{
 		id: 1,
 		text: "Enter the payment amount you wish to accept.",
-		image: "/images/secure.png",
+		image: "/images/Secure.png",
 		button: "Secure",
 	},
 	{
 		id: 2,
 		text: "Tap the other person's card or mobile device onto the back of your phone.",
-		image: "/images/quick.png",
+		image: "/images/Quick.png",
 		button: "Quick",
 	},
 	{
 		id: 3,
 		text: "Receive the money into your bank account.",
-		image: "/images/flexible.png",
+		image: "/images/Flexible.png",
 		button: "Flexible",
 	},
 ];
