@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button';
 import MaxWidthContainer from '@/components/ui/container';
-import Image from 'next/image';
-
 import Projectitem from "./projectitem";
 import Link from "next/link";
 

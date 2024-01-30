@@ -36,3 +36,24 @@ interface CoreValues {
 	title: string;
 	description: string;
 }
+
+interface CardBenefitsP {
+  image: string;
+  title: string;
+  description: string;
+}
+
+interface CardP {
+	image: string;
+	num: number;
+	text: string;
+}
+
+interface ClickBtnP {
+	id?: number;
+	button: string;
+	image: string;
+	text: string;
+	selected: boolean;
+	setSelected: React.Dispatch<React.SetStateAction>;
+}
