@@ -16,19 +16,19 @@ const reviews: IReview[] = [
 		name: 'Ariaria',
 		review: `ISCE Tech's creation for Ariaria stands out as a seamless e-commerce website and app. The user interface is intuitive, making navigation a breeze. The robust backend ensures smooth transactions, making it a top-notch solution for our online shopping.`,
 		title: 'Founder',
-		image: '/images/person.jpg',
+		image: '/images/person.png',
 	},
 	{
 		name: 'Yoma Care',
 		review: `ISCE Tech's project delivery for Yoma Care exemplify efficiency and purpose. Amazing job!`,
 		title: 'CEO/Founder',
-		image: '/images/person.jpg',
+		image: '/images/person.png',
 	},
 	{
 		name: 'Transpay',
 		review: `ISCE Tech's website and management system for Yoma Care exemplify efficiency and purpose.`,
 		title: 'Minister Of Transportation',
-		image: '/images/person.jpg',
+		image: '/images/person.png',
 	},
 ];
 

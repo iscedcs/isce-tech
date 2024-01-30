@@ -8,6 +8,14 @@ import {
   Result,
   LightbulbIcon,
   UserPlusIcon,
+  TwitterIcon,
+  WebIcon,
+  MobileIcon,
+  DomainIcon,
+  AcademyIcon,
+  DigitalIcon,
+  GraphicIcon,
+  UXIcon,
 } from "./svg";
 
 export const PROJECT_ITEM: IPROJECT[] = [
@@ -118,5 +126,49 @@ export const CORE_VALUES: ICOREVALUE[] = [
     title: "Result Driven",
     description:
       "Focusing on delivering tangible results and measurable impact, aligning efforts with organizational goals and objectives.Our solutions tailored to empower our clients",
+  },
+];
+
+export const SERVICEMAIN: ISERVICEMAIN[] = [
+  {
+    icon: WebIcon,
+    title: "Web Development",
+    description:
+      "In today's digital age, a robust online presence is non-negotiable. Explore the prowess of ISCE in web development, offering innovative designs, tailored solutions, and a holistic approach to propel your business forward.",
+  },
+  {
+    icon: MobileIcon,
+    title: "Mobile Development",
+    description:
+      "In the mobile-dominated landscape, a strong mobile presence is paramount. Uncover the expertise of ISCE in mobile development, offering innovative solutions to catapult your brand into the hands of your audience.",
+  },
+  {
+    icon: DomainIcon,
+    title: "Hosting and Domains",
+    description:
+      "In the digital realm, reliable hosting and domain services are the backbone of a successful online presence. Explore the capabilities of ISCE in hosting and domains, providing a robust foundation for your website's performance and identity.",
+  },
+  {
+    icon: AcademyIcon,
+    title: "Institution and Tech Training",
+    description: "howwwwwww",
+  },
+  {
+    icon: DigitalIcon,
+    title: "Digital Marketing and SEO",
+    description:
+      "In the crowded digital landscape, effective digital marketing and SEO are paramount for business success. Discover the prowess of ISCE in comprehensive digital marketing and SEO services, designed to elevate your brand visibility and drive meaningful online engagement.",
+  },
+  {
+    icon: GraphicIcon,
+    title: "Grapic Design",
+    description:
+      "Visual appeal is a powerful tool in making a lasting impression online. Explore the creative prowess of ISCE in graphic design, offering bespoke visual solutions to enhance your brand identity and captivate your audience.",
+  },
+  {
+    icon: UXIcon,
+    title: "User Experience Design",
+    description:
+      "In the digital age, user experience (UX) is a key differentiator for online success. Uncover the transformative capabilities of ISCE in UX design, committed to creating seamless and delightful interactions for your audience.",
   },
 ];

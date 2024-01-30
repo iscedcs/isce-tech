@@ -36,3 +36,9 @@ interface CoreValues {
 	title: string;
 	description: string;
 }
+
+interface ISERVICEMAIN {
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
+}

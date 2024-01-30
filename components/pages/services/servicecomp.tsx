@@ -1,6 +1,7 @@
 import MaxWidthContainer from "@/components/ui/container";
 import React from "react";
 import Image from "next/image";
+import ServiceCards from "./servicecards";
 
 export default function Servicecomp() {
   return (
@@ -15,10 +16,11 @@ export default function Servicecomp() {
             width={1200}
             height={1200}
             src="/images/services.jpg"
-            alt=""
+            alt="images"
             className="w-full h-full rounded-md"
           />
         </div>
+        <ServiceCards/>
       </div>
     </MaxWidthContainer>
   );

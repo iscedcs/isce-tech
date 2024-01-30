@@ -61,7 +61,7 @@ const NavComp: React.FC = () => {
 					>{`Services`}</Link>
 					<div className='group pt-6'>
 						<Link
-							href='/#'
+							href='/services'
 							className='text-secondary py-6'
 						>{`Products`}</Link>
 						<div className='hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4'>
@@ -130,7 +130,7 @@ const NavComp: React.FC = () => {
 									</li>
 									<li>
 										<Link
-											href='/#'
+											href='/services'
 											className='text-secondary'
 											onClick={closeMenu}
 										>{`Services`}</Link>
