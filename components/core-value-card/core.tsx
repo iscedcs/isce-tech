@@ -26,7 +26,7 @@ export default function Core() {
       </div>
       <div className="items-center justify-center grid mt-4">
         <Button asChild type="button" className="pl-[20px]">
-          <Link href='/#'>Read More</Link>
+          <Link href="/about">Read More</Link>
         </Button>
       </div>
     </MaxWidthContainer>

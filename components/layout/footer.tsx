@@ -18,10 +18,14 @@ export default function Footer() {
             <div className="mb-[20px] font-bold ">Product</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">Digital Card For Individual</Link>
+                <Link href="https://isce.app/#event">
+                  Digital Card For Individual
+                </Link>
               </div>
               <div className="">
-                <Link href="/#">Digital Card For Business</Link>
+                <Link href="https://isce.app/#event">
+                  Digital Card For Business
+                </Link>
               </div>
             </div>
 
@@ -43,7 +47,7 @@ export default function Footer() {
             <div className="mb-[20px] font-bold">Connect</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">ISCE Connect</Link>
+                <Link href="https://isce.app/#connect">ISCE Connect</Link>
               </div>
               <div className="text-[#4b4b4b] cursor-default">
                 <>ISCE Store (Coming Soon) </>
@@ -72,7 +76,7 @@ export default function Footer() {
             <div className="mb-[20px] font-bold">Company</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">About</Link>
+                <Link href="/about">About</Link>
               </div>
               <div className="text-[#4b4b4b] cursor-default">
                 <>Careers (Coming Soon) </>
