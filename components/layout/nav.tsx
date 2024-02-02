@@ -87,10 +87,10 @@ const NavComp: React.FC = () => {
 						href='/contact'
 						className='text-secondary py-6'
 					>{`Contact Us`}</Link>
-					<Link
+					{/* <Link
 						href='/#'
 						className='text-secondary py-6'
-					>{`Team`}</Link>
+					>{`Team`}</Link> */}
 					{/* <Link href="/#" className="text-secondary py-6">{`Blog`}</Link> */}
 				</div>
 				<div className='md:hidden'>

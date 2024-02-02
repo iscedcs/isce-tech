@@ -13,9 +13,9 @@ export default function Footer() {
         className=" grid gap-5
 			"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5  ">
-          <div className="grid gap-3 ">
-            <div className="text-lg font-bold ">Product</div>
+        <div className=" w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold ">Product</div>
             <div className="grid gap-5">
               <div className="">
                 <Link href="/#">Digital Card For Individual</Link>
@@ -29,76 +29,56 @@ export default function Footer() {
               variant="link"
               className=" justify-start px-0 font-bold text-accent-foreground gap-2"
             >
-
-              <Link href="/contact" className="flex flex-row gap-2 items-center ">
+              <Link
+                href="/contact"
+                className="flex flex-row gap-2 items-center "
+              >
                 Contact sales
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
-
             </Button>
-
-
-          </div>
-          <div className="grid gap-3">
-            <div className="text-lg font-bold"> Solutions</div>
-            <div className="grid gap-5">
-              <div className="">
-                <Link href="/#">Business</Link>
-              </div>
-              <div className="">
-                <Link href="/#">Integrations</Link>
-              </div>
-              <div className="">
-                <Link href="/#">Field Teams</Link>
-              </div>
-            </div>
           </div>
 
-          <div className="grid gap-3">
-            <div className="text-lg font-bold">Connect</div>
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold">Connect</div>
             <div className="grid gap-5">
               <div className="">
                 <Link href="/#">ISCE Connect</Link>
               </div>
-              <div className="">
-                <Link href="/#">ISCE Store</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>ISCE Store (Coming Soon) </>
               </div>
-              <div className="">
-                <Link href="/#">Connect For Business</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Connect for Business (Coming Soon) </>
               </div>
-              <div className="">
-                <Link href="/#">Soft POS</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Soft POS (Coming Soon) </>
               </div>
             </div>
           </div>
 
-
-          <div className="grid gap-3">
-            <div className="text-lg font-bold">Resources </div>
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold">Resources </div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">Customers</Link>
-              </div>
-              <div className="">
-                <Link href="/#">Pricing</Link>
+                <Link href="#customers">Customers</Link>
               </div>
               <div className="">
                 <Link href="/#">Privacy Policy</Link>
               </div>
-
             </div>
           </div>
-          <div className="grid gap-3">
-            <div className="text-lg font-bold">Company</div>
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold">Company</div>
             <div className="grid gap-5">
               <div className="">
                 <Link href="/#">About</Link>
               </div>
-              <div className="">
-                <Link href="/#">Careers</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Careers (Coming Soon) </>
               </div>
-              <div className="">
-                <Link href="/blog">Blog</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Blog (Coming Soon) </>
               </div>
             </div>
           </div>
@@ -109,7 +89,9 @@ export default function Footer() {
           <div className="max-w-96">
             {`ISCE's mission is to put the power, beauty, and magic of software
             development into the hands of a billion new creators. `}
-            <Link href='/#'><span className="text-blue-500">Join Us</span></Link>
+            <Link href="/#">
+              <span className="text-blue-500">Join Us</span>
+            </Link>
           </div>
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex flex-wrap gap-5">
