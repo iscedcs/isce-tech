@@ -271,41 +271,49 @@ export const REMOTE_IMAGES = [
 export const SERVICEMAIN: ISERVICEMAIN[] = [
   {
     icon: WebIcon,
+    hasIcon: true,
     title: "Web Development",
     description:
       "In today's digital age, a robust online presence is non-negotiable. Explore the prowess of ISCE in web development, offering innovative designs, tailored solutions, and a holistic approach to propel your business forward.",
   },
   {
     icon: MobileIcon,
+    hasIcon: true,
     title: "Mobile Development",
     description:
       "In the mobile-dominated landscape, a strong mobile presence is paramount. Uncover the expertise of ISCE in mobile development, offering innovative solutions to catapult your brand into the hands of your audience.",
   },
   {
     icon: DomainIcon,
+    hasIcon: true,
     title: "Hosting and Domains",
     description:
       "In the digital realm, reliable hosting and domain services are the backbone of a successful online presence. Explore the capabilities of ISCE in hosting and domains, providing a robust foundation for your website's performance and identity.",
   },
   {
     icon: AcademyIcon,
+    hasIcon: true,
     title: "Institution and Tech Training",
-    description: "This comprehensive service is designed to cater to the unique needs of educational institutions, businesses, and individuals seeking to enhance their technological proficiency.",
+    description:
+      "This comprehensive service is designed to cater to the unique needs of educational institutions, businesses, and individuals seeking to enhance their technological proficiency.",
   },
   {
     icon: DigitalIcon,
+    hasIcon: true,
     title: "Digital Marketing and SEO",
     description:
       "In the crowded digital landscape, effective digital marketing and SEO are paramount for business success. Discover the prowess of ISCE in comprehensive digital marketing and SEO services, designed to elevate your brand visibility and drive meaningful online engagement.",
   },
   {
     icon: GraphicIcon,
+    hasIcon: true,
     title: "Grapic Design",
     description:
       "Visual appeal is a powerful tool in making a lasting impression online. Explore the creative prowess of ISCE in graphic design, offering bespoke visual solutions to enhance your brand identity and captivate your audience.",
   },
   {
     icon: UXIcon,
+    hasIcon: true,
     title: "User Experience Design",
     description:
       "In the digital age, user experience (UX) is a key differentiator for online success. Uncover the transformative capabilities of ISCE in UX design, committed to creating seamless and delightful interactions for your audience.",
@@ -330,5 +338,44 @@ export const REVIEWS: IReview[] = [
     review: `ISCE Tech's website and management system for Yoma Care exemplify efficiency and purpose.`,
     title: "AIRS Chairman",
     image: "/images/transpayperson.jpg",
+  },
+];
+
+export const PRODUCTIVITY: ISERVICEMAIN[] = [
+  {
+    title: "Secure Data",
+    description:
+      "In an era where data is the lifeblood of productivity, ISCE stands at the forefront of ensuring the utmost security for our clients' valuable data. Recognizing the inseparable link between data security and organizational productivity, ISCE has strategically implemented a multifaceted approach to fortify client data.",
+    hasIcon: false,
+  },
+  {
+    title: "Accessibility",
+    description:
+      "ISCE has developed a client-centric approach to ensuring your data or products are easily accessed without any hassles. We recognize the correlation between accessibility and heightened productivity, fostering a secure yet accessible platform for your designed products.",
+    hasIcon: false,
+  },
+  {
+    title: "Integration",
+    description:
+      "Whatever project that is a product of ISCE has an advantage to easy integration, we reduce the stress a client may face by ensuring the product can be easily integrated facilitating heightened productivity and efficient experience.",
+    hasIcon: false,
+  },
+  {
+    title: "Time Saving",
+    description:
+      "With the understanding that time is a precious commodity, we ensure that our products are speed oriented with good optimization. ISCE looks towards seemless and efficient process whilst our product is in use which in turn boosts your productivity.",
+    hasIcon: false,
+  },
+  {
+    title: "Performance Optimization",
+    description:
+      "Product performance is key to ensuring efficient client productivity, with that in mind we ensure product speed, efficiency and workflow with our optimized products. ISCE aims at seeing to it that you never need any reason to complain as performance is a top priority.",
+    hasIcon: false,
+  },
+  {
+    title: "Support",
+    description:
+      "Beyond product delivery, our commitment continues with unwavering support. We troubleshoot issues, offering direct and indirect assistance. Moreover, we guide you on the dos and don'ts, ensuring a glitch-free experience.",
+    hasIcon: false,
   },
 ];

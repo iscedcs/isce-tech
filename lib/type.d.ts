@@ -61,4 +61,5 @@ interface ISERVICEMAIN {
   icon?: React.ReactNode;
   title: string;
   description: string;
+  hasIcon: boolean;
 }
