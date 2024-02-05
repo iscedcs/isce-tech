@@ -66,23 +66,23 @@ const Business = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:p-6 lg:gap-6 justify-around">
             <Benefits
               image="images/workoffline.svg"
-              title="Working Offline"
-              description="With the ‘’Offline Transactions’’ feature no transactions are ever lost. Even if your network goes down during peak hours, you will still be able to accept 100% of your transactions (coming soon)."
+              title="Lightning Speed & Offline Access"
+              description=" Ditch the wait! Experience blazing-fast interactions with NFC's ultra-fast technology, saving you precious time)."
             />
             <Benefits
               image="images/tips.svg"
-              title="Tips"
-              description="Go contactless without saying goodbye to tips! The softpos.com | Terminal gives your customers the chance to tip, regardless of how they choose to pay."
+              title="Tap & Go Convenience"
+              description="Simplify your world and business operations with a single tap. Unlock doors, share information, and complete transactions effortlessly."
             />
             <Benefits
               image="images/batches.svg"
-              title="Batches"
-              description="Easily track shifts using the Batches feature. Use it to segment transactions and generate reports that give you a comprehensive view of your business's performance."
+              title="Future-Proof Growth"
+              description="Your needs evolve, your software adapts. NFC solutions seamlessly scale alongside your business, ensuring you're always ready for what's next."
             />
             <Benefits
               image="images/devices.svg"
-              title="Multiple Devices"
-              description="The isce.pos | Terminal is available for download on any employee's phone, at absolutely no additional cost, helping you increase productivity and boost sales!"
+              title="Multipurpose Marvel"
+              description="Unleash the power of versatility! Adapt NFC to countless use cases, from access control and payments to marketing and inventory management."
             />
           </div>
         </div>

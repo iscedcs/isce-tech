@@ -133,54 +133,54 @@ export const CORE_VALUES: ICOREVALUE[] = [
 export const CLICK_BUTTONS = [
   {
     id: 0,
-    text: "All you need to use the softpos.com | Terminal is your phone and your existing bank account. Enjoy the convenience of seamless and efficient payments and streamline your finances like never before, without time consuming processes. (Coming soon to your devices).",
+    text: "Create interactive marketing campaigns and foster deeper customer connections.",
     image: "/images/payment.png",
-    button: "Accept payments easily",
+    button: "Enhanced Brand Engagement",
   },
   {
     id: 1,
-    text: "Whether you own a small business or run a large retail operation, the softpos.com | Terminal is here to simplify payment processing for you. Accept payments on any phone and offer your customers an unmatched payment experience. (Coming soon to iOS devices). ",
+    text: "Streamline business workflows and empower employees with tap-and-go solutions.",
     image: "/images/convenience.png",
     button: "Convenience",
   },
   {
     id: 2,
-    text: "The softpos.com | Terminal allows you to accept all payment types, including major card schemes (Mastercard, Visa, American Express and more), digital wallets (Google Pay, Apple Pay, Samsung Pay) and QR code payments. (Coming soon to your devices).",
+    text: " Offer contactless payment options, loyalty programs, and personalized interactions.",
     image: "/images/logos7.png",
-    button: "All payment types",
+    button: "Personalized Customer Experience",
   },
   {
     id: 3,
     text: "We provide multiple integrations though ISV’s Partners and hardware providers enabling you to unlock your business’s full potential. ",
     image: "/images/convenience7.png",
-    button: "Easy integration with your systems",
+    button: "Effortless Integration",
   },
 ];
 
 export const CLICK_BUTTON = [
 	{
 		id: 0,
-		text: "With the softpos.com | Terminal, you can easily receive money using your existing bank account. No need to open a new account or switch banks. (Coming soon to your devices).",
+		text: "Ditch passwords and tap your way to instant access. No more struggling to remember complex logins.",
 		image: "/images/Effortless.png",
 		button: "Effortless",
 	},
 	{
 		id: 1,
-		text: "Enter the payment amount you wish to accept.",
+		text: "Military-grade encryption safeguards your data, keeping your information safe and secure.",
 		image: "/images/Secure.png",
 		button: "Secure",
 	},
 	{
 		id: 2,
-		text: "Tap the other person's card or mobile device onto the back of your phone.",
+		text: " Experience lag-free interactions with NFC's ultra-fast technology. Say goodbye to waiting!",
 		image: "/images/Quick.png",
-		button: "Quick",
+		button: "Instant",
 	},
 	{
 		id: 3,
-		text: "Receive the money into your bank account.",
+		text: "Simplify your life with a tap. Unlock doors, share contact info, and more - all with a single touch.",
 		image: "/images/Flexible.png",
-		button: "Flexible",
+		button: "Seamless",
 	},
 ];
 
