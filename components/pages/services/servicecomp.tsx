@@ -24,7 +24,7 @@ export default function Servicecomp() {
         </div>
         <ServiceCards />
         <div className="text-center  mt-[50px]">
-          <h1 className="font-bold text-white text-7xl">
+          <h1 className="font-bold text-white text-[40px] lg:text-7xl">
             Boost Your Productivity With ISCE
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-[50px] lg:mx-[20px]">
