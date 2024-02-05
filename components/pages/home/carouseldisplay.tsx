@@ -16,8 +16,8 @@ export default function HeaderCarouselDisplay({
       <Image
         src={`${className}`}
         alt="image"
-        height="1300"
-        width="1300"
+        height="1400"
+        width="1400"
         quality={100}
         className="relative w-full h-full object-cover"
       />

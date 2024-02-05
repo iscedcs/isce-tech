@@ -8,14 +8,14 @@ export default function Reviews({ review, name, title, image }: IReview) {
 			<div className='flex pb-[40px] justify-center mt-[20px] items-center gap-4'>
 				<Image
 					src={image}
-					width='100'
-					height='100'
+					width='70'
+					height='70'
 					alt='Person'
 					className='rounded-full'
 				></Image>
 				<div className='text-left'>
-					<p className='text-[30px] font-bold'>{name}</p>
-					<p className='text-[12px]'>{title}</p>
+					<p className='text-[20px] lg:text-[30px] font-bold'>{name}</p>
+					<p className='text-[10px] lg:text-[12px]'>{title}</p>
 				</div>
 			</div>
 		</div>

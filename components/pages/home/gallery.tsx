@@ -7,7 +7,10 @@ export default function Gallery() {
   return (
     <div>
       <MaxWidthContainer className="relative">
-        <h2 className="text-background text-center text-5xl font-bold">{`Our Projects`}</h2>
+        <h2
+          id="products"
+          className="text-background text-center text-5xl font-bold"
+        >{`Our Projects`}</h2>
         <p className="text-background mt-4 text-center text-lg">
           {`We ensure client satisfaction with our timely and creative projects `}
         </p>
