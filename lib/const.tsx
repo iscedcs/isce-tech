@@ -321,7 +321,7 @@ export const REVIEWS: IReview[] = [
   },
   {
     name: "Whiten Lighten",
-    review: `ISCE Tech's project delivery for Yoma Care exemplify efficiency and purpose. Amazing job!`,
+    review: `ISCE Tech's project delivery for Whiten Lighten exemplify efficiency and purpose. Amazing job!`,
     title: "CEO/Founder",
     image: "/images/whitenlightenperson.jpg",
   },
