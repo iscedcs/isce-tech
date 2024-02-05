@@ -335,7 +335,7 @@ export const REVIEWS: IReview[] = [
   },
   {
     name: "Transpay",
-    review: `ISCE Tech's website and management system for Yoma Care exemplify efficiency and purpose.`,
+    review: `ISCE Tech's website and management system for Transpay exemplify efficiency and purpose.`,
     title: "AIRS Chairman",
     image: "/images/transpayperson.jpg",
   },
