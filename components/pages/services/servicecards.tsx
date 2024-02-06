@@ -11,6 +11,7 @@ export default function ServiceCards() {
           title={card.title}
           description={card.description}
           icon={card.icon}
+          hasIcon
         />,
       ])}
     </div>

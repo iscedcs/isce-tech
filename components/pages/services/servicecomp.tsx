@@ -2,6 +2,8 @@ import MaxWidthContainer from "@/components/ui/container";
 import React from "react";
 import Image from "next/image";
 import ServiceCards from "./servicecards";
+import ServiceCard from "./servicecard";
+import { PRODUCTIVITY } from "@/lib/const";
 
 export default function Servicecomp() {
   return (
@@ -20,7 +22,23 @@ export default function Servicecomp() {
             className="w-full h-full rounded-md"
           />
         </div>
-        <ServiceCards/>
+        <ServiceCards />
+        <div className="text-center  mt-[50px]">
+          <h1 className="font-bold text-white text-[40px] lg:text-7xl">
+            Boost Your Productivity With ISCE
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-[50px] lg:mx-[20px]">
+            {PRODUCTIVITY.map((card, k) => [
+              <ServiceCard
+                key={k}
+                title={card.title}
+                description={card.description}
+                icon={card.icon}
+                hasIcon
+              />,
+            ])}
+          </div>
+        </div>
       </div>
     </MaxWidthContainer>
   );
