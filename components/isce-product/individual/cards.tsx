@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const Cards = ({ image, num, text }: CardP) => {
 	return (
-		<div className='justify-center md:w-1/2 w-full item-center text-center'>
-			<div className=' justify-center'>
+		<div className='justify-center md:w-1/2 w-fullitem-center text-center'>
+			<div className=' justify-center  gap-4 '>
 				<Image
 					width={600}
 					height={600}
