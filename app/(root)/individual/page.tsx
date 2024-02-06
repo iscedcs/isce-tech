@@ -27,16 +27,16 @@ const Individual = () => {
 						height={1200}
 						src='/images/top-individual.jpg'
 						alt=''
-						className=' w-11/12 lg:w-full h-full rounded-md'
+						className=' w-full lg:w-full h-full rounded-md'
 					/>
 				</div>
 		    </div>
 			<div>
 				<Process/>
 			</div>
-			<div className='flex'>
+			<div className='flex '>
 				<div className='w-full lg:w-1/2 '>
-					<div className='py-10 px-10'>
+					<div className=''>
 						{CLICK_BUTTON.map((item, i) => (
 							<ClickBtn
 								key={i}
@@ -64,7 +64,7 @@ const Individual = () => {
 					</div>
 				</div>
 			</div>
-			<h2 className=' text-white font-bold xl:text-5xl text-2xl text-center pt-16 py-6'>
+			<h2 className=' text-white font-bold xl:text-3xl text-2xl text-center pt-16 py-6 mb-4'>
 				{`How to use ISCE Digital Card on your device`}
 			</h2>
 			<div className='flex flex-col md:flex-row flex-wrap justify-center mx-auto'>

@@ -3,7 +3,7 @@ import { CloudLightningIcon, UploadCloudIcon, TargetIcon } from "lucide-react";
 
 export default function Process() {
   return (
-    <div  className=" p-6 flex justify-between gap-4">
+    <div  className="xl:flex-row lg:flex-row flex-col my-3 flex justify-between gap-4">
       <div className= "transition ease-in-out delay-150 hover:-translate-y-2 hover:scale-95  duration-700 bg-gradient-to-br from-blue-600 via-[#f15a24] to-blue-600 text-white rounded-t-lg rounded-b-lg">
         <div className="flex flex-col items-center p-4 bg-gray-800 rounded-lg">
           <div className="flex items-center space-x-2">
