@@ -13,15 +13,19 @@ export default function Footer() {
         className=" grid gap-5
 			"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5  ">
-          <div className="grid gap-3 ">
-            <div className="text-lg font-bold ">Product</div>
+        <div className=" w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold ">Product</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">Digital Card For Individual</Link>
+                <Link href="https://isce.app/#event">
+                  Digital Card For Individual
+                </Link>
               </div>
               <div className="">
-                <Link href="/#">Digital Card For Business</Link>
+                <Link href="https://isce.app/#event">
+                  Digital Card For Business
+                </Link>
               </div>
             </div>
 
@@ -38,64 +42,47 @@ export default function Footer() {
               </Link>
             </Button>
           </div>
-          <div className="grid gap-3">
-            <div className="text-lg font-bold"> Solutions</div>
+
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold">Connect</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">Business</Link>
+                <Link href="https://isce.app/#connect">ISCE Connect</Link>
               </div>
-              <div className="">
-                <Link href="/#">Integrations</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>ISCE Store (Coming Soon) </>
               </div>
-              <div className="">
-                <Link href="/#">Field Teams</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Connect for Business (Coming Soon) </>
+              </div>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Soft POS (Coming Soon) </>
               </div>
             </div>
           </div>
 
-          <div className="grid gap-3">
-            <div className="text-lg font-bold">Connect</div>
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold">Resources </div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">ISCE Connect</Link>
-              </div>
-              <div className="">
-                <Link href="/#">ISCE Store</Link>
-              </div>
-              <div className="">
-                <Link href="/#">Connect For Business</Link>
-              </div>
-              <div className="">
-                <Link href="/#">Soft POS</Link>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid gap-3">
-            <div className="text-lg font-bold">Resources </div>
-            <div className="grid gap-5">
-              <div className="">
-                <Link href="/#">Customers</Link>
-              </div>
-              <div className="">
-                <Link href="/#">Pricing</Link>
+                <Link href="#customers">Customers</Link>
               </div>
               <div className="">
                 <Link href="/#">Privacy Policy</Link>
               </div>
             </div>
           </div>
-          <div className="grid gap-3">
-            <div className="text-lg font-bold">Company</div>
+          <div className="flex flex-col">
+            <div className="mb-[20px] font-bold">Company</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="/#">About</Link>
+                <Link href="/about">About</Link>
               </div>
-              <div className="">
-                <Link href="/#">Careers</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Careers (Coming Soon) </>
               </div>
-              <div className="">
-                <Link href="/blog">Blog</Link>
+              <div className="text-[#4b4b4b] cursor-default">
+                <>Blog (Coming Soon) </>
               </div>
             </div>
           </div>

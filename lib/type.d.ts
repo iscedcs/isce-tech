@@ -37,8 +37,29 @@ interface CoreValues {
 	description: string;
 }
 
+interface CardBenefitsP {
+  image: string;
+  title: string;
+  description: string;
+}
+
+interface CardP {
+	image: string;
+	num: number;
+	text: string;
+}
+
+interface ClickBtnP {
+	id?: number;
+	button: string;
+	image: string;
+	text: string;
+	selected: boolean;
+	setSelected: React.Dispatch<React.SetStateAction>;
+}
 interface ISERVICEMAIN {
   icon?: React.ReactNode;
   title: string;
   description: string;
+  hasIcon: boolean;
 }

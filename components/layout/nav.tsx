@@ -38,13 +38,15 @@ const NavComp: React.FC = () => {
     >
       <MaxWidthContainer className="py-0 flex justify-between items-center">
         <div className="py-6">
-          <Image
-            src="/fi-white.webp"
-            alt="Logo"
-            className="h-8"
-            width={100}
-            height={100}
-          />
+          <Link href="/">
+            <Image
+              src="/fi-white.webp"
+              alt="Logo"
+              className="h-8"
+              width={100}
+              height={100}
+            />
+          </Link>
         </div>
         <div className="hidden md:flex space-x-4 gap-3">
           <Link href="/" className="text-secondary py-6">{`Home`}</Link>
@@ -63,14 +65,15 @@ const NavComp: React.FC = () => {
             >{`Products`}</Link>
             <div className="hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4">
               <h2 className="text-secondary font-bold">{`ISCE Cards`}</h2>
-              <Link
-                href="/#"
-                className="text-secondary text-sm"
-              >{`For Individual`}</Link>
-              <h2 className="text-secondary font-bold ">{`For Individual`}</h2>
-              <div className="flex flex-col gap-2">
+              <div className="">
                 <Link
-                  href="/#"
+                  href="/individual"
+                  className="text-secondary text-sm"
+                >{`For Individual`}</Link>
+              </div>
+              <div className="">
+                <Link
+                  href="/business"
                   className="text-secondary text-sm"
                 >{`For Business`}</Link>
               </div>
@@ -82,7 +85,10 @@ const NavComp: React.FC = () => {
             href="/contact"
             className="text-secondary py-6"
           >{`Contact Us`}</Link>
-          <Link href="/#" className="text-secondary py-6">{`Team`}</Link>
+          {/* <Link
+						href='/#'
+						className='text-secondary py-6'
+					>{`Team`}</Link> */}
           {/* <Link href="/#" className="text-secondary py-6">{`Blog`}</Link> */}
         </div>
         <div className="md:hidden">
@@ -124,10 +130,17 @@ const NavComp: React.FC = () => {
                   </li>
                   <li>
                     <Link
-                      href="/#"
+                      href="/individual"
                       className="text-secondary"
                       onClick={closeMenu}
-                    >{`Products`}</Link>
+                    >{`Individual`}</Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/business"
+                      className="text-secondary"
+                      onClick={closeMenu}
+                    >{`Busines`}</Link>
                   </li>
                   {/* <li>
                     <Link
@@ -150,13 +163,13 @@ const NavComp: React.FC = () => {
                       onClick={closeMenu}
                     >{`Contact Us`}</Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/#"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Team`}</Link>
-                  </li>
+                  {/* <li>
+										<Link
+											href='/#'
+											className='text-secondary'
+											onClick={closeMenu}
+										>{`Team`}</Link>
+									</li> */}
                   {/* <li>
                     <Link
                       href="/#"

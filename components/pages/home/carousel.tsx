@@ -25,7 +25,7 @@ export function HeaderCarouselComp() {
           <HeaderCarouselDisplay
             header="ISCE Tech"
             content="We are providing world changing technology to empower your world. ISCE is a digital platform that equips individuals with innovative software and hardware with the aim to provide ease and top-notch security. "
-            link=""
+            link="/services"
             className='/images/first.jpg'
             buttonTitle="Explore Services"
           />
@@ -34,7 +34,7 @@ export function HeaderCarouselComp() {
           <HeaderCarouselDisplay
             header="We Are Here"
             content="Be bold, unique and different: Individuality is what makes us, Build your Digital Lifestyle."
-            link=""
+            link="/contact"
             className='/images/second.jpg'
             buttonTitle="Contact Us"
           />
@@ -61,7 +61,7 @@ export function HeaderCarouselComp() {
           <HeaderCarouselDisplay
             header="Our Works"
             content="Technology is limitless and we are bringing it to you."
-            link=""
+            link="#products"
             className='/images/sixth.jpg'
             buttonTitle="Our Projects"
           />

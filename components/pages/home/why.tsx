@@ -1,6 +1,5 @@
 import React from "react";
 import MaxWidthContainer from "../../ui/container";
-import { coreValues } from "@/lib/const";
 import {
   Card,
   CardHeader,
@@ -10,6 +9,7 @@ import {
 } from "../../ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { coreValues } from "@/lib/const";
 
 export default function WhyChooseIsce() {
   return (
@@ -57,8 +57,12 @@ export default function WhyChooseIsce() {
         ))}
       </div>
       <div className="items-center justify-center grid mt-4">
-        <Button asChild type="button" className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200">
-          <Link href="/#">Read More</Link>
+        <Button
+          asChild
+          type="button"
+          className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200"
+        >
+          <Link href="/contact">Read More</Link>
         </Button>
       </div>
     </MaxWidthContainer>
