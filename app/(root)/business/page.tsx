@@ -18,6 +18,7 @@ const Business = () => {
 		<div className="mt-8 ">
     <div className=' text-white py-2 '>
     <h1  className="text-start font-bold py-2 xl:text-5xl xl:w-1/2 w-full text-3xl "> {`For Business`} </h1>		
+    <p className="text-start py-2 xl:text-2xl xl:w-1/2 w-full">{`Tired of the limitations of paper cards? Have a smarter, sleeker and more efficient way of increasing your business reach, turning handshakes to profitable connections.`}</p>
 		</div> 
       <div className='space-y-6 w-full justify-center items-center '>
 					<Image
@@ -25,14 +26,14 @@ const Business = () => {
 						height={1200}
 						src='/images/top-business.jpg'
 						alt=''
-						className=' w-11/12 lg:w-full h-full rounded-md'
+						className=' w-full lg:w-full h-full rounded-md'
 					/>
 				</div>
 		</div>
       <div className="">
-        <div className="grid lg:grid-cols-2">
+        <div className="grid my-4 lg:grid-cols-2">
           <div className="">
-            <div className="py-10 space-y-4 px-10 ">
+            <div className="space-y-4 ">
               {CLICK_BUTTONS.map((item, i) => (
                 <ClickBtn
                   key={i}

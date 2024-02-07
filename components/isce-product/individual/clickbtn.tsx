@@ -20,7 +20,7 @@ const ClickBtn = ({
 	};
 
 	return (
-		<div className='flex flex-col mx-auto mb-5 lg:mb-0 mt-[10px]'>
+		<div className='flex flex-col mx-auto lg:mb-0  mt-[10px]'>
 			<button
 				onClick={handleButtonClick}
 				className={`flex justify-between items-center px-4 ${
@@ -55,7 +55,7 @@ const ClickBtn = ({
 							alt='Image'
 							className='mx-auto'
 						/>
-						<p className=' text-white px-6'>{text}</p>
+						<p className=' text-white px-6 pb-0'>{text}</p>
 					</div>
 				)}
 			</div>
