@@ -29,15 +29,14 @@ export default function Footer() {
               variant="link"
               className=" justify-start px-0 font-bold text-accent-foreground gap-2"
             >
-
-              <Link href="/contact" className="flex flex-row gap-2 items-center ">
+              <Link
+                href="/contact"
+                className="flex flex-row gap-2 items-center "
+              >
                 Contact sales
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
-
             </Button>
-
-
           </div>
           <div className="grid gap-3">
             <div className="text-lg font-bold"> Solutions</div>
@@ -72,7 +71,6 @@ export default function Footer() {
             </div>
           </div>
 
-
           <div className="grid gap-3">
             <div className="text-lg font-bold">Resources </div>
             <div className="grid gap-5">
@@ -85,7 +83,6 @@ export default function Footer() {
               <div className="">
                 <Link href="/#">Privacy Policy</Link>
               </div>
-
             </div>
           </div>
           <div className="grid gap-3">
@@ -109,7 +106,9 @@ export default function Footer() {
           <div className="max-w-96">
             {`ISCE's mission is to put the power, beauty, and magic of software
             development into the hands of a billion new creators. `}
-            <Link href='/#'><span className="text-blue-500">Join Us</span></Link>
+            <Link href="/#">
+              <span className="text-blue-500">Join Us</span>
+            </Link>
           </div>
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex flex-wrap gap-5">
