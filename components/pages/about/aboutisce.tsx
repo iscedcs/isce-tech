@@ -96,7 +96,7 @@ export default function AboutIsce() {
             <Image
               width={850}
               height={850}
-              src="/images/people.JPG"
+              src="/images/people.jpg"
               alt=""
               className="w-full h-full mx-auto"
             />
