@@ -31,7 +31,7 @@ const Business = () => {
 				</div>
 		</div>
       <div className="">
-        <div className="grid my-4 lg:grid-cols-2">
+        <div className="grid my-4 space-x-3 lg:grid-cols-2">
           <div className="">
             <div className="space-y-4 ">
               {CLICK_BUTTONS.map((item, i) => (
@@ -49,7 +49,7 @@ const Business = () => {
           </div>
           <div className="hidden lg:block pr-[40px]">
             <div className="">
-              <div className="mt-4 w-full h-96">
+              <div className="mt-4 rounded-2xl overflow-clip w-full h-96">
                 <Image
                   height={600}
                   width={600}

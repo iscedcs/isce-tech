@@ -34,7 +34,7 @@ const Individual = () => {
 			<div>
 				<Process/>
 			</div>
-			<div className='flex '>
+			<div className='flex space-x-3'>
 				<div className='w-full lg:w-1/2 '>
 					<div className=''>
 						{CLICK_BUTTON.map((item, i) => (
@@ -56,7 +56,7 @@ const Individual = () => {
 							height={600}
 							src={selected.image}
 							alt='Image'
-							className=''
+							className='rounded-2xl overflow-clip sm:rounded-2xl sm:overflow-clip'
 						/>
 						<p className=' text-white text-center'>
 							{selected.text}

@@ -173,7 +173,7 @@ export const CLICK_BUTTON = [
 	{
 		id: 2,
 		text: " Experience lag-free interactions with NFC's ultra-fast technology. Say goodbye to waiting!",
-		image: "/images/Quick.png",
+		image: "/images/instant.PNG",
 		button: "Instant",
 	},
 	{

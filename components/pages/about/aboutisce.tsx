@@ -28,10 +28,6 @@ export default function AboutIsce() {
               <p className="font-bold text-white">{`2021`}</p>
               <p className="text-white">{`Founded`}</p>
             </div>
-            <div className="space-y-2">
-              <p className="font-bold text-white">{`100%`}</p>
-              <p className="text-white">{`Remote`}</p>
-            </div>
           </div>
           <Separator orientation="vertical" />
           <div className="xl:w-2/3 w-full text-xl ">
@@ -100,7 +96,7 @@ export default function AboutIsce() {
             <Image
               width={850}
               height={850}
-              src="/images/people.jpg"
+              src="/images/people.JPG"
               alt=""
               className="w-full h-full mx-auto"
             />

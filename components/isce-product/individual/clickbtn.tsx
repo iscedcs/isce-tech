@@ -47,7 +47,7 @@ const ClickBtn = ({
 			</button>
 			<div className='lg:hidden'>
 				{showImage && (
-					<div className='mt-4 w-full h-96'>
+					<div className='mt-4 w-full rounded h-96 overflow-clip'>
 						<Image
 							width={600}
 							height={600}
