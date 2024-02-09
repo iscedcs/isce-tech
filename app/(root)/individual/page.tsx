@@ -50,7 +50,7 @@ const Individual = () => {
 					</div>
 				</div>
 				<div className='hidden lg:flex w-1/2 justify-center items-center'>
-					<div className='mt-4 w-full flex flex-col gap-4'>
+					<div className='mt-4 w-full h-auto flex flex-col gap-4'>
 						<Image
 							width={600}
 							height={600}

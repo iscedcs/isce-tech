@@ -161,7 +161,7 @@ export const CLICK_BUTTON = [
 	{
 		id: 0,
 		text: "Ditch passwords and tap your way to instant access. No more struggling to remember complex logins.",
-		image: "/images/Effortless.png",
+		image: "/images/Effortless.JPG",
 		button: "Effortless",
 	},
 	{
@@ -179,7 +179,7 @@ export const CLICK_BUTTON = [
 	{
 		id: 3,
 		text: "Simplify your life with a tap. Unlock doors, share contact info, and more - all with a single touch.",
-		image: "/images/Flexible.png",
+		image: "/images/seamless.JPG",
 		button: "Seamless",
 	},
 ];
