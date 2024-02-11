@@ -1,5 +1,5 @@
 interface ICAROUSELDISPLAY {
-  header: string;
+  header?: string;
   content: string;
   link: string;
   className?: string;
