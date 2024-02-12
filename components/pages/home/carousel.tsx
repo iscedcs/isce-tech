@@ -47,17 +47,8 @@ export function HeaderCarouselComp() {
             header="NFC Cards"
             content="Why print countless complementary cards yearly? Save trees, exchange contact information with one tap. Connect with style, Connect with ISCE."
             link="https://isce.app/"
-            className="/images/isce.png"
+            className="/images/bg.gif"
             buttonTitle="Get card"
-          />
-        </CarouselItem>
-        <CarouselItem>
-          <HeaderCarouselDisplay
-            header="ISCE Team"
-            content="We are a culture that inspires growth, development and connections, connection with yourself and the globe."
-            link=""
-            className="/images/fifth.jpg"
-            buttonTitle="Meet the Team"
           />
         </CarouselItem>
         <CarouselItem>
