@@ -1,37 +1,37 @@
-'use client';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import MaxWidthContainer from '../ui/container';
-import Link from 'next/link';
-import { AlignJustify } from 'lucide-react';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import MaxWidthContainer from "../ui/container";
+import Link from "next/link";
+import { AlignJustify } from "lucide-react";
 import { Button } from '../ui/button';
 
 const NavComp: React.FC = () => {
-	const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
-	const toggleMenu = () => {
-		setMenuOpen(!isMenuOpen);
-	};
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
-	const closeMenu = () => {
-		setMenuOpen(false);
-	};
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
-	const [scrolling, setscrolling] = useState(false);
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollTop = window.scrollY;
-			setscrolling(scrollTop > 0);
-		};
+  const [scrolling, setscrolling] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setscrolling(scrollTop > 0);
+    };
 
-		window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-	return (
+  return (
     <nav
       className={`transition-all w-full fixed z-40 ${
         scrolling ? "bg-primary" : "backdrop-blur-md"
