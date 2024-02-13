@@ -1,37 +1,36 @@
-"use client";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import MaxWidthContainer from "../ui/container";
-import Link from "next/link";
-import { AlignJustify } from "lucide-react";
+'use client';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
+import MaxWidthContainer from '../ui/container';
+import Link from 'next/link';
+import { AlignJustify } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const NavComp: React.FC = () => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+	const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
+	const toggleMenu = () => {
+		setMenuOpen(!isMenuOpen);
+	};
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+	const closeMenu = () => {
+		setMenuOpen(false);
+	};
 
-  const [scrolling, setscrolling] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setscrolling(scrollTop > 0);
-    };
+	const [scrolling, setscrolling] = useState(false);
+	useEffect(() => {
+		const handleScroll = () => {
+			const scrollTop = window.scrollY;
+			setscrolling(scrollTop > 0);
+		};
 
-    window.addEventListener("scroll", handleScroll);
+		window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 
-<<<<<<< HEAD
 	return (
 		<nav
 			className={`transition-all w-full fixed z-40 ${
@@ -92,71 +91,6 @@ const NavComp: React.FC = () => {
 						>{`GET A QUOTE`}</Link>
 					</Button>
 					{/* <Link
-=======
-  return (
-    <nav
-      className={`transition-all w-full fixed z-40 ${
-        scrolling ? "bg-primary" : "backdrop-blur-md"
-      } `}
-    >
-      <MaxWidthContainer className="py-0 flex justify-between items-center">
-        <div className="py-6">
-          <Link href="/">
-            <Image
-              src="/fi-white.webp"
-              alt="Logo"
-              className="h-8"
-              width={100}
-              height={100}
-            />
-          </Link>
-        </div>
-        <div className="hidden md:flex space-x-4 gap-3">
-          <Link href="/" className="text-secondary py-6">{`Home`}</Link>
-          <Link
-            href="/about"
-            className="text-secondary py-6"
-          >{`About Us`}</Link>
-          <Link
-            href="/services"
-            className="text-secondary py-6"
-          >{`Services`}</Link>
-          <div className="group pt-6">
-            <Link
-              href=""
-              className="text-secondary py-6"
-            >{`Products`}</Link>
-            <div className="hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4">
-              <h2 className="text-secondary font-bold">{`ISCE Cards`}</h2>
-              <div className="">
-                <Link
-                  href="/individual"
-                  className="text-secondary text-sm"
-                >{`For Individual`}</Link>
-              </div>
-              <div className="">
-                <Link
-                  href="/business"
-                  className="text-secondary text-sm"
-                >{`For Business`}</Link>
-              </div>
-            </div>
-          </div>
-          {/* <Link href="/#" className="text-secondary py-6">{`Store`}</Link> */}
-          {/* <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link> */}
-          <Link
-            href="/contact"
-            className="text-secondary py-6"
-          >{`Contact Us`}</Link>
-          {/* <Button className=' bg-transparent text-secondary border bottom-full mt-4 justify-center items-center '>
-          <Link
-						href='/#'
-						className='text-secondary py-6 text-black'
-					>{`GET A QUOTE`}</Link>
-          </Button> */}
-          
-          {/* <Link
->>>>>>> d05d255e4d6af30ab8cb7b9127fa65cd3e01c582
 						href='/#'
 						className='text-secondary py-6'
 					>{`Team`}</Link> */}

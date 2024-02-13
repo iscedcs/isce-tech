@@ -1,31 +1,32 @@
 interface ICAROUSELDISPLAY {
-  header?: string;
-  content: string;
-  link: string;
-  className?: string;
-  buttonTitle: string;
+	header?: string;
+	content: string;
+	link: string;
+	className?: string;
+	buttonTitle: string;
+	type?: 'video' | 'image';
 }
 
 interface IReview {
-  name: string;
-  review: string;
-  title: string;
-  image: string;
+	name: string;
+	review: string;
+	title: string;
+	image: string;
 }
 
-interface IPROJECT{
-  image: string;
-  title: string;
-  description: string;
-  weblink: string;
-  figlink?: string;
-  hasFigLink: boolean;
+interface IPROJECT {
+	image: string;
+	title: string;
+	description: string;
+	weblink: string;
+	figlink?: string;
+	hasFigLink: boolean;
 }
 
-interface ICOREVALUE{
-  icon: React.ReactNode;
-  title: string;
-  description: string;
+interface ICOREVALUE {
+	icon: React.ReactNode;
+	title: string;
+	description: string;
 }
 interface IService {
 	title: string;
@@ -38,9 +39,9 @@ interface CoreValues {
 }
 
 interface CardBenefitsP {
-  image: string;
-  title: string;
-  description: string;
+	image: string;
+	title: string;
+	description: string;
 }
 
 interface CardP {
@@ -58,8 +59,8 @@ interface ClickBtnP {
 	setSelected: React.Dispatch<React.SetStateAction>;
 }
 interface ISERVICEMAIN {
-  icon?: React.ReactNode;
-  title: string;
-  description: string;
-  hasIcon: boolean;
+	icon?: React.ReactNode;
+	title: string;
+	description: string;
+	hasIcon: boolean;
 }
