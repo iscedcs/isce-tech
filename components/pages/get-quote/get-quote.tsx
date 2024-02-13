@@ -263,7 +263,7 @@ export default function GetQoute() {
                                         className="w-full px-4 py-2 text-white bg-black rounded-md hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                                         type="submit"
                                     >
-                                        Request a quote
+                                        {`Request a quote`}
                                     </Button>
                                 </div>
                             </div>
