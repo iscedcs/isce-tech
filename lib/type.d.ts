@@ -1,5 +1,5 @@
 interface ICAROUSELDISPLAY {
-  header: string;
+  header?: string;
   content: string;
   link: string;
   className?: string;
@@ -61,4 +61,5 @@ interface ISERVICEMAIN {
   icon?: React.ReactNode;
   title: string;
   description: string;
+  hasIcon: boolean;
 }

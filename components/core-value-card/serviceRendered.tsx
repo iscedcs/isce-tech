@@ -8,6 +8,8 @@ import {
 
 import MaxWidthContainer from '../ui/container';
 import { services } from '@/lib/const';
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 
 export default function ServiceRendered() {
@@ -35,6 +37,15 @@ export default function ServiceRendered() {
             </Card>
           </div>
         ))}
+      </div>
+      <div className="items-center justify-center grid mt-4">
+        <Button
+          asChild
+          type="button"
+          className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200"
+        >
+          <Link href="/services">Read More</Link>
+        </Button>
       </div>
     </MaxWidthContainer>
   );
