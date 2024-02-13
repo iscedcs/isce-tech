@@ -90,17 +90,7 @@ export default function BrandCarousel() {
                 ></Image>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
-              <div className="p-1">
-                <Image
-                  src="/images/brands/transparent.png"
-                  width="150"
-                  height="150"
-                  alt="one"
-                  className="h-20 w-full object-contain"
-                ></Image>
-              </div>
-            </CarouselItem>
+           
             <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image

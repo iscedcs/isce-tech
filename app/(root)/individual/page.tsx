@@ -3,14 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 import ClickBtn from '@/components/isce-product/individual/clickbtn';
 import Cards from '@/components/isce-product/individual/cards';
-import { CLICK_BUTTON, CLICK_BUTTONS } from '@/lib/const';
+import { CLICK_BUTTON } from '@/lib/const';
 import MaxWidthContainer from '@/components/ui/container';
 import Process from '@/components/isce-product/individual/process-section';
 
 const Individual = () => {
 	const [selected, setSelected] = React.useState({
-		image: CLICK_BUTTONS[0].image,
-		text: CLICK_BUTTONS[0].text,
+		image: CLICK_BUTTON[0].image,
+		text: CLICK_BUTTON[0].text,
 	});
 
 	return (

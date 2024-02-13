@@ -161,7 +161,11 @@ export const CLICK_BUTTON = [
 	{
 		id: 0,
 		text: "Ditch passwords and tap your way to instant access. No more struggling to remember complex logins.",
+<<<<<<< HEAD
 		image: "/images/Effortless.jpg",
+=======
+		image: "/images/effortless.jpg",
+>>>>>>> 2bb8bd4ebb9e6f994d344d023f0ee4ffb0bbbb7e
 		button: "Effortless",
 	},
 	{

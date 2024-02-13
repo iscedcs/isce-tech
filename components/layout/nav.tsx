@@ -118,10 +118,9 @@ const NavComp: React.FC = () => {
             className="text-secondary py-6"
           >{`Services`}</Link>
           <div className="group pt-6">
-            <Link
-              href=""
-              className="text-secondary py-6"
-            >{`Products`}</Link>
+            <h1
+              className="text-secondary"
+            >{`Products`}</h1>
             <div className="hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4">
               <h2 className="text-secondary font-bold">{`ISCE Cards`}</h2>
               <div className="">
@@ -138,19 +137,16 @@ const NavComp: React.FC = () => {
               </div>
             </div>
           </div>
-          {/* <Link href="/#" className="text-secondary py-6">{`Store`}</Link> */}
-          {/* <Link href="/#" className="text-secondary py-6">{`Join Us`}</Link> */}
           <Link
             href="/contact"
             className="text-secondary py-6"
           >{`Contact Us`}</Link>
-          {/* <Button className=' bg-transparent text-secondary border bottom-full mt-4 justify-center items-center '>
-          <Link
-						href='/#'
-						className='text-secondary py-6 text-black'
-					>{`GET A QUOTE`}</Link>
-          </Button> */}
-          
+          <Button className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
+            <Link
+              href="/quote"
+              className="text-secondary py-6 text-black"
+            >{`GET A QUOTE`}</Link>
+          </Button>
           {/* <Link
 >>>>>>> 0161a4081d212334d922bb63797b9a88edf57bf0
 						href='/#'
@@ -230,6 +226,12 @@ const NavComp: React.FC = () => {
                       onClick={closeMenu}
                     >{`Contact Us`}</Link>
                   </li>
+                  <Button className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
+                    <Link
+                      href="/quote"
+                      className="text-secondary py-6 text-black"
+                    >{`GET A QUOTE`}</Link>
+                  </Button>
                   {/* <li>
 										<Link
 											href='/#'
