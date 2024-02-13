@@ -66,19 +66,18 @@ const NavComp: React.FC = () => {
 						>{`Products`}</Link>
 						<div className='hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4'>
 							<h2 className='text-secondary font-bold'>{`ISCE Cards`}</h2>
-							<div className="">
-							<Link
-								href='/individual'
-								className='text-secondary text-sm'
-							>{`For Individual`}</Link>
+							<div className=''>
+								<Link
+									href='/individual'
+									className='text-secondary text-sm'
+								>{`For Individual`}</Link>
 							</div>
-							<div className="">
-							<Link
-								href='/business'
-								className='text-secondary text-sm'
-							>{`For Business`}</Link>
+							<div className=''>
+								<Link
+									href='/business'
+									className='text-secondary text-sm'
+								>{`For Business`}</Link>
 							</div>
-							
 						</div>
 					</div>
 					{/* <Link href="/#" className="text-secondary py-6">{`Store`}</Link> */}
