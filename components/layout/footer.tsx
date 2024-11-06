@@ -1,10 +1,9 @@
-import React from "react";
-import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
-import { ArrowRightIcon, Github, Linkedin, Twitter } from "lucide-react";
-import MaxWidthContainer from "../ui/container";
-import Link from "next/link";
 import { InstagramIcon } from "@/lib/svg";
+import { ArrowRightIcon, Github, Linkedin, Twitter } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import MaxWidthContainer from "../ui/container";
+import { Separator } from "../ui/separator";
 
 export default function Footer() {
   return (
@@ -47,7 +46,7 @@ export default function Footer() {
             <div className="mb-[20px] font-bold">Connect</div>
             <div className="grid gap-5">
               <div className="">
-                <Link href="https://isce.app/#connect">ISCE Connect</Link>
+                <Link href="https://isce.app/individual">ISCE Connect</Link>
               </div>
               <div className="text-[#4b4b4b] cursor-default">
                 <>ISCE Store (Coming Soon) </>
@@ -100,7 +99,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex flex-wrap gap-5">
               <div className="">
-                <Link href="/#">Terms of use</Link>
+                <Link href="/privacy">Privacy Policy</Link>
               </div>
 
               <div className="">
@@ -124,7 +123,7 @@ export default function Footer() {
                 <Link href="https://www.linkedin.com/company/isceapp">
                   <Linkedin />
                 </Link>
-                <Link href="https://www.giithub.com/iscedcs">
+                <Link href="https://www.github.com/iscedcs">
                   <Github />
                 </Link>
               </div>
