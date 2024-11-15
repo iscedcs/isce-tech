@@ -84,6 +84,10 @@ const NavComp: React.FC = () => {
 						href='/contact'
 						className='text-secondary py-6'
 					>{`Contact Us`}</Link>
+					<Link
+						href='/blog'
+						className='text-secondary py-6'
+					>{`Blog`}</Link>
 					<Button className=' bg-transparent text-secondary border bottom-full mt-4 justify-center items-center '>
 						<Link
 							href='/quote'
@@ -170,6 +174,13 @@ const NavComp: React.FC = () => {
 											className='text-secondary'
 											onClick={closeMenu}
 										>{`Contact Us`}</Link>
+									</li>
+									<li>
+										<Link
+											href='/blog'
+											className='text-secondary'
+											onClick={closeMenu}
+										>{`Blog`}</Link>
 									</li>
 									<Button className=' bg-transparent text-secondary border bottom-full mt-4 justify-center items-center '>
 										<Link
