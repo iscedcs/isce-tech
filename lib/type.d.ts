@@ -38,6 +38,18 @@ interface CoreValues {
 	description: string;
 }
 
+type TeamCards = {
+  name: string;
+  role: string;
+  image: string;
+};
+
+type DisplayCards = {
+  title: string;
+  image: string;
+  link: string;
+};
+
 interface CardBenefitsP {
 	image: string;
 	title: string;
