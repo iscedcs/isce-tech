@@ -46,7 +46,7 @@ export default function BrandCarousel() {
                 ></Image>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
                   src="/images/brands/ariarialogo.png"
@@ -56,7 +56,7 @@ export default function BrandCarousel() {
                   className="h-20 w-full object-contain"
                 ></Image>
               </div>
-            </CarouselItem>
+            </CarouselItem> */}
             <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
@@ -68,7 +68,7 @@ export default function BrandCarousel() {
                 ></Image>
               </div>
             </CarouselItem>
-            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
                   src="/images/brands/mobilemech.jpg"
@@ -78,7 +78,7 @@ export default function BrandCarousel() {
                   className="h-20 w-full object-contain"
                 ></Image>
               </div>
-            </CarouselItem>
+            </CarouselItem> */}
             <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
@@ -90,8 +90,30 @@ export default function BrandCarousel() {
                 ></Image>
               </div>
             </CarouselItem>
-           
             <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+              <div className="p-1">
+                <Image
+                  src="/images/brands/wemabankplc_logo.jpeg"
+                  width="150"
+                  height="150"
+                  alt="one"
+                  className="h-20 w-full object-contain"
+                ></Image>
+              </div>
+            </CarouselItem>
+            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+              <div className="p-1">
+                <Image
+                  src="/images/brands/fidelitybank.png"
+                  width="150"
+                  height="150"
+                  alt="one"
+                  className="h-20 w-full object-contain"
+                ></Image>
+              </div>
+            </CarouselItem>
+
+            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
                   src="/images/brands/transpaywhite.png"
@@ -101,8 +123,8 @@ export default function BrandCarousel() {
                   className="h-20 w-full object-contain"
                 ></Image>
               </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+            </CarouselItem> */}
+            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
                   src="/images/brands/twinty.png"
@@ -112,8 +134,8 @@ export default function BrandCarousel() {
                   className="h-20 w-full object-contain"
                 ></Image>
               </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+            </CarouselItem> */}
+            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
                   src="/images/brands/whitenLighten.png"
@@ -123,8 +145,8 @@ export default function BrandCarousel() {
                   className="h-20 w-full object-contain"
                 ></Image>
               </div>
-            </CarouselItem>
-            <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
+            </CarouselItem> */}
+            {/* <CarouselItem className="basis-1/2 sm:basis-1/3 lg:basis-1/6">
               <div className="p-1">
                 <Image
                   src="/images/brands/yoma.png"
@@ -134,7 +156,7 @@ export default function BrandCarousel() {
                   className="h-20 w-full object-contain"
                 ></Image>
               </div>
-            </CarouselItem>
+            </CarouselItem> */}
           </Fragment>
         ))}
       </CarouselContent>

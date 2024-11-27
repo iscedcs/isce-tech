@@ -407,8 +407,8 @@ export const TEAMDISPLAY: TeamCards[] = [
   },
   {
     name: "Enebeli Victoria",
-    role: "Human Resources",
-    image: "/HR.PNG",
+    role: "HR Manager",
+    image: "/HR.png",
   },
   {
     name: "Ignatius Emeka",

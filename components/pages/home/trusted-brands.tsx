@@ -6,7 +6,7 @@ import BrandCarousel from './brandCarousel';
 export default function TrustedBrands() {
 	return (
 		<MaxWidthContainer className='py-10 border-y text-background text-center flex flex-col gap-8'>
-			<p className='pt-[20px] font-2xl'>Trusted by customer-led companies</p>
+			<p className='pt-[20px] font-bold text-[30px] md:text-[60px]'>In Partnership With</p>
 			<BrandCarousel />
 		</MaxWidthContainer>
 	);

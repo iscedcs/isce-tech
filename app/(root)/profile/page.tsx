@@ -112,35 +112,38 @@ export default function ProfilePage() {
             <CardContent className="my-[20px]">
               <h1 className="text-[30px]">In-Depth Research</h1>
               <hr className="my-[10px]" />
-              <p className="text-[12px]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                mollitia illo voluptate consectetur ipsam dicta quia, dolorem
-                consequuntur qui laudantium dolorum deleniti veniam tempora.
-                Iste tempora sed aspernatur itaque unde!
+              <p className="text-[12px] md:text-[15px] ">
+                We leverage in-depth research to understand market needs,
+                evaluate feasibility, and minimize risks. This involves studying
+                customer pain points, analyzing competitors to identify gaps,
+                and exploring emerging technologies to ensure innovative
+                solutions.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="my-[20px] ">
+              <h1 className="text-[30px]">Brand Development</h1>
+              <hr className="my-[10px]" />
+              <p className="text-[12px] md:text-[15px] ">
+                Establishing a strong identity that guides the project’s vision
+                and aligns with its goals. Creating a consistent tone, visual
+                identity, and messaging framework that shape how the project
+                will be presented and perceived. It also includes analyzing
+                competitors to differentiate the brand and position it
+                effectively.
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="my-[20px]">
-              <h1 className="text-[30px]">In-Depth Research</h1>
+              <h1 className="text-[30px]">Digital Marketing</h1>
               <hr className="my-[10px]" />
-              <p className="text-[12px]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                mollitia illo voluptate consectetur ipsam dicta quia, dolorem
-                consequuntur qui laudantium dolorum deleniti veniam tempora.
-                Iste tempora sed aspernatur itaque unde!
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="my-[20px]">
-              <h1 className="text-[30px]">In-Depth Research</h1>
-              <hr className="my-[10px]" />
-              <p className="text-[12px]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                mollitia illo voluptate consectetur ipsam dicta quia, dolorem
-                consequuntur qui laudantium dolorum deleniti veniam tempora.
-                Iste tempora sed aspernatur itaque unde!
+              <p className="text-[12px] md:text-[15px] ">
+                Build awareness, validate ideas, and generate interest among its
+                target audience. Through strategies like market research via
+                online surveys, social media listening, and SEO analysis, the
+                company gathers insights about audience needs and preferences.
               </p>
             </CardContent>
           </Card>
@@ -204,9 +207,9 @@ export default function ProfilePage() {
 
       <div className=" px-[20px] md:px-0  max-w-4xl mx-auto  ">
         <p className="text-[40px] pt-[30px] ">Meet The Team</p>
-        <span className="flex flex-row items-center gap-2 text-[#333]">
+        <span className="flex md:hidden flex-row items-center gap-2 text-[#333]">
           <Info className="w-[14px] h-[14px] " />
-          <p>Scroll to see more</p>
+          <p>Swipe to see more</p>
         </span>
         <div className=" mt-[20px] justify-center items-center flex flex-row md:gap-4 ">
           <Carousel className="w-full">
@@ -220,8 +223,8 @@ export default function ProfilePage() {
                 />
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:inline-block" />
-            <CarouselNext className="hidden md:inline-block" />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
           </Carousel>
         </div>
       </div>
@@ -316,6 +319,7 @@ export default function ProfilePage() {
           <div className="  flex justify-between">
             <p className="text-4xl">Contact Us</p>
             <Image
+              className=" w-[30%] md:w-[15%]"
               src={"/fi-white.webp"}
               alt="logo"
               height={"100"}
@@ -323,10 +327,10 @@ export default function ProfilePage() {
             />
           </div>
           <div className="flex mt-[20px] gap-3 items-center">
-            <div className=" shadow-lg bg-white h-[70px] flex items-center justify-center rounded-full w-[70px] ">
-              <MapPin className=" text-black w-8 h-8 " />
+            <div className=" shadow-lg bg-white w-[40px] h-[40px]  md:h-[70px] flex items-center justify-center rounded-full md:w-[70px] ">
+              <MapPin className=" text-black w-4 h-4 md:w-8 md:h-8 " />
             </div>
-            <div className=" w-[70%] md:w-[30%]">
+            <div className=" text-[15px] w-[70%] md:w-[30%]">
               Plot 1, Maruwa Bus Stop, 128 Remi Olowude St,, Lekki, Lagos,
               Nigeria.
             </div>
@@ -335,31 +339,25 @@ export default function ProfilePage() {
             <div className=" mt-[100px] flex flex-row gap-3">
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={""}
+                href={"https://linkedin.com/company/isceapp/"}
               >
                 <LinkedinIcon className="text-black w-5 h-5" />
               </Link>
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={""}
+                href={"https://instagram.com/isce.app"}
               >
                 <InstagramIcon className="text-black w-5 h-5" />
               </Link>
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={""}
-              >
-                <MessageCircle className="text-black w-5 h-5" />
-              </Link>
-              <Link
-                className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={""}
+                href={"mailto:support@isce.tech"}
               >
                 <Mail className="text-black w-5 h-5" />
               </Link>
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={""}
+                href={"https://twitter.com/isceapp"}
               >
                 <TwitterIcon className="text-black w-5 h-5" />
               </Link>

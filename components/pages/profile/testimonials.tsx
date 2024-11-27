@@ -16,7 +16,7 @@ export default function Testimonials({ image, name, review, title }: IReview) {
         <p className="text-[25px]" >{name}</p>
         <p className=" text-[13px] text-[#333] " >{title}</p>
         <p>{review}</p>
-        <span className="flex" >
+        <span className="flex mt-[10px] " >
           <StarFilledIcon className="text-yellow-500 w-5 h-5 " />
           <StarFilledIcon className="text-yellow-500 w-5 h-5 " />
           <StarFilledIcon className="text-yellow-500 w-5 h-5 " />
