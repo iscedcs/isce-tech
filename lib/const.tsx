@@ -341,7 +341,7 @@ export const REVIEWS: IReview[] = [
     It has been an awesome ride with ISCE. They've provided wide range of solutions of all spheres for our projects. 
     Their softwares are user friendly and their team are readily available 24/7 for support.`,
     title: "AIRS Chairman",
-    image: "/images/transpayperson.jpg",
+    image: "/images/brands/airs.png",
   },
 ];
 
