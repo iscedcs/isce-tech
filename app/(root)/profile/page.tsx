@@ -47,6 +47,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function ProfilePage() {
   return (
@@ -212,7 +213,14 @@ export default function ProfilePage() {
           <p>Swipe to see more</p>
         </span>
         <div className=" mt-[20px] justify-center items-center flex flex-row md:gap-4 ">
-          <Carousel className="w-full">
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 2000,
+              }),
+            ]}
+            className="w-full"
+          >
             <CarouselContent>
               {TEAMDISPLAY.map((team, k) => (
                 <TeamCards
