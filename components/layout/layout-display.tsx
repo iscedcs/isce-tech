@@ -15,7 +15,7 @@ export default function LayoutDisplay({
     <div>
       {pathname === "/profile" ? null : <NavComp />}
       {children}
-      {pathname === "/profile" ? null : <NavComp />}
+      {/* {pathname === "/profile" ? null : <NavComp />} */}
       <Toaster />
       {pathname === "/profile" ? null : <Footer />}
     </div>
