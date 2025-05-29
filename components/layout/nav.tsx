@@ -144,7 +144,7 @@ const NavComp: React.FC = () => {
               className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
               asChild
             >
-              <Link href="/auth/login">Login</Link>
+              <Link href="/login">Login</Link>
             </Button>
           )}
 

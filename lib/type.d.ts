@@ -139,3 +139,15 @@ interface IPost {
 	_createdAt: Date;
 	featured: boolean;
 }
+interface IMaxWidthWrapper {
+	className?: string;
+	children: React.ReactNode;
+}
+interface IAuthResponse {
+	data: {
+	  id: string;
+	  email: string;
+	  userType: string;
+	  accessToken: string;
+	};
+}

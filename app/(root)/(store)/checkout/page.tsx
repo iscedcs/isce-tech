@@ -135,7 +135,7 @@ export default function CheckoutPage() {
             <User className="h-5 w-5 mr-2" />
             <span>Already have an account?</span>
           </div>
-          <Link href="/auth/login">
+          <Link href="/login">
             <Button variant="outline" size="sm">
               Login
             </Button>
