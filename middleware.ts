@@ -26,11 +26,6 @@ export default auth((req) => {
      // Check if the current route is related to courses
      const isStoreRoutes = nextUrl.pathname.startsWith("/store");
 
-     // Check if the route is under the /admin path
-     // const isAdminRoutes = nextUrl.pathname.startsWith("/admin");
-     // const isTutorRoute = nextUrl.pathname.startsWith("/tutor");
-     // const isStudentRoute = nextUrl.pathname.startsWith("/student")
-
      // If the route is related to API authentication, allow it to proceed
      if (isApiAuthRoutes) {
           return;
@@ -47,17 +42,6 @@ export default auth((req) => {
           return;
      }
 
-
-     // If the route is an admin route and the user is logged in
-     // if (isAdminRoutes && isLoggedIn){
-     //  // Check if the logged-in user is an ADMIN
-     //  if (req.auth?.user?.role !== 'ADMIN'){
-
-     //  // If not an ADMIN, redirect to the unauthorized page
-     // return Response.redirect(new URL('/unauthorized', nextUrl));
-     //  }
-     //  return;
-     // }
 
      // If the user is not logged in and tries to access a protected route (not public, not courses, not blog)
      if (!isLoggedIn && !isPublicRoutes && !isStoreRoutes && !isBlogPage) {

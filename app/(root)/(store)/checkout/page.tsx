@@ -2,9 +2,6 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { useCartStore } from "@/lib/store/cart-store";
-import { useAuthStore } from "@/lib/store/auth-store";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,18 +11,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import MaxWidthContainer from "@/components/ui/container";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Separator } from "@/components/ui/separator";
-import {
-  formatCurrency,
-  deliveryOptions,
-  paymentMethods,
-  calculateVAT,
-} from "@/lib/utils";
-import { CreditCard, MapPin, Truck, User, Palette } from "lucide-react";
-import { useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -33,19 +22,38 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import MaxWidthContainer from "@/components/ui/container";
+import { Separator } from "@/components/ui/separator";
+import { useCartStore } from "@/lib/store/cart-store";
+import {useSession} from "next-auth/react";
+import {
+  calculateVAT,
+  deliveryOptions,
+  formatCurrency,
+  paymentMethods,
+} from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
+import { CreditCard, MapPin, Palette, Truck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { checkoutFormSchema } from "@/lib/schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import Image from "next/image";
+import { submitCheckout } from "@/actions/checkout";
 
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCartStore();
-  const { user, isAuthenticated } = useAuthStore();
+ const session = useSession();
   const router = useRouter();
 
-  const [formData, setFormData] = useState({
-    firstName: user?.name?.split(" ")[0] || "",
-    lastName: user?.name?.split(" ").slice(1).join(" ") || "",
-    email: user?.email || "",
+ const form = useForm<z.infer<typeof checkoutFormSchema>>({
+  resolver: zodResolver(checkoutFormSchema),
+  defaultValues: {
+    firstName: session.data?.user?.firstName?.split(" ")[0] || "",
+    lastName: session.data?.user?.lastName?.split(" ")[0] || "",
+    email: session.data?.user?.email || "",
     phone: "",
     address: "",
     city: "",
@@ -53,10 +61,17 @@ export default function CheckoutPage() {
     deliveryMethod: "pickup",
     pickupLocation: "",
     paymentMethod: "paystack",
-  });
+  },
+  mode: "all",
+ })
 
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  if(!session) {
+    router.push("/login?callbackUrl=/checkout");
+    return null;
+  }
 
   if (items.length === 0) {
     router.push("/cart");
@@ -65,7 +80,7 @@ export default function CheckoutPage() {
 
   // Calculate all fees
   const selectedDelivery = deliveryOptions.find(
-    (option) => option.id === formData.deliveryMethod
+    (option) => option.id === form.getValues("deliveryMethod")
   );
   const deliveryPrice = selectedDelivery?.price || 0;
 
@@ -92,25 +107,33 @@ export default function CheckoutPage() {
   const vatAmount = calculateVAT(totalWithCustomization);
   const totalPrice = totalWithCustomization + deliveryPrice + vatAmount;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    form.setValue(name as keyof z.infer<typeof checkoutFormSchema>, value);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: z.infer<typeof checkoutFormSchema>) => {
     setIsSubmitting(true);
 
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const res = await submitCheckout(data, items);
 
-    // Clear cart and redirect to success page
-    clearCart();
-    router.push("/checkout/success");
+    setIsSubmitting(false);
+
+    if (res.success) {
+      toast.success("Order Placed", {
+        description: "Your order has been successfully placed.",
+      });
+      clearCart();
+      router.push("/checkout/success");
+    } else {
+      toast.error("Order Failed", {
+        description: res.error || "An error occurred while placing your order.",
+      });
+    }
   };
 
   return (
@@ -124,7 +147,7 @@ export default function CheckoutPage() {
         Checkout
       </motion.h1>
 
-      {!isAuthenticated && (
+      {/* {!isAuthenticated && (
         <motion.div
           className="mb-8 p-4 border border-border rounded-lg flex items-center justify-between"
           initial={{ opacity: 0 }}
@@ -141,7 +164,7 @@ export default function CheckoutPage() {
             </Button>
           </Link>
         </motion.div>
-      )}
+      )} */}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
@@ -160,9 +183,7 @@ export default function CheckoutPage() {
                       <MapPin className="mr-2 h-5 w-5" />
                       Shipping Information
                     </CardTitle>
-                    <CardDescription>
-                      Enter your shipping details
-                    </CardDescription>
+                    <CardDescription>Enter your shipping details</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
@@ -170,21 +191,23 @@ export default function CheckoutPage() {
                         <Label htmlFor="firstName">First Name</Label>
                         <Input
                           id="firstName"
-                          name="firstName"
-                          value={formData.firstName}
-                          onChange={handleInputChange}
+                          {...form.register("firstName")}
                           required
                         />
+                        {form.formState.errors.firstName && (
+                          <p className="text-sm text-red-500">{form.formState.errors.firstName.message}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="lastName">Last Name</Label>
                         <Input
                           id="lastName"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleInputChange}
+                          {...form.register("lastName")}
                           required
                         />
+                        {form.formState.errors.lastName && (
+                          <p className="text-sm text-red-500">{form.formState.errors.lastName.message}</p>
+                        )}
                       </div>
                     </div>
 
@@ -193,22 +216,24 @@ export default function CheckoutPage() {
                         <Label htmlFor="email">Email</Label>
                         <Input
                           id="email"
-                          name="email"
                           type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
+                          {...form.register("email")}
                           required
                         />
+                        {form.formState.errors.email && (
+                          <p className="text-sm text-red-500">{form.formState.errors.email.message}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone</Label>
                         <Input
                           id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleInputChange}
+                          {...form.register("phone")}
                           required
                         />
+                        {form.formState.errors.phone && (
+                          <p className="text-sm text-red-500">{form.formState.errors.phone.message}</p>
+                        )}
                       </div>
                     </div>
 
@@ -216,11 +241,12 @@ export default function CheckoutPage() {
                       <Label htmlFor="address">Address</Label>
                       <Input
                         id="address"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleInputChange}
+                        {...form.register("address")}
                         required
                       />
+                      {form.formState.errors.address && (
+                        <p className="text-sm text-red-500">{form.formState.errors.address.message}</p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
@@ -228,21 +254,23 @@ export default function CheckoutPage() {
                         <Label htmlFor="city">City</Label>
                         <Input
                           id="city"
-                          name="city"
-                          value={formData.city}
-                          onChange={handleInputChange}
+                          {...form.register("city")}
                           required
                         />
+                        {form.formState.errors.city && (
+                          <p className="text-sm text-red-500">{form.formState.errors.city.message}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="state">State</Label>
                         <Input
                           id="state"
-                          name="state"
-                          value={formData.state}
-                          onChange={handleInputChange}
+                          {...form.register("state")}
                           required
                         />
+                        {form.formState.errors.state && (
+                          <p className="text-sm text-red-500">{form.formState.errors.state.message}</p>
+                        )}
                       </div>
                     </div>
                   </CardContent>
@@ -252,9 +280,7 @@ export default function CheckoutPage() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Button onClick={() => setStep(2)}>
-                        Continue to Delivery
-                      </Button>
+                      <Button onClick={() => setStep(2)}>Continue to Delivery</Button>
                     </motion.div>
                   </CardFooter>
                 </Card>
@@ -275,115 +301,79 @@ export default function CheckoutPage() {
                       <Truck className="mr-2 h-5 w-5" />
                       Delivery Method
                     </CardTitle>
-                    <CardDescription>
-                      Choose how you want to receive your order
-                    </CardDescription>
+                    <CardDescription>Choose how you want to receive your order</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <RadioGroup
-                      value={formData.deliveryMethod}
-                      onValueChange={(value) =>
-                        handleSelectChange("deliveryMethod", value)
-                      }
+                      value={form.getValues("deliveryMethod")}
+                      onValueChange={(value) => handleSelectChange("deliveryMethod", value)}
                       className="space-y-4"
                     >
                       {deliveryOptions.map((option) => (
-                        <div
-                          key={option.id}
-                          className="flex items-start space-x-3"
-                        >
+                        <div key={option.id} className="flex items-start space-x-3">
                           <RadioGroupItem
                             value={option.id}
                             id={option.id}
-                            className="mt-1 "
+                            className="mt-1"
                           />
                           <div className="grid gap-1.5 leading-none">
                             <Label htmlFor={option.id} className="font-medium">
                               {option.name}{" "}
-                              {option.price > 0
-                                ? `(${formatCurrency(option.price)})`
-                                : "(Free)"}
+                              {option.price > 0 ? `(${formatCurrency(option.price)})` : "(Free)"}
                             </Label>
-                            <p className="text-sm text-muted-foreground">
-                              {option.description}
-                            </p>
+                            <p className="text-sm text-muted-foreground">{option.description}</p>
 
-                            {option.id === "pickup" &&
-                              formData.deliveryMethod === "pickup" && (
-                                <motion.div
-                                  className="mt-3"
-                                  initial={{ opacity: 0, height: 0 }}
-                                  animate={{ opacity: 1, height: "auto" }}
-                                  transition={{ duration: 0.3 }}
+                            {option.id === "pickup" && form.getValues("deliveryMethod") === "pickup" && (
+                              <motion.div
+                                className="mt-3"
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <Label htmlFor="pickupLocation" className="text-sm mb-2 block">
+                                  Select Pickup Location
+                                </Label>
+                                <Select
+                                  value={form.getValues("pickupLocation")}
+                                  onValueChange={(value) => handleSelectChange("pickupLocation", value)}
                                 >
-                                  <Label
-                                    htmlFor="pickupLocation"
-                                    className="text-sm mb-2 block"
-                                  >
-                                    Select Pickup Location
-                                  </Label>
-                                  <Select
-                                    value={formData.pickupLocation}
-                                    onValueChange={(value) =>
-                                      handleSelectChange(
-                                        "pickupLocation",
-                                        value
-                                      )
-                                    }
-                                  >
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select a store location" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                      {option.locations?.map((location) => (
-                                        <SelectItem
-                                          key={location.id}
-                                          value={location.id}
-                                        >
-                                          {location.name}
-                                        </SelectItem>
-                                      ))}
-                                    </SelectContent>
-                                  </Select>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select a store location" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {option.locations?.map((location) => (
+                                      <SelectItem key={location.id} value={location.id}>
+                                        {location.name}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
 
-                                  {formData.pickupLocation && (
-                                    <motion.p
-                                      className="text-sm text-muted-foreground mt-2"
-                                      initial={{ opacity: 0 }}
-                                      animate={{ opacity: 1 }}
-                                      transition={{ duration: 0.3 }}
-                                    >
-                                      {
-                                        option.locations?.find(
-                                          (l) =>
-                                            l.id === formData.pickupLocation
-                                        )?.address
-                                      }
-                                    </motion.p>
-                                  )}
-                                </motion.div>
-                              )}
+                                {form.getValues("pickupLocation") && (
+                                  <motion.p
+                                    className="text-sm text-muted-foreground mt-2"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                  >
+                                    {option.locations?.find((l) => l.id === form.getValues("pickupLocation"))?.address}
+                                  </motion.p>
+                                )}
+                              </motion.div>
+                            )}
                           </div>
                         </div>
                       ))}
                     </RadioGroup>
                   </CardContent>
                   <CardFooter className="flex justify-between">
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button variant="outline" onClick={() => setStep(1)}>
                         Back
                       </Button>
                     </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Button onClick={() => setStep(3)}>
-                        Continue to Payment
-                      </Button>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button onClick={() => setStep(3)}>Continue to Payment</Button>
                     </motion.div>
                   </CardFooter>
                 </Card>
@@ -404,45 +394,33 @@ export default function CheckoutPage() {
                       <CreditCard className="mr-2 h-5 w-5" />
                       Payment Method
                     </CardTitle>
-                    <CardDescription>
-                      Select your preferred payment method
-                    </CardDescription>
+                    <CardDescription>Select your preferred payment method</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={form.handleSubmit(onSubmit)}>
                       <RadioGroup
-                        value={formData.paymentMethod}
-                        onValueChange={(value) =>
-                          handleSelectChange("paymentMethod", value)
-                        }
+                        value={form.getValues("paymentMethod")}
+                        onValueChange={(value) => handleSelectChange("paymentMethod", value)}
                         className="space-y-4"
                       >
                         {paymentMethods.map((method) => (
-                          <div
-                            key={method.id}
-                            className="flex items-start space-x-3"
-                          >
+                          <div key={method.id} className="flex items-start space-x-3">
                             <RadioGroupItem
                               value={method.id}
                               id={method.id}
                               className="mt-1"
                             />
                             <div className="grid gap-1.5 leading-none">
-                              <Label
-                                htmlFor={method.id}
-                                className="font-medium"
-                              >
+                              <Label htmlFor={method.id} className="font-medium">
                                 {method.name}
                               </Label>
-                              <p className="text-sm text-muted-foreground">
-                                {method.description}
-                              </p>
+                              <p className="text-sm text-muted-foreground">{method.description}</p>
                             </div>
                           </div>
                         ))}
                       </RadioGroup>
 
-                      {formData.paymentMethod === "paystack" && (
+                      {form.getValues("paymentMethod") === "paystack" && (
                         <motion.div
                           className="mt-6 p-4 bg-muted rounded-lg"
                           initial={{ opacity: 0, height: 0 }}
@@ -450,13 +428,12 @@ export default function CheckoutPage() {
                           transition={{ duration: 0.3 }}
                         >
                           <p className="text-sm text-muted-foreground">
-                            You will be redirected to Paystack to complete your
-                            payment securely.
+                            You will be redirected to Paystack to complete your payment securely.
                           </p>
                         </motion.div>
                       )}
 
-                      {formData.paymentMethod === "flutterwave" && (
+                      {form.getValues("paymentMethod") === "flutterwave" && (
                         <motion.div
                           className="mt-6 p-4 bg-muted rounded-lg"
                           initial={{ opacity: 0, height: 0 }}
@@ -464,27 +441,19 @@ export default function CheckoutPage() {
                           transition={{ duration: 0.3 }}
                         >
                           <p className="text-sm text-muted-foreground">
-                            You will be redirected to Flutterwave to complete
-                            your payment securely.
+                            You will be redirected to Flutterwave to complete your payment securely.
                           </p>
                         </motion.div>
                       )}
 
                       <div className="mt-6">
-                        <motion.div
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                        >
+                        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                           <Button
                             type="submit"
                             className="w-full"
                             disabled={isSubmitting}
                           >
-                            {isSubmitting ? (
-                              <>Processing...</>
-                            ) : (
-                              <>Complete Order</>
-                            )}
+                            {isSubmitting ? <>Processing...</> : <>Complete Order</>}
                           </Button>
                         </motion.div>
                       </div>
@@ -511,7 +480,7 @@ export default function CheckoutPage() {
           </AnimatePresence>
         </div>
 
-        <motion.div
+         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -528,32 +497,34 @@ export default function CheckoutPage() {
                   const cardColor = item.customization?.cardColor;
 
                   return (
-                    <div key={item.id} className="space-y-0.5">
-                      <div className="flex justify-between text-sm">
-                        <div className="flex items-center">
-                          <span>{item.quantity} x</span>
-                          <span className="ml-2 truncate">{item.name}</span>
-                        </div>
-                        <span>
-                          {formatCurrency(item.price * item.quantity)}
-                        </span>
+                    <div key={item.id} className="space-y-0.5 flex items-start gap-4">
+                      <div className="relative w-16 h-16">
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          className="object-cover rounded"
+                        />
                       </div>
-
-                      {hasCustomization && (
-                        <div className="ml-4 text-xs text-muted-foreground">
+                      <div className="flex-1">
+                        <div className="flex justify-between text-sm">
                           <div className="flex items-center">
-                            <Palette className="h-3 w-3 mr-1" />
-                            <span>
-                              {cardColor
-                                ? `Customized (${cardColor})`
-                                : "Customized"}
-                            </span>
+                            <span>{item.quantity} x</span>
+                            <span className="ml-2 truncate">{item.name}</span>
                           </div>
-                          {hasDesignService && (
-                            <div className="ml-4">Includes design service</div>
-                          )}
+                          <span>{formatCurrency(item.price * item.quantity)}</span>
                         </div>
-                      )}
+
+                        {hasCustomization && (
+                          <div className="ml-4 text-xs text-muted-foreground">
+                            <div className="flex items-center">
+                              <Palette className="h-3 w-3 mr-1" />
+                              <span>{cardColor ? `Customized (${cardColor})` : "Customized"}</span>
+                            </div>
+                            {hasDesignService && <div className="ml-4">Includes design service</div>}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   );
                 })}
@@ -569,9 +540,7 @@ export default function CheckoutPage() {
 
                 {customizationFees > 0 && (
                   <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">
-                      Customization Fees
-                    </span>
+                    <span className="text-muted-foreground">Customization Fees</span>
                     <span>{formatCurrency(customizationFees)}</span>
                   </div>
                 )}
@@ -582,9 +551,7 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Delivery</span>
-                  <span>
-                    {deliveryPrice > 0 ? formatCurrency(deliveryPrice) : "Free"}
-                  </span>
+                  <span>{deliveryPrice > 0 ? formatCurrency(deliveryPrice) : "Free"}</span>
                 </div>
               </div>
 

@@ -38,6 +38,7 @@ export default function LoginForm() {
          email: "",
          password: "",
     },
+    mode: "all",
 });
 
  
@@ -56,7 +57,7 @@ export default function LoginForm() {
       toast.success("Account Logged In", {
         description: "This account has successfully been logged in",
       });
-      router.push(DEFAULT_LOGIN_REDIRECT);
+      router.push(res.redirectUrl || DEFAULT_LOGIN_REDIRECT);
     } else {
       toast.error("Login failed", {
         description: "Invalid email or password",

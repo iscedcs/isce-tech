@@ -483,4 +483,7 @@ export const URLS = {
   user: {
     one: "/user/one/{id}",
   },
+  device: {
+    create: "/device/create",
+  }
 }

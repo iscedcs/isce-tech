@@ -9,10 +9,10 @@ export type CartItem = {
   quantity: number;
   customization?: {
     isCustomized: boolean;
-    hasCustomDesign: boolean;
-    customizationFee: number;
-    designServiceFee: number;
-    cardColor: string;
+    hasCustomDesign?: boolean;
+    customizationFee?: number;
+    designServiceFee?: number;
+    cardColor?: string;
   };
 };
 
@@ -24,6 +24,7 @@ type CartStore = {
   removeItem: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  initializeTestCart: () => void;
 };
 
 export const useCartStore = create<CartStore>()(
@@ -97,7 +98,26 @@ export const useCartStore = create<CartStore>()(
         }),
 
       clearCart: () => set({ items: [], totalItems: 0, subtotal: 0 }),
-    }),
+
+            initializeTestCart: () =>
+        set((state) => {
+          if (state.items.length > 0) return state; 
+          const testItem: CartItem = {
+            id: "nfc-card-basic",
+            name: "Basic NFC Business Card",
+            price: 15000,
+            image: "https://images.unsplash.com/photo-1589758438368-0ad531db3366?q=80&w=800&auto=format&fit=crop",
+            quantity: 1,
+            customization: {
+              isCustomized: false,
+            },
+          };  
+          const updatedItems = [testItem];
+          const totalItems = 1;
+          const subtotal = 15000;
+          return { items: updatedItems, totalItems, subtotal };
+        }),
+    }),    
     {
       name: "isce-cart-storage",
     }

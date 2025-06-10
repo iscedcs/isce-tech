@@ -35,6 +35,21 @@ export const loginFormSchema = z.object({
     email: z.string().email({
       message: "Email address is not valid.",
     }),
+
+    address: z
+    .string({
+      required_error: "This field cannot be empty",
+    })
+    .min(2, {
+      message: "Address must be at least 2 characters.",
+    })
+    .max(100, {
+      message: "Address must not be longer than 100 characters.",
+    }),
+
+     dob: z
+    .string()
+    .min(2, { message: "Please enter a valid event date and time" }),
     phonenumber: z
     .string({
       required_error: "Please enter phone number.",
@@ -53,3 +68,16 @@ export const loginFormSchema = z.object({
       }),
   });
   
+
+  export const checkoutFormSchema = z.object({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number is required"),
+  address: z.string().min(1, "Address is required"),
+  city: z.string().min(1, "City is required"),
+  state: z.string().min(1, "State is required"),
+  deliveryMethod: z.enum(["pickup", "delivery"]),
+  pickupLocation: z.string().optional(),
+  paymentMethod: z.enum(["paystack", "flutterwave"]),
+});

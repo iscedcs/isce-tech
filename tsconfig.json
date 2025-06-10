@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/(root)/(store)/checkout/page.tsx"
-  ],
+, "app/prisma/seed.js"  ],
   "exclude": ["node_modules"]
 }

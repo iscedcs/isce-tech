@@ -1,29 +1,34 @@
 import { SignUpFormValues } from "@/components/forms/sign-up-form";
 import { AUTH_API, URLS } from "@/lib/const";
 import axios from "axios";
-import { AuthError } from "next-auth";
 
-const userType = "BUSINESS_USER";
+const userType = "USER";
 
 
 export const signup = async (values: SignUpFormValues) => {
-    const url = `${AUTH_API}${URLS.auth.sign_up}?userType=${encodeURIComponent(
-      userType
-    )}`;
+    const url = `${AUTH_API}${URLS.auth.sign_up}?userType=${encodeURIComponent(userType)}`;
     try {
+      console.log("Sending request to:", url);
+      console.log("Payload:", values);
       const res = await axios.post(url, {
         firstName: values.firstname,
         lastName: values.lastname,
         phone: values.phonenumber,
-        email: values.email, //personal email
+        address: values.address,
+        dob: values.dob,
+        email: values.email,
         password: values.password.password,
         confirmpassword: values.password.confirmPassword,
       });
-      //TODO: business email field missing from endpoint - DONE!!
       return res.data;
     } catch (e: any) {
-      if (e instanceof AuthError) {
-        console.log(e.message);
+      console.error("Signup request failed:", e);
+
+      if(axios.isAxiosError(e)){
+        console.error("Axios error message:", e.response?.data);
+        return e.response?.data;
+      } else {
+        console.error("Unexpected error:", e);
         return null;
       }
     }

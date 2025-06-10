@@ -8,11 +8,11 @@ type SortOption =
   | "name-z-a";
 
 type FilterStore = {
-  category: string;
+  deviceType: string;
   searchQuery: string;
   sortBy: SortOption;
   priceRange: [number, number];
-  setCategory: (category: string) => void;
+  setDeviceType: (deviceType: string) => void;
   setSearchQuery: (query: string) => void;
   setSortBy: (sortOption: SortOption) => void;
   setPriceRange: (range: [number, number]) => void;
@@ -20,20 +20,20 @@ type FilterStore = {
 };
 
 export const useFilterStore = create<FilterStore>((set) => ({
-  category: "all",
+  deviceType: "all",
   searchQuery: "",
   sortBy: "featured",
-  priceRange: [0, 3000000], // 0 to 30,000 NGN
+  priceRange: [0, 300000], // 0 to 300,000 NGN
 
-  setCategory: (category: string) => set({ category }),
+  setDeviceType: (deviceType: string) => set({ deviceType }),
   setSearchQuery: (searchQuery: string) => set({ searchQuery }),
   setSortBy: (sortBy: SortOption) => set({ sortBy }),
   setPriceRange: (priceRange: [number, number]) => set({ priceRange }),
   resetFilters: () =>
     set({
-      category: "all",
+      deviceType: "all",
       searchQuery: "",
       sortBy: "featured",
-      priceRange: [0, 3000000],
+      priceRange: [0, 300000],
     }),
 }));

@@ -5,7 +5,7 @@ import MaxWidthWrapper from "@/components/layout/maxwidth-wrapper";
 export default function Login() {
     return (
       <div>
-          <MaxWidthWrapper className='grid mx-auto gap-5 my-10 items-center justify-center'>
+          <MaxWidthWrapper className='grid mx-auto gap-5 py-28 items-center justify-center'>
                 <LoginForm />
           </MaxWidthWrapper>
       </div>

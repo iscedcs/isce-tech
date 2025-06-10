@@ -1,18 +1,24 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Check, Minus, Plus } from "lucide-react";
 import { useCartStore } from "@/lib/store/cart-store";
-import type { Product } from "@/lib/products";
-import type { CardCustomizationData } from "./card-customization";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
+import type { CardCustomizationData } from "./card-customization";
 
 interface AddToCartButtonProps {
-  product: Product;
+  product: {
+    id: string;
+    name: string;
+    price: number;
+    images: string[];
+    isCustomizable: boolean;
+    color?: string;
+    stock: number;
+  };
   customizationData?: CardCustomizationData | null;
 }
 
@@ -27,31 +33,20 @@ export default function AddToCartButton({
   // Disable customization for quantities greater than 1
   const isCustomizationDisabled = quantity > 1 && product.isCustomizable;
 
-  // Calculate the customization fees
-  const customizationFee = customizationData?.isCustomized ? 500000 : 0; // 5,000 NGN
-  const designServiceFee =
-    customizationData?.isCustomized && customizationData?.needsCustomDesign
-      ? 500000
-      : 0; // 5,000 NGN
-  const totalPrice = product.price + customizationFee + designServiceFee;
-
   const handleAddToCart = () => {
-    // Calculate the total price including customization
-    const itemTotalPrice = product.price + customizationFee + designServiceFee;
-
     addItem({
       id: product.id,
       name: product.name,
-      price: itemTotalPrice, // Include customization in the price
+      price: product.price, // Base price without fees
       image: product.images[0],
       quantity,
       customization: customizationData?.isCustomized
         ? {
             isCustomized: true,
-            hasCustomDesign: customizationData.needsCustomDesign,
-            customizationFee: customizationFee,
-            designServiceFee: designServiceFee,
-            cardColor: product.color || "",
+            hasCustomDesign: customizationData.hasCustomDesign,
+            customizationFee: customizationData.customizationFee,
+            designServiceFee: customizationData.designServiceFee,
+            cardColor: customizationData.cardColor,
           }
         : undefined,
     });
@@ -111,8 +106,7 @@ export default function AddToCartButton({
           exit={{ opacity: 0, height: 0 }}
         >
           <div className="text-sm text-amber-500">
-            Note: Card customization is only available when ordering a single
-            card.
+            Note: Card customization is only available when ordering a single card.
           </div>
         </motion.div>
       )}
@@ -121,7 +115,7 @@ export default function AddToCartButton({
         <Button
           onClick={handleAddToCart}
           className="w-full"
-          disabled={!product.inStock || isAdded}
+          disabled={product.stock === 0 || isAdded}
         >
           {isAdded ? (
             <motion.div
