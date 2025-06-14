@@ -64,20 +64,32 @@ export const loginFormSchema = z.object({
       })
       .refine((data) => data.password === data.confirmPassword, {
         message: "Passwords do not match",
-        path: ["confirmPassword"], // This ensures the error appears under confirmPassword
+        path: ["confirmPassword"],
       }),
   });
   
 
-  export const checkoutFormSchema = z.object({
+export const checkoutFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number is required"),
+phone: z
+    .string()
+    .regex(/^\+?[\d\s-]{10,}$/, "Invalid phone number"),
   address: z.string().min(1, "Address is required"),
   city: z.string().min(1, "City is required"),
   state: z.string().min(1, "State is required"),
-  deliveryMethod: z.enum(["pickup", "delivery"]),
+  deliveryMethod: z.enum(["pickup", "lagos-delivery", "nationwide-delivery"]),
   pickupLocation: z.string().optional(),
-  paymentMethod: z.enum(["paystack", "flutterwave"]),
-});
+  paymentMethod: z.enum(["paystack"]),
+}).refine(
+    (data) => {
+      if (data.deliveryMethod === "pickup" && !data.pickupLocation) {
+        return false;
+      }
+      return true;
+    },
+    {message: "Pickup location is required for store pickup",
+      path:["pickupLocation"],
+    }
+  );

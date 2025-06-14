@@ -18,7 +18,7 @@ export const products: Product[] = [
     id: "nfc-card-basic",
     name: "Basic NFC Business Card",
     description: "A sleek, minimalist NFC business card for seamless contact sharing.",
-    price: 1500000, // 15,000 NGN
+    price: 1500000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1589758438368-0ad531db3366?q=80&w=800&auto=format&fit=crop",
@@ -39,7 +39,7 @@ export const products: Product[] = [
     id: "nfc-card-premium",
     name: "Premium NFC Business Card",
     description: "Premium metal NFC business card with advanced features and elegant design.",
-    price: 2500000, // 25,000 NGN
+    price: 2500000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1598517511194-033ef3cc4a56?q=80&w=800&auto=format&fit=crop",
@@ -63,7 +63,7 @@ export const products: Product[] = [
     id: "nfc-card-plain-midnight",
     name: "Plain NFC Card - Midnight Blue",
     description: "Customizable plain NFC card in a deep, elegant midnight blue color.",
-    price: 1200000, // 12,000 NGN
+    price: 1200000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=800&auto=format&fit=crop",
@@ -86,7 +86,7 @@ export const products: Product[] = [
     id: "nfc-card-plain-emerald",
     name: "Plain NFC Card - Emerald Green",
     description: "Customizable plain NFC card in a vibrant emerald green color.",
-    price: 1200000, // 12,000 NGN
+    price: 1200000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=800&auto=format&fit=crop",
@@ -109,7 +109,7 @@ export const products: Product[] = [
     id: "nfc-card-plain-rose",
     name: "Plain NFC Card - Rose Pink",
     description: "Customizable plain NFC card in a soft rose pink color.",
-    price: 1200000, // 12,000 NGN
+    price: 1200000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1579546929662-711aa81148cf?q=80&w=800&auto=format&fit=crop",
@@ -132,7 +132,7 @@ export const products: Product[] = [
     id: "nfc-card-plain-arctic",
     name: "Plain NFC Card - Arctic White",
     description: "Customizable plain NFC card in a clean arctic white color.",
-    price: 1200000, // 12,000 NGN
+    price: 1200000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
@@ -155,7 +155,7 @@ export const products: Product[] = [
     id: "nfc-card-plain-onyx",
     name: "Plain NFC Card - Onyx Black",
     description: "Customizable plain NFC card in a sleek onyx black color.",
-    price: 1200000, // 12,000 NGN
+    price: 1200000, 
     deviceType: "CARD",
     images: [
       "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?q=80&w=800&auto=format&fit=crop",
@@ -178,7 +178,7 @@ export const products: Product[] = [
     id: "nfc-wristband-basic",
     name: "NFC Wristband",
     description: "Comfortable silicone wristband with embedded NFC technology.",
-    price: 1200000, // 12,000 NGN
+    price: 1200000, 
     deviceType: "WRISTBAND",
     images: [
       "https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=800&auto=format&fit=crop",

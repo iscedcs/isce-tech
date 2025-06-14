@@ -201,8 +201,8 @@ export default function CardCustomization({
 
           <div className="space-y-2">
             <Label>Card Color</Label>
-            <Select onValueChange={handleColorChange} value={customization.cardColor}>
-              <SelectTrigger>
+            <Select  onValueChange={handleColorChange} value={customization.cardColor}>
+              <SelectTrigger className="bg-transparent">
                 <SelectValue placeholder="Select color" />
               </SelectTrigger>
               <SelectContent>
