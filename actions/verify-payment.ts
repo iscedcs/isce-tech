@@ -1,4 +1,4 @@
-"use server"
+"use server";
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/prisma";
 import { verifyTransaction } from "./paystack";
@@ -12,7 +12,7 @@ const DEVICE_TYPE_MAPPING = {
 };
 
 export async function verifyPayment(orderId: string, reference: string) {
- const session = await auth();
+  const session = await auth();
 
   if (!reference || !orderId) {
     console.error("Missing order ID or transaction reference");
@@ -48,6 +48,7 @@ export async function verifyPayment(orderId: string, reference: string) {
     const order = await db.$transaction(async (tx) => {
       const createdOrder = await tx.order.create({
         data: {
+          id: orderId,
           userId: orderData.userId,
           totalAmount: orderData.totalAmount,
           vatAmount: orderData.vatAmount,
@@ -76,8 +77,20 @@ export async function verifyPayment(orderId: string, reference: string) {
       return createdOrder;
     });
 
+    const confirmOrder = await db.order.findUnique({
+      where: { id: order.id },
+      select: { id: true },
+    });
+
+    if (!confirmOrder) {
+      console.error(`Order ${order.id} not found after creation`);
+      return { success: false, message: "Order creation failed" };
+    }
+
     // Call ISCE Auth
-    const AUTH_API = process.env.NEXT_PUBLIC_LIVE_ISCEAUTH_BACKEND_URL || "https://stingray-app-clk8t.ondigitalocean.app";
+    const AUTH_API =
+      process.env.NEXT_PUBLIC_LIVE_ISCEAUTH_BACKEND_URL ||
+      "https://stingray-app-clk8t.ondigitalocean.app";
     const URLS = { device: { create: "/device/create" } };
 
     for (const item of orderData.orderItems) {
@@ -87,7 +100,9 @@ export async function verifyPayment(orderId: string, reference: string) {
       });
 
       if (!product) {
-        console.error(`Product (ID: ${item.productId}) not found for ISCE Auth integration`);
+        console.error(
+          `Product (ID: ${item.productId}) not found for ISCE Auth integration`
+        );
         continue;
       }
 
@@ -113,12 +128,21 @@ export async function verifyPayment(orderId: string, reference: string) {
         };
 
         if (!response.ok) {
-          console.error(`Failed to create device for product ${item.productId}:`, logDetails);
+          console.error(
+            `Failed to create device for product ${item.productId}:`,
+            logDetails
+          );
         } else {
-          console.log(`Successfully created device for product ${item.productId}:`, logDetails);
+          console.log(
+            `Successfully created device for product ${item.productId}:`,
+            logDetails
+          );
         }
       } catch (error) {
-        console.error(`Error sending request to ISCE Auth for product ${item.productId}:`, error);
+        console.error(
+          `Error sending request to ISCE Auth for product ${item.productId}:`,
+          error
+        );
       }
     }
 
@@ -126,7 +150,11 @@ export async function verifyPayment(orderId: string, reference: string) {
     await db.pendingOrder.delete({ where: { reference } });
 
     revalidatePath(`/orders`);
-    return { success: true, message: "Transaction verified", orderId: order.id };
+    return {
+      success: true,
+      message: "Transaction verified",
+      orderId: order.id,
+    };
   } catch (error) {
     console.error("Error verifying payment:", error);
     return { success: false, message: "Error verifying transaction" };
