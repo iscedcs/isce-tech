@@ -1,8 +1,7 @@
 "use client";
-import { Product } from "@/lib/products";
 import { useState } from "react";
-import CardCustomization, { CardCustomizationData } from "./card-customization";
 import AddToCartButton from "./add-to-cart-button";
+import CardCustomization, { CardCustomizationData } from "./card-customization";
 
 interface CardCustomizationWrapperProps {
   product: {

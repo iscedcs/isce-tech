@@ -1,6 +1,5 @@
 "use client";
 
-import type { Product } from "@/lib/products";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
@@ -10,13 +9,14 @@ import { useCartStore } from "@/lib/store/cart-store";
 import { formatCurrency } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Product } from "@prisma/client";
 
 interface ProductCardProps {
   product: Product;
-  index?: number;
+  index: number;
 }
 
-export default function ProductCard({ product, index = 0 }: ProductCardProps) {
+export default function ProductCard({ product, index }: ProductCardProps) {
   const { addItem } = useCartStore();
   const [imageError, setImageError] = useState(false);
 
@@ -35,13 +35,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      whileHover={{ y: -5 }}
-    >
+      whileHover={{ y: -5 }}>
       <Card className="overflow-hidden h-full flex flex-col">
         <Link
           href={`/store/${product.id}`}
-          className="relative block aspect-square overflow-hidden bg-muted"
-        >
+          className="relative block aspect-square overflow-hidden bg-muted">
           <div className="h-full w-full">
             <Image
               src={
@@ -52,6 +50,10 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
               alt={product.name}
               fill
               className="object-cover transition-transform duration-300 hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={index < 4}
+              placeholder="blur"
+              blurDataURL="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?q=80&w=800&auto=format&fit=crop"
               onError={() => setImageError(true)}
             />
           </div>
@@ -71,8 +73,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <motion.div
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="w-full"
-          >
+            className="w-full">
             <Button onClick={handleAddToCart} className="w-full" size="sm">
               <ShoppingCart className="mr-2 h-4 w-4" />
               Add to Cart

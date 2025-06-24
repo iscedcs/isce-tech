@@ -22,8 +22,8 @@ type FilterStore = {
 export const useFilterStore = create<FilterStore>((set) => ({
   deviceType: "all",
   searchQuery: "",
-  sortBy: "featured",
-  priceRange: [0, 300000], // 0 to 300,000 NGN
+  sortBy: "name-a-z",
+  priceRange: [0, 3000000], // 0 to 300,000 NGN
 
   setDeviceType: (deviceType: string) => set({ deviceType }),
   setSearchQuery: (searchQuery: string) => set({ searchQuery }),
@@ -33,7 +33,7 @@ export const useFilterStore = create<FilterStore>((set) => ({
     set({
       deviceType: "all",
       searchQuery: "",
-      sortBy: "featured",
-      priceRange: [0, 300000],
+      sortBy: "name-a-z",
+      priceRange: [0, 3000000],
     }),
 }));

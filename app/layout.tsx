@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import LayoutDisplay from "@/components/layout/layout-display";
-import { auth } from '@/auth';
-import { SessionProvider } from 'next-auth/react';
+import { auth } from "@/auth";
+import NextTopLoader from "nextjs-toploader";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +24,14 @@ export default async function RootLayout({
   const session = await auth();
   return (
     <SessionProvider session={session}>
-    <html lang="en" className=" scroll-smooth">
-      <body className={inter.className}>
-        <LayoutDisplay>{children}</LayoutDisplay>
-      </body>
-    </html>
+      <html lang="en" className=" scroll-smooth">
+        <body className={inter.className}>
+          <LayoutDisplay>
+            <NextTopLoader color="white" showSpinner={false} />
+            {children}
+          </LayoutDisplay>
+        </body>
+      </html>
     </SessionProvider>
   );
 }
