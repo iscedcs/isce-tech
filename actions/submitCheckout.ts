@@ -6,12 +6,11 @@ import { z } from "zod";
 import { createTransaction } from "./paystack";
 import { deliveryOptions } from "@/lib/utils";
 
-
 export async function submitCheckout({
   formData,
   cartItems,
 }: {
-  formData: z.infer<typeof checkoutFormSchema>,
+  formData: z.infer<typeof checkoutFormSchema>;
   cartItems: Array<{
     id: string;
     name: string;
@@ -22,7 +21,7 @@ export async function submitCheckout({
       designServiceFee?: number;
       cardColor?: string | null;
     };
-  }>,
+  }>;
 }) {
   const session = await auth();
   if (!session?.user?.id) {
@@ -53,20 +52,17 @@ export async function submitCheckout({
   } = validatedFields.data;
 
   try {
-    if(!cartItems || cartItems.length === 0) { 
+    if (!cartItems || cartItems.length === 0) {
       return { success: false, message: "Cart is empty" };
     }
     // Calculate totals
-    const totalWithCustomization = cartItems.reduce(
-      (total, item) => {
-        const itemTotal = 
+    const totalWithCustomization = cartItems.reduce((total, item) => {
+      const itemTotal =
         item.price * item.quantity +
         (item.customization?.customizationFee || 0) * item.quantity +
         (item.customization?.designServiceFee || 0) * item.quantity;
-        return total + itemTotal;
-      },
-      0
-    );
+      return total + itemTotal;
+    }, 0);
 
     const vatAmount = totalWithCustomization * 0.075;
     const selectedDelivery = deliveryOptions.find(
@@ -92,7 +88,10 @@ export async function submitCheckout({
         return { success: false, message: `Product ${item.name} not found` };
       }
       if (product.stock < item.quantity) {
-        return { success: false, message: `Insufficient stock for ${item.name}` };
+        return {
+          success: false,
+          message: `Insufficient stock for ${item.name}`,
+        };
       }
     }
 
@@ -141,10 +140,28 @@ export async function submitCheckout({
       callback_url: `${process.env.NEXT_PUBLIC_URL}/checkout/verify?orderId=${reference}`,
       metadata: {
         custom_fields: [
-          { display_name: "Order Reference", variable_name: "order_ref", value: reference },
-          { display_name: "Customer Name", variable_name: "customer_name", value: `${firstName} ${lastName}` },
-          { display_name: "Total Amount", variable_name: "total_amount", value: totalAmount },
-          { display_name: "Items", variable_name: "items", value: cartItems.map((item) => `${item.name} (x${item.quantity})`).join(", ") },
+          {
+            display_name: "Order Reference",
+            variable_name: "order_ref",
+            value: reference,
+          },
+          {
+            display_name: "Customer Name",
+            variable_name: "customer_name",
+            value: `${firstName} ${lastName}`,
+          },
+          {
+            display_name: "Total Amount",
+            variable_name: "total_amount",
+            value: totalAmount,
+          },
+          {
+            display_name: "Items",
+            variable_name: "items",
+            value: cartItems
+              .map((item) => `${item.name} (x${item.quantity})`)
+              .join(", "),
+          },
         ],
       },
     };
@@ -154,7 +171,6 @@ export async function submitCheckout({
       return { success: false, message: transactionResponse.error };
     }
 
-    // Store pending order with retry
     let attempts = 0;
     const maxAttempts = 5;
     while (attempts < maxAttempts) {
@@ -165,14 +181,20 @@ export async function submitCheckout({
             data: JSON.stringify(pendingOrder),
           },
         });
-        break; // Exit loop if successful
+        break;
       } catch (error) {
         attempts++;
-        console.error(`Attempt ${attempts} to store pending order failed:`, error);
+        console.error(
+          `Attempt ${attempts} to store pending order failed:`,
+          error
+        );
         if (attempts === maxAttempts) {
-          return { success: false, message: "Failed to store pending order after multiple attempts" };
+          return {
+            success: false,
+            message: "Failed to store pending order after multiple attempts",
+          };
         }
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Wait 1secs before retrying
+        await new Promise((resolve) => setTimeout(resolve, 1000));
       }
     }
     return {
