@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { AlignJustify, Badge, LogOut, ShoppingCart, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
-import { useAuthStore } from "@/lib/store/auth-store";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,10 +14,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const NavComp: React.FC = () => {
   const { totalItems } = useCartStore();
-  const { user, isAuthenticated, logout } = useAuthStore();
+  const session = useSession();
+  const user = session.data?.user;
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -46,7 +47,7 @@ const NavComp: React.FC = () => {
   return (
     <nav
       className={`transition-all w-full fixed z-40 ${
-        scrolling ? "bg-primary" : "backdrop-blur-md"
+        scrolling ? "bg-primary" : "bg-current"
       } `}
     >
       <MaxWidthContainer className="py-0 flex justify-between items-center">
@@ -109,7 +110,7 @@ const NavComp: React.FC = () => {
               className="text-secondary text-black"
             >{`GET A QUOTE`}</Link>
           </Button>
-          {isAuthenticated ? (
+          {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -122,17 +123,17 @@ const NavComp: React.FC = () => {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
+                {/* <DropdownMenuItem asChild>
                   <Link href="/account">Profile</Link>
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
                 <DropdownMenuItem asChild>
-                  <Link href="/account/orders">Orders</Link>
+                  <Link href="/orders">Orders</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
+                {/* <DropdownMenuItem asChild>
                   <Link href="/account/addresses">Addresses</Link>
-                </DropdownMenuItem>
+                </DropdownMenuItem> */}
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={logout} className="text-destructive">
+                <DropdownMenuItem onClick={async () => signOut()} className="text-destructive">
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </DropdownMenuItem>
@@ -143,8 +144,9 @@ const NavComp: React.FC = () => {
               size="sm"
               className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
               asChild
+              onClick={() => signIn()}
             >
-              <Link href="/auth/login">Login</Link>
+             Login
             </Button>
           )}
 
@@ -221,14 +223,14 @@ const NavComp: React.FC = () => {
                       onClick={closeMenu}
                     >{`Busines`}</Link>
                   </li>
-                  {/* <li>
+                   <li>
                     <Link
                       href="/#"
                       className="text-secondary"
                       onClick={closeMenu}
                     >{`Store`}</Link>
                   </li>
-                  <li>
+                  {/*<li>
                     <Link
                       href="/#"
                       className="text-secondary"

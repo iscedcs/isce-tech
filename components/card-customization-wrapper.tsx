@@ -1,14 +1,23 @@
 "use client";
-import { Product } from "@/lib/products";
 import { useState } from "react";
-import CardCustomization, { CardCustomizationData } from "./card-customization";
 import AddToCartButton from "./add-to-cart-button";
+import CardCustomization, { CardCustomizationData } from "./card-customization";
+
+interface CardCustomizationWrapperProps {
+  product: {
+    id: string;
+    name: string;
+    price: number;
+    images: string[];
+    isCustomizable: boolean;
+    color?: string;
+    stock: number;
+  };
+}
 
 export default function CardCustomizationWrapper({
   product,
-}: {
-  product: Product;
-}) {
+}: CardCustomizationWrapperProps) {
   const [customizationData, setCustomizationData] =
     useState<CardCustomizationData | null>(null);
 

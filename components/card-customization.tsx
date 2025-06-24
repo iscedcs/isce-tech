@@ -26,6 +26,13 @@ import {
 } from "@/components/ui/tooltip";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface CardCustomizationProps {
   onCustomizationChange: (customization: CardCustomizationData) => void;
@@ -37,8 +44,9 @@ export interface CardCustomizationData {
   isCustomized: boolean;
   frontDesignFile: File | null;
   backDesignFile: File | null;
-  needsCustomDesign: boolean;
-  additionalPrice: number;
+  hasCustomDesign: boolean; // Renamed to match CartItem
+  customizationFee: number; // Added to match CartItem
+  designServiceFee: number;
   cardColor: string;
 }
 
@@ -48,11 +56,12 @@ export default function CardCustomization({
   productColor,
 }: CardCustomizationProps) {
   const [customization, setCustomization] = useState<CardCustomizationData>({
-    isCustomized: false,
+      isCustomized: false,
     frontDesignFile: null,
     backDesignFile: null,
-    needsCustomDesign: false,
-    additionalPrice: 0,
+    hasCustomDesign: false,
+    customizationFee: 0,
+    designServiceFee: 0,
     cardColor: productColor,
   });
 
@@ -63,18 +72,23 @@ export default function CardCustomization({
   const backInputRef = useRef<HTMLInputElement>(null);
 
   // Update the pricing structure and clarify the options
-  const CUSTOMIZATION_FEE = 500000; // 5,000 NGN for uploading own designs
-  const CUSTOM_DESIGN_FEE = 500000; // Additional 5,000 NGN for designer service
+  const CUSTOMIZATION_FEE = 200000; // 5,000 NGN for uploading own designs
+  const DESIGN_SERVICE_FEE = 300000; // Additional 5,000 NGN for designer service
 
+    const colors = [
+    "Midnight Blue",
+    "Emerald Green",
+    "Rose Pink",
+    "Arctic White",
+    "Onyx Black",
+  ];
   const handleCustomizationToggle = (checked: boolean) => {
     const newCustomization = {
       ...customization,
       isCustomized: checked,
-      additionalPrice: checked
-        ? customization.needsCustomDesign
-          ? CUSTOMIZATION_FEE + CUSTOM_DESIGN_FEE
-          : CUSTOMIZATION_FEE
-        : 0,
+        customizationFee: checked ? CUSTOMIZATION_FEE : 0,
+      designServiceFee: checked && customization.hasCustomDesign ? DESIGN_SERVICE_FEE : 0,
+
     };
     setCustomization(newCustomization);
     onCustomizationChange(newCustomization);
@@ -83,13 +97,16 @@ export default function CardCustomization({
   const handleCustomDesignToggle = (checked: boolean) => {
     const newCustomization = {
       ...customization,
-      needsCustomDesign: checked,
-      additionalPrice: customization.isCustomized
-        ? checked
-          ? CUSTOMIZATION_FEE + CUSTOM_DESIGN_FEE
-          : CUSTOMIZATION_FEE
-        : 0,
+      hasCustomDesign: checked,
+      designServiceFee: checked ? DESIGN_SERVICE_FEE : 0,
+      customizationFee: customization.isCustomized ? CUSTOMIZATION_FEE : 0,
     };
+    setCustomization(newCustomization);
+    onCustomizationChange(newCustomization);
+  };
+
+    const handleColorChange = (value: string) => {
+    const newCustomization = { ...customization, cardColor: value };
     setCustomization(newCustomization);
     onCustomizationChange(newCustomization);
   };
@@ -182,6 +199,22 @@ export default function CardCustomization({
             </AlertDescription>
           </Alert>
 
+          <div className="space-y-2">
+            <Label>Card Color</Label>
+            <Select  onValueChange={handleColorChange} value={customization.cardColor}>
+              <SelectTrigger className="bg-transparent">
+                <SelectValue placeholder="Select color" />
+              </SelectTrigger>
+              <SelectContent>
+                {colors.map((color) => (
+                  <SelectItem key={color} value={color}>
+                    {color}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
           <Tabs defaultValue="upload" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="upload">Upload Your Design</TabsTrigger>
@@ -196,9 +229,7 @@ export default function CardCustomization({
                   transition={{ delay: 0.1 }}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <Label htmlFor="front-design-upload">
-                      Front Card Design
-                    </Label>
+                    <Label htmlFor="front-design-upload">Front Card Design</Label>
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger asChild>
@@ -313,18 +344,17 @@ export default function CardCustomization({
                   <div className="space-y-0.5">
                     <Label htmlFor="custom-design">Need a custom design?</Label>
                     <p className="text-sm text-muted-foreground">
-                      Our designers will create a professional card design for
-                      you
+                      Our designers will create a professional card design for you
                     </p>
                   </div>
                   <Switch
                     id="custom-design"
-                    checked={customization.needsCustomDesign}
+                    checked={customization.hasCustomDesign}
                     onCheckedChange={handleCustomDesignToggle}
                   />
                 </div>
 
-                {customization.needsCustomDesign && (
+                {customization.hasCustomDesign && (
                   <motion.div
                     className="mt-4 p-4 bg-muted rounded-lg"
                     initial={{ opacity: 0, height: 0 }}
@@ -332,14 +362,12 @@ export default function CardCustomization({
                     transition={{ duration: 0.3 }}
                   >
                     <p className="text-sm font-medium text-foreground">
-                      Custom design service: {formatCurrency(CUSTOM_DESIGN_FEE)}
+                      Custom design service: {formatCurrency(DESIGN_SERVICE_FEE)}
                     </p>
                     <p className="text-xs text-muted-foreground mt-1">
-                      This is in addition to the{" "}
-                      {formatCurrency(CUSTOMIZATION_FEE)} customization fee. Our
-                      design team will create a professional card design for
-                      you. You&apos;ll receive a draft for approval within 2
-                      business days.
+                      This is in addition to the {formatCurrency(CUSTOMIZATION_FEE)} customization fee.
+                      Our design team will create a professional card design for you.
+                      You&apos;ll receive a draft for approval within 2 business days.
                     </p>
                   </motion.div>
                 )}
@@ -370,7 +398,7 @@ export default function CardCustomization({
                           className="object-contain max-w-full max-h-full"
                         />
                       </motion.div>
-                    ) : customization.needsCustomDesign ? (
+                    ) : customization.hasCustomDesign ? (
                       <p className="text-muted-foreground text-center p-4">
                         Our designers will create your custom front design
                       </p>
@@ -404,7 +432,7 @@ export default function CardCustomization({
                           className="object-contain max-w-full max-h-full"
                         />
                       </motion.div>
-                    ) : customization.needsCustomDesign ? (
+                    ) : customization.hasCustomDesign ? (
                       <p className="text-muted-foreground text-center p-4">
                         Our designers will create your custom back design
                       </p>
@@ -428,7 +456,7 @@ export default function CardCustomization({
                   disabled={
                     !frontPreview &&
                     !backPreview &&
-                    !customization.needsCustomDesign
+                    !customization.hasCustomDesign
                   }
                 >
                   <Download className="mr-2 h-4 w-4" />
@@ -442,13 +470,18 @@ export default function CardCustomization({
           <div>
             <p className="text-sm font-medium">
               Total:{" "}
-              {formatCurrency(productPrice + customization.additionalPrice)}
+              {formatCurrency(
+                productPrice +
+                  customization.customizationFee +
+                  customization.designServiceFee
+              )}
             </p>
-            {customization.additionalPrice > 0 && (
+            {(customization.customizationFee > 0 ||
+              customization.designServiceFee > 0) && (
               <p className="text-xs text-muted-foreground">
                 Includes {formatCurrency(CUSTOMIZATION_FEE)} for customization
-                {customization.needsCustomDesign && (
-                  <> + {formatCurrency(CUSTOM_DESIGN_FEE)} for design service</>
+                {customization.hasCustomDesign && (
+                  <> + {formatCurrency(DESIGN_SERVICE_FEE)} for design service</>
                 )}
               </p>
             )}

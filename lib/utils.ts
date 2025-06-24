@@ -65,11 +65,6 @@ export const paymentMethods = [
     name: "Paystack",
     description: "Pay securely with Paystack",
   },
-  {
-    id: "flutterwave",
-    name: "Flutterwave",
-    description: "Pay securely with Flutterwave",
-  },
 ];
 
 // Add VAT calculation function

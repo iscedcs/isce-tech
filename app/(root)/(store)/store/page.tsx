@@ -1,28 +1,29 @@
 "use client";
 
 import type React from "react";
-
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useFilterStore } from "@/lib/store/filter-store";
-import { products, getProductsByCategory } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import LazyLoad from "react-lazyload";
 import { formatCurrency } from "@/lib/utils";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import ProductCard from "@/components/pages/store/product-card";
 import MaxWidthContainer from "@/components/ui/container";
+import { getProducts } from "@/actions/product";
+import { Product } from "@prisma/client";
 
 export default function ProductsPage() {
   const {
-    category,
+    deviceType,
     searchQuery,
     sortBy,
     priceRange,
-    setCategory,
+    setDeviceType,
     setSearchQuery,
     setSortBy,
     setPriceRange,
@@ -30,16 +31,19 @@ export default function ProductsPage() {
   } = useFilterStore();
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [displayProducts, setDisplayProducts] = useState(products);
+  const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
   const [localPriceRange, setLocalPriceRange] = useState(priceRange);
   const [localSearch, setLocalSearch] = useState(searchQuery);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const pageSize = 12;
 
   const categories = [
     { id: "all", name: "All Products" },
-    { id: "cards", name: "NFC Cards" },
-    { id: "wristbands", name: "Wristbands" },
-    { id: "stickers", name: "Stickers" },
-    { id: "accessories", name: "Accessories" },
+    { id: "CARD", name: "Cards" },
+    { id: "WRISTBAND", name: "Wristbands" },
+    { id: "STICKER", name: "Stickers" },
+    { id: "KEYCHAIN", name: "Keychains" },
   ];
 
   const sortOptions = [
@@ -50,50 +54,29 @@ export default function ProductsPage() {
     { id: "name-z-a", name: "Name: Z to A" },
   ];
 
-  // Filter and sort products
   useEffect(() => {
-    let filtered =
-      category === "all" ? products : getProductsByCategory(category);
-
-    // Apply search filter
-    if (searchQuery) {
-      filtered = filtered.filter(
-        (product) =>
-          product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          product.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+    async function fetchProducts() {
+      const { success, products, totalCount, error } = await getProducts({
+        deviceType,
+        searchQuery,
+        sortBy,
+        priceRange,
+        page,
+        pageSize,
+      });
+      if (success && products) {
+        setDisplayProducts(products as Product[]);
+        setTotalPages(Math.ceil(totalCount / pageSize));
+      } else {
+        console.error(error);
+        setDisplayProducts([]);
+      }
     }
+    fetchProducts();
+  }, [deviceType, searchQuery, sortBy, priceRange, page]);
 
-    // Apply price filter
-    filtered = filtered.filter(
-      (product) =>
-        product.price >= priceRange[0] && product.price <= priceRange[1]
-    );
-
-    // Apply sorting
-    switch (sortBy) {
-      case "price-low-high":
-        filtered.sort((a, b) => a.price - b.price);
-        break;
-      case "price-high-low":
-        filtered.sort((a, b) => b.price - a.price);
-        break;
-      case "name-a-z":
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-      case "name-z-a":
-        filtered.sort((a, b) => b.name.localeCompare(a.name));
-        break;
-      default:
-        // Featured - no sorting needed
-        break;
-    }
-
-    setDisplayProducts(filtered);
-  }, [category, searchQuery, sortBy, priceRange]);
-
-  const handleCategoryChange = (value: string) => {
-    setCategory(value);
+  const handleDeviceTypeChange = (value: string) => {
+    setDeviceType(value);
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -112,20 +95,19 @@ export default function ProductsPage() {
 
   const handleReset = () => {
     resetFilters();
-    setLocalPriceRange([0, 3000000]);
+    setLocalPriceRange([0, 300000]);
     setLocalSearch("");
     setIsFilterOpen(false);
   };
 
   return (
-    <div className=" bg-foreground">
+    <div className="bg-foreground">
       <MaxWidthContainer className="">
         <motion.div
           className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+          transition={{ duration: 0.2 }}>
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-white">
               Products
@@ -138,8 +120,7 @@ export default function ProductsPage() {
           <div className="flex items-center gap-2 w-full md:w-auto">
             <form
               onSubmit={handleSearchSubmit}
-              className="relative flex-1 md:w-64"
-            >
+              className="relative flex-1 md:w-64">
               <Input
                 type="search"
                 placeholder="Search products..."
@@ -151,8 +132,7 @@ export default function ProductsPage() {
                 type="submit"
                 variant="ghost"
                 size="icon"
-                className="absolute right-0 top-0 h-full"
-              >
+                className="absolute right-0 top-0 h-full">
                 <Search className="h-4 w-4" />
               </Button>
             </form>
@@ -160,11 +140,10 @@ export default function ProductsPage() {
               variant="outline"
               size="icon"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="relative"
-            >
+              className="relative">
               <SlidersHorizontal className="h-4 w-4" />
               {(priceRange[0] > 0 ||
-                priceRange[1] < 3000000 ||
+                priceRange[1] < 300000 ||
                 sortBy !== "featured") && (
                 <span className="absolute -top-1 -right-1 h-2 w-2 bg-primary rounded-full"></span>
               )}
@@ -175,13 +154,11 @@ export default function ProductsPage() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+          transition={{ duration: 0.2, delay: 0.1 }}>
           <Tabs
-            defaultValue={category}
+            defaultValue={deviceType}
             className="w-full"
-            onValueChange={handleCategoryChange}
-          >
+            onValueChange={handleDeviceTypeChange}>
             <TabsList className="mb-8 flex flex-wrap h-auto bg-foreground">
               {categories.map((cat) => (
                 <TabsTrigger key={cat.id} value={cat.id} className="mb-2">
@@ -190,23 +167,20 @@ export default function ProductsPage() {
               ))}
             </TabsList>
 
-            {/* Filter panel */}
             <AnimatePresence>
               {isFilterOpen && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
                   exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="mb-8 p-4 border border-border rounded-lg text-white"
-                >
+                  transition={{ duration: 0.2 }}
+                  className="mb-8 p-4 border border-border rounded-lg text-white">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-medium">Filters</h3>
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => setIsFilterOpen(false)}
-                    >
+                      onClick={() => setIsFilterOpen(false)}>
                       <X className="h-4 w-4" />
                     </Button>
                   </div>
@@ -218,8 +192,8 @@ export default function ProductsPage() {
                         <Slider
                           defaultValue={localPriceRange}
                           min={0}
-                          max={3000000}
-                          step={50000}
+                          max={300000}
+                          step={1000}
                           value={localPriceRange}
                           onValueChange={handlePriceRangeChange}
                           className="my-6"
@@ -247,8 +221,7 @@ export default function ProductsPage() {
                             />
                             <Label
                               htmlFor={option.id}
-                              className="text-sm cursor-pointer"
-                            >
+                              className="text-sm cursor-pointer">
                               {option.name}
                             </Label>
                           </div>
@@ -269,22 +242,38 @@ export default function ProductsPage() {
 
             <AnimatePresence mode="wait">
               <motion.div
-                key={category + sortBy + searchQuery + priceRange.join("-")}
+                key={deviceType + sortBy + searchQuery + priceRange.join("-")}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
+                transition={{ duration: 0.2 }}>
                 {displayProducts.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {displayProducts.map((product, index) => (
-                      <ProductCard
-                        key={product.id}
-                        product={product}
-                        index={index}
-                      />
-                    ))}
-                  </div>
+                  <>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                      {displayProducts.map((product, index) => (
+                        <LazyLoad key={product.id} height={400} once>
+                          <ProductCard product={product} index={index} />
+                        </LazyLoad>
+                      ))}
+                    </div>
+                    {displayProducts.length > pageSize && (
+                      <div className="flex justify-center gap-2 mt-8">
+                        <Button
+                          disabled={page === 1}
+                          onClick={() => setPage(page - 1)}>
+                          Previous
+                        </Button>
+                        <span>
+                          Page {page} of {totalPages}
+                        </span>
+                        <Button
+                          disabled={page === totalPages}
+                          onClick={() => setPage(page + 1)}>
+                          Next
+                        </Button>
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <div className="text-center py-12">
                     <p className="text-muted-foreground">
@@ -293,8 +282,7 @@ export default function ProductsPage() {
                     <Button
                       variant="outline"
                       onClick={handleReset}
-                      className="mt-4"
-                    >
+                      className="mt-4">
                       Reset Filters
                     </Button>
                   </div>
