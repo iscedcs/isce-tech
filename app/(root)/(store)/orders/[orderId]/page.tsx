@@ -16,7 +16,11 @@ import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 import AnimatedCard from "@/components/animated-card";
 
-export default async function OrderPage({ params }: { params: { orderId: string } }) {
+export default async function OrderPage({
+  params,
+}: {
+  params: { orderId: string };
+}) {
   const order = await db.order.findUnique({
     where: { id: params.orderId },
     include: {
@@ -46,7 +50,11 @@ export default async function OrderPage({ params }: { params: { orderId: string 
     { label: "Order Placed", completed: true, icon: Package },
     { label: "Processing", completed: order.status === "PAID", icon: Truck },
     { label: "Shipped", completed: order.status === "SHIPPED", icon: Truck },
-    { label: "Delivered", completed: order.status === "DELIVERED", icon: CheckCircle },
+    {
+      label: "Delivered",
+      completed: order.status === "DELIVERED",
+      icon: CheckCircle,
+    },
   ];
 
   return (
@@ -56,7 +64,9 @@ export default async function OrderPage({ params }: { params: { orderId: string 
           <CardHeader>
             <div className="flex justify-between items-center">
               <div>
-                <CardTitle className="text-3xl font-bold">Order #{order.id.slice(0, 8)}</CardTitle>
+                <CardTitle className="text-3xl font-bold">
+                  Order #{order.id.slice(0, 8)}
+                </CardTitle>
                 <CardDescription>
                   Placed on{" "}
                   {new Date(order.createdAt).toLocaleDateString("en-NG", {
@@ -69,17 +79,16 @@ export default async function OrderPage({ params }: { params: { orderId: string 
               <Badge
                 variant={order.status === "PAID" ? "default" : "secondary"}
                 className={
-                   order.status === "PAID"
-                            ? "bg-blue-500 text-white"
-                            : order.status === "DELIVERED"
-                            ? "bg-emerald-500 text-white"
-                            : order.status === "SHIPPED"
-                            ? "bg-yellow-300 text-white"
-                            : order.status === "CANCELLED"
-                            ? "bg-red-500 text-white"
-                            : "bg-gray-500 text-white"
-                }
-              >
+                  order.status === "PAID"
+                    ? "bg-blue-500 text-white"
+                    : order.status === "DELIVERED"
+                      ? "bg-emerald-500 text-white"
+                      : order.status === "SHIPPED"
+                        ? "bg-yellow-300 text-white"
+                        : order.status === "CANCELLED"
+                          ? "bg-red-500 text-white"
+                          : "bg-gray-500 text-white"
+                }>
                 {order.status}
               </Badge>
             </div>
@@ -93,12 +102,13 @@ export default async function OrderPage({ params }: { params: { orderId: string 
                   <div key={step.label} className="flex flex-col items-center">
                     <AnimatedCard
                       className={`h-10 w-10 rounded-full flex items-center justify-center ${
-                        step.completed ? "bg-emerald-500 text-white" : "bg-gray-600 text-gray-300"
+                        step.completed
+                          ? "bg-emerald-500 text-white"
+                          : "bg-gray-600 text-gray-300"
                       }`}
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: index * 0.2 }}
-                    >
+                      transition={{ delay: index * 0.2 }}>
                       <step.icon className="h-5 w-5" />
                     </AnimatedCard>
                     <p className="text-sm mt-2">{step.label}</p>
@@ -123,13 +133,14 @@ export default async function OrderPage({ params }: { params: { orderId: string 
                 {order.orderItems.map((item) => (
                   <div
                     key={item.id}
-                    className="flex items-start gap-4 border-b border-background/10 pb-4"
-                  >
+                    className="flex items-start gap-4 border-b border-background/10 pb-4">
                     <div className="relative w-16 h-16">
                       <Image
-                        src={Array.isArray(item.product?.images) && item.product.images.length > 0
-                          ? item.product.images[0]
-                          : "/images/business.png"
+                        src={
+                          Array.isArray(item.product?.images) &&
+                          item.product.images.length > 0
+                            ? item.product.images[0]
+                            : "/images/business.png"
                         }
                         alt={item.product?.name || "Product"}
                         fill
@@ -137,7 +148,9 @@ export default async function OrderPage({ params }: { params: { orderId: string 
                       />
                     </div>
                     <div className="flex-1">
-                      <p className="font-medium">{item.product?.name || item.productId}</p>
+                      <p className="font-medium">
+                        {item.product?.name || item.productId}
+                      </p>
                       <p className="text-sm text-muted-foreground">
                         Quantity: {item.quantity}
                       </p>
@@ -173,10 +186,14 @@ export default async function OrderPage({ params }: { params: { orderId: string 
                   <p>{`${order.shippingInfo?.city}, ${order.shippingInfo?.state}`}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Delivery Method</p>
+                  <p className="text-sm text-muted-foreground">
+                    Delivery Method
+                  </p>
                   <p>{order.shippingInfo?.deliveryMethod}</p>
                   {order.shippingInfo?.pickupLocation && (
-                    <p className="text-sm">{order.shippingInfo.pickupLocation}</p>
+                    <p className="text-sm">
+                      {order.shippingInfo.pickupLocation}
+                    </p>
                   )}
                 </div>
               </div>
@@ -190,7 +207,11 @@ export default async function OrderPage({ params }: { params: { orderId: string 
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
-                  <span>{formatCurrency(order.totalAmount - order.vatAmount - order.deliveryPrice)}</span>
+                  <span>
+                    {formatCurrency(
+                      order.totalAmount - order.vatAmount - order.deliveryPrice
+                    )}
+                  </span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">VAT (7.5%)</span>
@@ -198,7 +219,11 @@ export default async function OrderPage({ params }: { params: { orderId: string 
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Delivery</span>
-                  <span>{order.deliveryPrice > 0 ? formatCurrency(order.deliveryPrice) : "Free"}</span>
+                  <span>
+                    {order.deliveryPrice > 0
+                      ? formatCurrency(order.deliveryPrice)
+                      : "Free"}
+                  </span>
                 </div>
                 <div className="flex justify-between font-medium">
                   <span>Total</span>
@@ -208,13 +233,16 @@ export default async function OrderPage({ params }: { params: { orderId: string 
             </div>
 
             <div className="flex justify-end">
-              <Button asChild variant="outline" className="text-emerald-500 border-emerald-500">
+              <Button
+                asChild
+                variant="outline"
+                className="text-emerald-500 bg-transparent border-emerald-500">
                 <Link href="/orders">Back to Orders</Link>
               </Button>
             </div>
           </CardContent>
         </Card>
-</AnimatedCard>    
-</MaxWidthContainer>
+      </AnimatedCard>
+    </MaxWidthContainer>
   );
 }
