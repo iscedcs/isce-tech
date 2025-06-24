@@ -16,103 +16,105 @@ async function getData(slug: string) {
     body,
     slug,
   }`;
-	const data = await client.fetch(query);
-	return data; 
-  
+  const data = await client.fetch(query);
+  return data;
 }
 
 const PortableTextImage = ({
   value,
 }: {
-  value: {asset: {}; alt: string};
+  value: { asset: {}; alt: string };
 }) => {
   return (
     <div className="grid shadow-lg rounded-2xl overflow-hidden my-5 border">
       <Image
-      src={urlFor(value.asset).url()}
-      alt={value.alt}
-      width={900}
-      height={300}
-      loading='lazy'
-      className="mx-auto w-full aspect-[2/1] object-cover object-center"
+        src={urlFor(value.asset).url()}
+        alt={value.alt}
+        width={900}
+        height={300}
+        loading="lazy"
+        className="mx-auto w-full aspect-[2/1] object-cover object-center"
       />
       <div className="h-10 w-full bg-primary grid place-items-center">
         {value.alt}
       </div>
     </div>
-  )
-}
+  );
+};
 
 /**
- * 
+ *
  * @returns MetaData
  */
 export async function generateMetadata(
   {
     params,
   }: {
-    params: {slug: string};
+    params: { slug: string };
   },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const previousImage = (await parent).openGraph?.images || [];
-  const post = (await getData(params.slug)) as IPost;
+  const post = (await getData(params.slug)) as IPost | null;
 
-return {
-  title: post.title,
-  openGraph: {
-    images: [
-      urlFor(post.mainImage.asset).url(),
-      ...previousImage,
-    ],
-  },
-  description: post.overview
+  if (!post) {
+    return {
+      title: "Blog post not found",
+      description: "The requested blog post could not be found.",
+      openGraph: {
+        images: [...previousImage],
+      },
+    };
+  }
+
+  return {
+    title: post.title,
+    openGraph: {
+      images: [urlFor(post.mainImage.asset).url(), ...previousImage],
+    },
+    description: post.overview,
+  };
 }
 
-
-}
 export default async function IndividualPost({
   params,
 }: {
-  params: {slug: string};
+  params: { slug: string };
 }) {
   const post: IPost = await getData(params.slug);
-  if(!post) {
-    return <FormError message="Blog post not found!"/>
+  if (!post) {
+    return <FormError message="Blog post not found!" />;
   }
-  revalidatePath('/blog')
+  revalidatePath("/blog");
 
   return (
-    <div className='mx-auto max-w-3xl px-3 md:px-5'>
-				<div className='py-40 w-full'>
-					<h1 className='text-3xl font-semibold '>
-						{post.title}
-					</h1>
-					<p className='text-primary text-sm mb-2'>
-						{new Date(post._createdAt).toDateString()} by{' '}
-						{post.author.name}
-					</p>
-					<div className='w-full aspect-video rounded-2xl overflow-hidden mb-10'>
-						<Image
-							width={350}
-							height={400}
-							src={urlFor(post.mainImage.asset).url()}
-							alt={post.title}
-              quality={100}
-							className='w-full h-full object-cover object-center '
-						/>
-					</div>
-					<div className='text-foreground flex flex-col gap-5'>
-						<PortableText
-							value={post.body}
-							components={{
-								types: {
-									image: PortableTextImage,
-								},
-							}}
-						/>
-					</div>
-				</div>
-			</div>
-  )
+    <div className="mx-auto max-w-3xl px-3 md:px-5">
+      <div className="py-40 w-full">
+        <h1 className="text-3xl font-semibold ">{post.title}</h1>
+        <p className="text-primary text-sm mb-2">
+          {new Date(post._createdAt).toDateString()} by {post.author.name}
+        </p>
+        <div className="w-full aspect-video rounded-2xl overflow-hidden mb-10">
+          <Image
+            width={350}
+            height={400}
+            src={urlFor(post.mainImage.asset).url()}
+            alt={post.title}
+            quality={100}
+            className="w-full h-full object-cover object-center "
+          />
+        </div>
+        <div className="text-foreground flex flex-col gap-5">
+          <PortableText
+            value={post.body}
+            components={{
+              types: {
+                image: PortableTextImage,
+              },
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
 }

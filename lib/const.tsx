@@ -469,3 +469,21 @@ export const data = [
   { name: "2023", uv: 500, pv: 40000, amt: 2400 },
   { name: "2024", uv: 600, pv: 40000, amt: 2400 },
 ];
+export const AUTH_API = process.env.NEXT_PUBLIC_LIVE_ISCEAUTH_BACKEND_URL;
+export const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
+export const URLS = {
+  auth: {
+    sign_up: "/auth/signup",
+    sign_in: "/auth/signin",
+    sign_out: "/auth/signout",
+    reset_token: "/auth/send-reset-token",
+    reset_password: "/auth/reset-password",
+  },
+  user: {
+    one: "/user/one/{id}",
+  },
+  device: {
+    create: "/device/create",
+  }
+}

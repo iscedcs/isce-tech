@@ -4,6 +4,7 @@ import NavComp from "./nav";
 import { Toaster } from "../ui/sonner";
 import Footer from "./footer";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function LayoutDisplay({
   children,
@@ -15,8 +16,7 @@ export default function LayoutDisplay({
     <div>
       {pathname === "/profile" ? null : <NavComp />}
       {children}
-      {pathname === "/profile" ? null : <NavComp />}
-      <Toaster />
+      <Toaster richColors />
       {pathname === "/profile" ? null : <Footer />}
     </div>
   );

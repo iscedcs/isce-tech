@@ -3,38 +3,51 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import MaxWidthContainer from '../ui/container';
 import Link from 'next/link';
-import { AlignJustify } from 'lucide-react';
-import { Button } from '../ui/button';
+import { AlignJustify, Badge, LogOut, ShoppingCart, User } from "lucide-react";
+import { Button } from "../ui/button";
+import { useCartStore } from "@/lib/store/cart-store";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const NavComp: React.FC = () => {
-	const [isMenuOpen, setMenuOpen] = useState(false);
+  const { totalItems } = useCartStore();
+  const session = useSession();
+  const user = session.data?.user;
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
-	const toggleMenu = () => {
-		setMenuOpen(!isMenuOpen);
-	};
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
-	const closeMenu = () => {
-		setMenuOpen(false);
-	};
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
-	const [scrolling, setscrolling] = useState(false);
-	useEffect(() => {
-		const handleScroll = () => {
-			const scrollTop = window.scrollY;
-			setscrolling(scrollTop > 0);
-		};
+  const [scrolling, setscrolling] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setscrolling(scrollTop > 0);
+    };
 
-		window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-	return (
+  return (
     <nav
       className={`transition-all w-full fixed z-40 ${
-        scrolling ? "bg-primary" : "backdrop-blur-md"
+        scrolling ? "bg-primary" : "bg-current"
       } `}
     >
       <MaxWidthContainer className="py-0 flex justify-between items-center">
@@ -86,17 +99,71 @@ const NavComp: React.FC = () => {
             className="text-secondary py-6"
           >{`Contact Us`}</Link>
           <Link href="/blog" className="text-secondary py-6">{`Blog`}</Link>
-          <Button className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
+          <Link href="/store" className="text-secondary py-6">{`Store`}</Link>
+          <Button
+            className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
+            asChild
+            size={"sm"}
+          >
             <Link
               href="/quote"
-              className="text-secondary py-6 text-black"
+              className="text-secondary text-black"
             >{`GET A QUOTE`}</Link>
           </Button>
-          {/* <Link
-						href='/#'
-						className='text-secondary py-6'
-					>{`Team`}</Link> */}
-          {/* <Link href="/#" className="text-secondary py-6">{`Blog`}</Link> */}
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  size={"icon"}
+                  className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center "
+                >
+                  <User className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {/* <DropdownMenuItem asChild>
+                  <Link href="/account">Profile</Link>
+                </DropdownMenuItem> */}
+                <DropdownMenuItem asChild>
+                  <Link href="/orders">Orders</Link>
+                </DropdownMenuItem>
+                {/* <DropdownMenuItem asChild>
+                  <Link href="/account/addresses">Addresses</Link>
+                </DropdownMenuItem> */}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={async () => signOut()} className="text-destructive">
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button
+              size="sm"
+              className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
+              asChild
+              onClick={() => signIn()}
+            >
+             Login
+            </Button>
+          )}
+
+          <Button
+            size="icon"
+            className="relative bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
+            asChild
+          >
+            <Link href="/cart" className="text-secondary">
+              <ShoppingCart className="h-5 w-5" />
+              {totalItems > 0 && (
+                <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-primary-foreground">
+                  {totalItems}
+                </Badge>
+              )}
+            </Link>
+          </Button>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-secondary py-6 w-full">
@@ -156,14 +223,14 @@ const NavComp: React.FC = () => {
                       onClick={closeMenu}
                     >{`Busines`}</Link>
                   </li>
-                  {/* <li>
+                   <li>
                     <Link
                       href="/#"
                       className="text-secondary"
                       onClick={closeMenu}
                     >{`Store`}</Link>
                   </li>
-                  <li>
+                  {/*<li>
                     <Link
                       href="/#"
                       className="text-secondary"
