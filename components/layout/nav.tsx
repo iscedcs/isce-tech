@@ -1,8 +1,8 @@
-'use client';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import MaxWidthContainer from '../ui/container';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import MaxWidthContainer from "../ui/container";
+import Link from "next/link";
 import { AlignJustify, Badge, LogOut, ShoppingCart, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const NavComp: React.FC = () => {
   const { totalItems } = useCartStore();
@@ -48,8 +48,7 @@ const NavComp: React.FC = () => {
     <nav
       className={`transition-all w-full fixed z-40 ${
         scrolling ? "bg-primary" : "bg-current"
-      } `}
-    >
+      } `}>
       <MaxWidthContainer className="py-0 flex justify-between items-center">
         <div className="py-6">
           <Link href="/">
@@ -66,16 +65,13 @@ const NavComp: React.FC = () => {
           <Link href="/" className="text-secondary py-6">{`Home`}</Link>
           <Link
             href="/about"
-            className="text-secondary py-6"
-          >{`About Us`}</Link>
+            className="text-secondary py-6">{`About Us`}</Link>
           <Link
             href="/services"
-            className="text-secondary py-6"
-          >{`Services`}</Link>
+            className="text-secondary py-6">{`Services`}</Link>
           <Link
             href="/profile"
-            className="text-secondary py-6"
-          >{`Profile`}</Link>
+            className="text-secondary py-6">{`Profile`}</Link>
           <div className="group pt-6">
             <h1 className="text-secondary">{`Products`}</h1>
             <div className="hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4">
@@ -83,40 +79,34 @@ const NavComp: React.FC = () => {
               <div className="">
                 <Link
                   href="/individual"
-                  className="text-secondary text-sm"
-                >{`For Individual`}</Link>
+                  className="text-secondary text-sm">{`For Individual`}</Link>
               </div>
               <div className="">
                 <Link
                   href="/business"
-                  className="text-secondary text-sm"
-                >{`For Business`}</Link>
+                  className="text-secondary text-sm">{`For Business`}</Link>
               </div>
             </div>
           </div>
           <Link
             href="/contact"
-            className="text-secondary py-6"
-          >{`Contact Us`}</Link>
+            className="text-secondary py-6">{`Contact Us`}</Link>
           <Link href="/blog" className="text-secondary py-6">{`Blog`}</Link>
           <Link href="/store" className="text-secondary py-6">{`Store`}</Link>
           <Button
             className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
             asChild
-            size={"sm"}
-          >
+            size={"sm"}>
             <Link
               href="/quote"
-              className="text-secondary text-black"
-            >{`GET A QUOTE`}</Link>
+              className="text-secondary text-black">{`GET A QUOTE`}</Link>
           </Button>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   size={"icon"}
-                  className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center "
-                >
+                  className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
                   <User className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
@@ -133,7 +123,9 @@ const NavComp: React.FC = () => {
                   <Link href="/account/addresses">Addresses</Link>
                 </DropdownMenuItem> */}
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={async () => signOut()} className="text-destructive">
+                <DropdownMenuItem
+                  onClick={async () => signOut()}
+                  className="text-destructive">
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </DropdownMenuItem>
@@ -144,17 +136,15 @@ const NavComp: React.FC = () => {
               size="sm"
               className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
               asChild
-              onClick={() => signIn()}
-            >
-             Login
+              onClick={() => signIn()}>
+              Login
             </Button>
           )}
 
           <Button
             size="icon"
             className="relative bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
-            asChild
-          >
+            asChild>
             <Link href="/cart" className="text-secondary">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
@@ -185,50 +175,43 @@ const NavComp: React.FC = () => {
                     <Link
                       href="/#"
                       className="text-secondary "
-                      onClick={closeMenu}
-                    >{`Home`}</Link>
+                      onClick={closeMenu}>{`Home`}</Link>
                   </li>
                   <li>
                     <Link
                       href="/about"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`About Us`}</Link>
+                      onClick={closeMenu}>{`About Us`}</Link>
                   </li>
                   <li>
                     <Link
                       href="/services"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Services`}</Link>
+                      onClick={closeMenu}>{`Services`}</Link>
                   </li>
                   <li>
                     <Link
                       href="/profile"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Profile`}</Link>
+                      onClick={closeMenu}>{`Profile`}</Link>
                   </li>
                   <li>
                     <Link
                       href="/individual"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Individual`}</Link>
+                      onClick={closeMenu}>{`Individual`}</Link>
                   </li>
                   <li>
                     <Link
                       href="/business"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Busines`}</Link>
+                      onClick={closeMenu}>{`Busines`}</Link>
                   </li>
-                   <li>
+                  <li>
                     <Link
-                      href="/#"
+                      href="/store"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Store`}</Link>
+                      onClick={closeMenu}>{`Store`}</Link>
                   </li>
                   {/*<li>
                     <Link
@@ -241,21 +224,18 @@ const NavComp: React.FC = () => {
                     <Link
                       href="/contact"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Contact Us`}</Link>
+                      onClick={closeMenu}>{`Contact Us`}</Link>
                   </li>
                   <li>
                     <Link
                       href="/blog"
                       className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Blog`}</Link>
+                      onClick={closeMenu}>{`Blog`}</Link>
                   </li>
                   <Button className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
                     <Link
                       href="/quote"
-                      className="text-secondary py-6 text-black"
-                    >{`GET A QUOTE`}</Link>
+                      className="text-secondary py-6 text-black">{`GET A QUOTE`}</Link>
                   </Button>
                   {/* <li>
 										<Link
