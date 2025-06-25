@@ -156,9 +156,9 @@ const NavComp: React.FC = () => {
           </Button>
         </div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-secondary py-6 w-full">
+          <Button onClick={toggleMenu} className="text-secondary py-6 w-full">
             <AlignJustify className="h-8 w-8" />
-          </button>
+          </Button>
           {isMenuOpen && (
             <div className=" fixed  top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-primary p-4 space-y-4">
               <Image
@@ -237,6 +237,7 @@ const NavComp: React.FC = () => {
                       href="/quote"
                       className="text-secondary py-6 text-black">{`GET A QUOTE`}</Link>
                   </Button>
+
                   {/* <li>
 										<Link
 											href='/#'
@@ -255,6 +256,58 @@ const NavComp: React.FC = () => {
               </div>
             </div>
           )}
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  size={"icon"}
+                  className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
+                  <User className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {/* <DropdownMenuItem asChild>
+                  <Link href="/account">Profile</Link>
+                </DropdownMenuItem> */}
+                <DropdownMenuItem asChild>
+                  <Link href="/orders">Orders</Link>
+                </DropdownMenuItem>
+                {/* <DropdownMenuItem asChild>
+                  <Link href="/account/addresses">Addresses</Link>
+                </DropdownMenuItem> */}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={async () => signOut()}
+                  className="text-destructive">
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button
+              size="sm"
+              className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
+              asChild
+              onClick={() => signIn()}>
+              Login
+            </Button>
+          )}
+          <Button
+            size="icon"
+            className="relative bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
+            asChild>
+            <Link href="/cart" className="text-secondary">
+              <ShoppingCart className="h-5 w-5" />
+              {totalItems > 0 && (
+                <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-primary-foreground">
+                  {totalItems}
+                </Badge>
+              )}
+            </Link>
+          </Button>
         </div>
       </MaxWidthContainer>
     </nav>
