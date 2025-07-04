@@ -10,6 +10,7 @@ import { formatCurrency } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Product } from "@prisma/client";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: Product;
@@ -28,6 +29,8 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       image: product.images[0],
       quantity: 1,
     });
+
+    toast.success(`Added ${product.name} to cart!`, { duration: 2000 });
   };
 
   return (

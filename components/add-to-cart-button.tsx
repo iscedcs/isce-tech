@@ -8,6 +8,7 @@ import { useCartStore } from "@/lib/store/cart-store";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import type { CardCustomizationData } from "./card-customization";
+import { toast } from "sonner";
 
 interface AddToCartButtonProps {
   product: {
@@ -51,6 +52,16 @@ export default function AddToCartButton({
         : undefined,
     });
 
+    // console.log("Toast should appear now");
+    // toast.success("Added to cart", {
+    //   duration: 2000, // Match the isAdded timeout
+    // });
+
+    toast.success(
+      `Added ${quantity} ${product.name}${quantity > 1 ? "s" : ""} to cart!`,
+      { duration: 2000 }
+    );
+
     setIsAdded(true);
     setTimeout(() => setIsAdded(false), 2000);
   };
@@ -80,8 +91,7 @@ export default function AddToCartButton({
             variant="outline"
             size="icon"
             onClick={decreaseQuantity}
-            disabled={quantity <= 1}
-          >
+            disabled={quantity <= 1}>
             <Minus className="h-4 w-4" />
           </Button>
         </motion.div>
@@ -103,10 +113,10 @@ export default function AddToCartButton({
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-        >
+          exit={{ opacity: 0, height: 0 }}>
           <div className="text-sm text-amber-500">
-            Note: Card customization is only available when ordering a single card.
+            Note: Card customization is only available when ordering a single
+            card.
           </div>
         </motion.div>
       )}
@@ -115,14 +125,12 @@ export default function AddToCartButton({
         <Button
           onClick={handleAddToCart}
           className="w-full"
-          disabled={product.stock === 0 || isAdded}
-        >
+          disabled={product.stock === 0 || isAdded}>
           {isAdded ? (
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="flex items-center"
-            >
+              className="flex items-center">
               <Check className="mr-2 h-4 w-4" />
               Added to Cart
             </motion.div>
