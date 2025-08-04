@@ -109,10 +109,10 @@ export default function ProductsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}>
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-white">
+            <h1 className="sm:text-sm md:text-lg lg:text-xl xl:text-3xl font-bold tracking-tight text-white">
               Products
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground m:text-sm md:text-lg lg:text-xl xl:text-2xl">
               Browse our collection of NFC products
             </p>
           </div>
