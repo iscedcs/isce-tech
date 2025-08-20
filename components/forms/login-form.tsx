@@ -27,7 +27,6 @@ export default function LoginForm() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
 
-
   const callbackUrl = searchParams.get("callbackUrl") ?? undefined;
   console.log("callback url from search params", { callbackUrl });
   const router = useRouter();
@@ -35,13 +34,11 @@ export default function LoginForm() {
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-         email: "",
-         password: "",
+      email: "",
+      password: "",
     },
     mode: "all",
-});
-
- 
+  });
 
   const onClickUnhidePassword = () => {
     setHidePassword(!hidePassword);
@@ -53,31 +50,29 @@ export default function LoginForm() {
     const res = await login(data, callbackUrl);
     setIsLoading(false);
 
-    if (res !== null) {
+    if (res?.success) {
       toast.success("Account Logged In", {
         description: "This account has successfully been logged in",
       });
-      router.push(res.redirectUrl || DEFAULT_LOGIN_REDIRECT);
+      router.replace(res.redirectUrl || DEFAULT_LOGIN_REDIRECT);
     } else {
       toast.error("Login failed", {
-        description: "Invalid email or password",
+        description: res?.error || "Invalid email or password",
       });
-      console.error("SignIn error:");
+      console.error("SignIn error:", res?.error);
     }
   };
 
   return (
     <CardWrapper
-    headerLabel="Login To Continue"
-    backButtonLabel="Don't have an account? Sign Up"
-    backButtonHref="/sign-up"
-    >      
-    <Form {...form}>
+      headerLabel="Login To Continue"
+      backButtonLabel="Don't have an account? Sign Up"
+      backButtonHref="/sign-up">
+      <Form {...form}>
         <form
           className="flex gap-48 flex-col"
           action=""
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
+          onSubmit={form.handleSubmit(onSubmit)}>
           <div className=" flex gap-3 flex-col justify-center">
             <FormField
               control={form.control}
@@ -125,14 +120,12 @@ export default function LoginForm() {
                 </FormItem>
               )}
             />
-           
           </div>
           <div className="">
             <Button
               type="submit"
               disabled={isLoading}
-              className={` cursor-pointer bg-primary hover:bg-primary-hover rounded-[10px] w-full text-white `}
-            >
+              className={` cursor-pointer bg-primary hover:bg-primary-hover rounded-[10px] w-full text-white `}>
               {isLoading ? (
                 <ImSpinner9 className="animate-spin w-6 h-6 mr-3 " />
               ) : null}
@@ -141,6 +134,6 @@ export default function LoginForm() {
           </div>
         </form>
       </Form>
-      </CardWrapper>
+    </CardWrapper>
   );
 }

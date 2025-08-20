@@ -1,19 +1,21 @@
 "use client";
 
-import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
-import MaxWidthContainer from "../ui/container";
-import Link from "next/link";
+import { useCartStore } from "@/lib/store/cart-store";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   AlignJustify,
-  X,
   ChevronDown,
   LogOut,
   ShoppingCart,
   User,
+  X,
 } from "lucide-react";
+import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
-import { useCartStore } from "@/lib/store/cart-store";
+import MaxWidthContainer from "../ui/container";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,16 +23,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
 } from "../ui/dropdown-menu";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Skeleton } from "../ui/skeleton";
 
 const NavComp: React.FC = () => {
   const { totalItems } = useCartStore();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const user = session?.user;
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -150,7 +148,9 @@ const NavComp: React.FC = () => {
             asChild>
             <Link href="/quote">Get a Quote</Link>
           </Button>
-          {user ? (
+          {status === "loading" ? (
+            <Skeleton className="h-8 w-8 rounded-full" />
+          ) : status === "authenticated" ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -224,7 +224,9 @@ const NavComp: React.FC = () => {
               />
             )}
           </Button>
-          {user ? (
+          {status === "loading" ? (
+            <Skeleton className="h-8 w-8 rounded-full" />
+          ) : status === "authenticated" ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button

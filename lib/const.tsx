@@ -485,5 +485,5 @@ export const URLS = {
   },
   device: {
     create: "/device/create",
-  }
-}
+  },
+};
