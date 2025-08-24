@@ -80,6 +80,7 @@ export default function CheckoutPage() {
     return null;
   }
 
+  // Calculate all fees
   const selectedDelivery = deliveryOptions.find(
     (option) => option.id === form.getValues("deliveryMethod")
   );
@@ -103,15 +104,15 @@ export default function CheckoutPage() {
   const vatAmount = calculateVAT(totalWithCustomization);
   const totalPrice = totalWithCustomization + deliveryPrice + vatAmount;
 
-  // console.log("Checkout calculations:", {
-  //   baseSubtotal,
-  //   customizationFees,
-  //   totalWithCustomization,
-  //   vatAmount,
-  //   deliveryPrice,
-  //   totalPrice,
-  //   totalPriceInKobo: totalPrice * 100,
-  // });
+  console.log("Checkout calculations:", {
+    baseSubtotal,
+    customizationFees,
+    totalWithCustomization,
+    vatAmount,
+    deliveryPrice,
+    totalPrice,
+    totalPriceInKobo: totalPrice * 100, // Expected Paystack amount
+  });
 
   const handleSelectChange = (
     name: keyof z.infer<typeof checkoutFormSchema>,
@@ -187,7 +188,7 @@ export default function CheckoutPage() {
   return (
     <MaxWidthContainer className="py-20 sm:py-12 lg:pt-20 text-white">
       <motion.h1
-        className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 lg:mb-8"
+        className="text-3xl font-bold my-8"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}>
@@ -200,7 +201,7 @@ export default function CheckoutPage() {
       )}
 
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
             <AnimatePresence mode="wait">
               {step === 1 && (
@@ -212,16 +213,16 @@ export default function CheckoutPage() {
                   transition={{ duration: 0.3 }}>
                   <Card className="bg-foreground text-background">
                     <CardHeader>
-                      <CardTitle className="flex items-center text-lg sm:text-xl">
-                        <MapPin className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      <CardTitle className="flex items-center">
+                        <MapPin className="mr-2 h-5 w-5" />
                         Shipping Information
                       </CardTitle>
-                      <CardDescription className="text-sm sm:text-base">
+                      <CardDescription>
                         Enter your shipping details
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-3 sm:space-y-4 p-3 sm:p-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="firstName">First Name</Label>
                           <Input
@@ -256,7 +257,7 @@ export default function CheckoutPage() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                      <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="email">Email</Label>
                           <Input
@@ -309,7 +310,7 @@ export default function CheckoutPage() {
                         )}
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                      <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="city">City</Label>
                           <Input
@@ -345,10 +346,9 @@ export default function CheckoutPage() {
                     <CardFooter>
                       <motion.div
                         className="ml-auto"
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}>
-                        <Button
-                          onClick={handleNextStep}
-                          aria-label="Continue to delivery">
+                        <Button onClick={handleNextStep}>
                           Continue to Delivery
                         </Button>
                       </motion.div>
@@ -366,35 +366,35 @@ export default function CheckoutPage() {
                   transition={{ duration: 0.3 }}>
                   <Card className="bg-foreground text-background">
                     <CardHeader>
-                      <CardTitle className="flex items-center text-lg sm:text-xl">
-                        <Truck className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      <CardTitle className="flex items-center">
+                        <Truck className="mr-2 h-5 w-5" />
                         Delivery Method
                       </CardTitle>
-                      <CardDescription className="text-sm sm:text-base">
+                      <CardDescription>
                         Choose how you want to receive your order
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-3 sm:space-y-4 p-3 sm:p-4">
+                    <CardContent>
                       <RadioGroup
                         value={form.getValues("deliveryMethod")}
                         onValueChange={(value) =>
                           handleSelectChange("deliveryMethod", value)
                         }
-                        className="space-y-3 sm:space-y-4 text-white">
+                        className="space-y-4 text-black">
                         {deliveryOptions.map((option) => (
                           <div
                             key={option.id}
-                            className="flex items-start space-x-3">
+                            className="flex items-start text-background space-x-3">
                             <RadioGroupItem
                               value={option.id}
                               id={option.id}
-                              className="mt-1 text-white"
+                              className="mt-1"
                               aria-describedby={`delivery-${option.id}-desc`}
                             />
                             <div className="grid gap-1.5 leading-none">
                               <Label
                                 htmlFor={option.id}
-                                className="font-medium text-base sm:text-sm">
+                                className="font-medium">
                                 {option.name}{" "}
                                 {option.price > 0
                                   ? `(${formatCurrency(option.price)})`
@@ -428,7 +428,7 @@ export default function CheckoutPage() {
                                         )
                                       }>
                                       <SelectTrigger
-                                        className="bg-transparent w-full sm:w-auto"
+                                        className="bg-transparent"
                                         aria-label="Select pickup location">
                                         <SelectValue placeholder="Select a store location" />
                                       </SelectTrigger>
@@ -474,22 +474,21 @@ export default function CheckoutPage() {
                         ))}
                       </RadioGroup>
                     </CardContent>
-                    <CardFooter className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-0">
-                      <motion.div whileTap={{ scale: 0.95 }}>
+                    <CardFooter className="flex justify-between">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}>
                         <Button
                           variant="outline"
-                          className="text-black w-full sm:w-auto"
-                          onClick={() => setStep(1)}
-                          aria-label="Back to shipping">
-                          Back to shipping
+                          className="text-black"
+                          onClick={() => setStep(1)}>
+                          Back
                         </Button>
                       </motion.div>
-                      <motion.div whileTap={{ scale: 0.95 }}>
-                        <Button
-                          type="button"
-                          className="w-full sm:w-auto"
-                          onClick={handleNextStep}
-                          aria-label="Continue to payment">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}>
+                        <Button type="button" onClick={handleNextStep}>
                           Continue to Payment
                         </Button>
                       </motion.div>
@@ -507,21 +506,21 @@ export default function CheckoutPage() {
                   transition={{ duration: 0.3 }}>
                   <Card>
                     <CardHeader>
-                      <CardTitle className="flex items-center text-lg sm:text-xl">
-                        <CreditCard className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      <CardTitle className="flex items-center">
+                        <CreditCard className="mr-2 h-5 w-5" />
                         Payment Method
                       </CardTitle>
-                      <CardDescription className="text-sm sm:text-base">
+                      <CardDescription>
                         Select your preferred payment method
                       </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-3 sm:space-y-4 p-3 sm:p-4">
+                    <CardContent>
                       <RadioGroup
                         value={form.getValues("paymentMethod")}
                         onValueChange={(value) =>
                           handleSelectChange("paymentMethod", value)
                         }
-                        className="space-y-3 sm:space-y-4">
+                        className="space-y-4">
                         {paymentMethods.map((method) => (
                           <div
                             key={method.id}
@@ -535,7 +534,7 @@ export default function CheckoutPage() {
                             <div className="grid gap-1.5 leading-none">
                               <Label
                                 htmlFor={method.id}
-                                className="font-medium text-base sm:text-sm">
+                                className="font-medium">
                                 {method.name}
                               </Label>
                               <p
@@ -550,7 +549,7 @@ export default function CheckoutPage() {
 
                       {form.getValues("paymentMethod") === "paystack" && (
                         <motion.div
-                          className="mt-3 sm:mt-6 p-3 sm:p-4 bg-emerald-600/50 rounded-lg"
+                          className="mt-6 p-4 bg-emerald-600/50 rounded-lg"
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           transition={{ duration: 0.3 }}>
@@ -561,11 +560,13 @@ export default function CheckoutPage() {
                         </motion.div>
                       )}
 
-                      <div className="mt-3 sm:mt-6">
-                        <motion.div whileTap={{ scale: 0.97 }}>
+                      <div className="mt-6">
+                        <motion.div
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}>
                           <Button
                             type="submit"
-                            className="w-full text-base sm:text-lg"
+                            className="w-full"
                             disabled={isSubmitting}
                             aria-label="Complete order">
                             {isSubmitting ? "Processing..." : "Complete Order"}
@@ -574,7 +575,10 @@ export default function CheckoutPage() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <motion.div whileTap={{ scale: 0.95 }} className="w-full">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="w-full">
                         <Button
                           variant="outline"
                           onClick={() => setStep(2)}
@@ -600,8 +604,8 @@ export default function CheckoutPage() {
                   Order Summary
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 sm:space-y-3 p-3 sm:p-4">
-                <div className="space-y-1 sm:space-y-2">
+              <CardContent className="space-y-4">
+                <div className="space-y-3">
                   {items.map((item) => {
                     const hasCustomization = item.customization?.isCustomized;
                     const hasDesignService =
@@ -611,37 +615,30 @@ export default function CheckoutPage() {
                     return (
                       <div
                         key={item.id}
-                        className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3">
-                        <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded overflow-hidden">
+                        className="space-y-1 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                        <div className="relative w-14 h-14 sm:w-16 sm:h-16">
                           <Image
                             src={item.image}
                             alt={item.name}
                             fill
-                            className="object-cover"
-                            sizes="(max-width: 640px) 56px, (max-width: 1024px) 64px, 80px"
-                            priority={items.indexOf(item) < 2}
+                            className="object-cover rounded"
                           />
                         </div>
                         <div className="flex-1">
-                          <div className="flex flex-col sm:flex-row sm:justify-between text-sm">
+                          <div className="flex flex-col sm:flex-row justify-between text-xs sm:text-sm">
                             <div className="flex items-center">
                               <span>{item.quantity} x</span>
-                              <span className="ml-1 sm:ml-2 truncate">
-                                {item.name}
-                              </span>
+                              <span className="ml-2 truncate">{item.name}</span>
                             </div>
-                            <span>
+                            <span className="mt-1 sm:mt-0">
                               {formatCurrency(item.price * item.quantity)}
                             </span>
                           </div>
 
                           {hasCustomization && (
-                            <div className="ml-0 sm:ml-4 text-xs text-muted-foreground">
+                            <div className="mt-1 text-xs text-muted-foreground">
                               <div className="flex items-center">
-                                <Palette
-                                  className="h-3 w-3 mr-1"
-                                  aria-hidden="true"
-                                />
+                                <Palette className="h-3 w-3 mr-1" />
                                 <span>
                                   {cardColor
                                     ? `Customized (${cardColor})`
@@ -663,33 +660,27 @@ export default function CheckoutPage() {
 
                 <Separator />
 
-                <div className="space-y-1 sm:space-y-2">
-                  <div className="flex flex-col sm:flex-row sm:justify-between text-sm">
-                    <span className="text-muted-foreground mb-1 sm:mb-0">
-                      Subtotal
-                    </span>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-muted-foreground">Subtotal</span>
                     <span>{formatCurrency(baseSubtotal)}</span>
                   </div>
 
                   {customizationFees > 0 && (
-                    <div className="flex flex-col sm:flex-row sm:justify-between text-sm">
-                      <span className="text-muted-foreground mb-1 sm:mb-0">
+                    <div className="flex justify-between text-xs sm:text-sm">
+                      <span className="text-muted-foreground">
                         Customization Fees
                       </span>
                       <span>{formatCurrency(customizationFees)}</span>
                     </div>
                   )}
 
-                  <div className="flex flex-col sm:flex-row sm:justify-between text-sm">
-                    <span className="text-muted-foreground mb-1 sm:mb-0">
-                      VAT (7.5%)
-                    </span>
+                  <div className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-muted-foreground">VAT (7.5%)</span>
                     <span>{formatCurrency(vatAmount)}</span>
                   </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between text-sm">
-                    <span className="text-muted-foreground mb-1 sm:mb-0">
-                      Delivery
-                    </span>
+                  <div className="flex justify-between text-xs sm:text-sm">
+                    <span className="text-muted-foreground">Delivery</span>
                     <span>
                       {deliveryPrice > 0
                         ? formatCurrency(deliveryPrice)
@@ -700,7 +691,7 @@ export default function CheckoutPage() {
 
                 <Separator />
 
-                <div className="flex flex-col sm:flex-row sm:justify-between font-medium text-base sm:text-lg">
+                <div className="flex justify-between font-medium text-sm sm:text-base">
                   <span>Total</span>
                   <span>{formatCurrency(totalPrice)}</span>
                 </div>
