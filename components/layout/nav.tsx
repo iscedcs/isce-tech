@@ -1,26 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MaxWidthContainer from "../ui/container";
 import Link from "next/link";
 import { AlignJustify, Badge, LogOut, ShoppingCart, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  AlignJustify,
-  ChevronDown,
-  LogOut,
-  ShoppingCart,
-  User,
-  X,
-} from "lucide-react";
+
 import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
-import { Button } from "../ui/button";
-import MaxWidthContainer from "../ui/container";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +17,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { signIn, signOut, useSession } from "next-auth/react";
 import { Skeleton } from "../ui/skeleton";
 
 const NavComp: React.FC = () => {
