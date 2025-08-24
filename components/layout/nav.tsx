@@ -3,7 +3,15 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import MaxWidthContainer from "../ui/container";
 import Link from "next/link";
-import { AlignJustify, Badge, LogOut, ShoppingCart, User } from "lucide-react";
+import {
+  AlignJustify,
+  Badge,
+  ChevronDown,
+  LogOut,
+  ShoppingCart,
+  User,
+  X,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
 import { AnimatePresence, motion } from "framer-motion";
