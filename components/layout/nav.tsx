@@ -1,8 +1,8 @@
-'use client';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import MaxWidthContainer from '../ui/container';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import MaxWidthContainer from "../ui/container";
+import Link from "next/link";
 import { AlignJustify, Badge, LogOut, ShoppingCart, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const NavComp: React.FC = () => {
   const { totalItems } = useCartStore();
@@ -48,92 +48,100 @@ const NavComp: React.FC = () => {
     <nav
       className={`transition-all w-full fixed z-40 ${
         scrolling ? "bg-primary" : "bg-current"
-      } `}
-    >
+      } `}>
       <MaxWidthContainer className="py-0 flex justify-between items-center">
-        <div className="py-6">
+        <div className="py-4 sm:py-6">
           <Link href="/">
             <Image
               src="/fi-white.webp"
               alt="Logo"
-              className="h-8"
+              className="h-8 sm:h-10"
               width={100}
               height={100}
             />
           </Link>
         </div>
-        <div className="hidden md:flex space-x-4 gap-3">
-          <Link href="/" className="text-secondary py-6">{`Home`}</Link>
+        <div className="hidden md:flex space-x-4 gap-3 items-center">
+          <Link href="/" className="text-secondary py-6 text-sm sm:text-base">
+            Home
+          </Link>
           <Link
             href="/about"
-            className="text-secondary py-6"
-          >{`About Us`}</Link>
+            className="text-secondary py-6 text-sm sm:text-base">
+            About Us
+          </Link>
           <Link
             href="/services"
-            className="text-secondary py-6"
-          >{`Services`}</Link>
+            className="text-secondary py-6 text-sm sm:text-base">
+            Services
+          </Link>
           <Link
             href="/profile"
-            className="text-secondary py-6"
-          >{`Profile`}</Link>
-          <div className="group pt-6">
-            <h1 className="text-secondary">{`Products`}</h1>
+            className="text-secondary py-6 text-sm sm:text-base">
+            Profile
+          </Link>
+          <div className="group mx-auto items-center">
+            <h1 className="text-secondary text-sm sm:text-base">Products</h1>
             <div className="hidden absolute group-hover:block bg-primary pt-8 p-2 space-y-4">
-              <h2 className="text-secondary font-bold">{`ISCE Cards`}</h2>
-              <div className="">
+              <h2 className="text-secondary font-bold text-sm">ISCE Cards</h2>
+              <div>
                 <Link
                   href="/individual"
-                  className="text-secondary text-sm"
-                >{`For Individual`}</Link>
+                  className="text-secondary text-xs sm:text-sm">
+                  For Individual
+                </Link>
               </div>
-              <div className="">
+              <div>
                 <Link
                   href="/business"
-                  className="text-secondary text-sm"
-                >{`For Business`}</Link>
+                  className="text-secondary text-xs sm:text-sm">
+                  For Business
+                </Link>
               </div>
             </div>
           </div>
           <Link
             href="/contact"
-            className="text-secondary py-6"
-          >{`Contact Us`}</Link>
-          <Link href="/blog" className="text-secondary py-6">{`Blog`}</Link>
-          <Link href="/store" className="text-secondary py-6">{`Store`}</Link>
+            className="text-secondary py-6 text-sm sm:text-base">
+            Contact Us
+          </Link>
+          <Link
+            href="/blog"
+            className="text-secondary py-6 text-sm sm:text-base">
+            Blog
+          </Link>
+          <Link
+            href="/store"
+            className="text-secondary py-6 text-sm sm:text-base">
+            Store
+          </Link>
           <Button
-            className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
+            className="bg-transparent text-secondary border mt-4 justify-center items-center text-sm sm:text-base"
             asChild
-            size={"sm"}
-          >
-            <Link
-              href="/quote"
-              className="text-secondary text-black"
-            >{`GET A QUOTE`}</Link>
+            size="sm">
+            <Link href="/quote" className="text-secondary">
+              GET A QUOTE
+            </Link>
           </Button>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  size={"icon"}
-                  className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center "
-                >
+                  size="icon"
+                  className="bg-transparent text-secondary border mt-4 justify-center items-center">
                   <User className="h-5 w-5" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                {/* <DropdownMenuItem asChild>
-                  <Link href="/account">Profile</Link>
-                </DropdownMenuItem> */}
                 <DropdownMenuItem asChild>
                   <Link href="/orders">Orders</Link>
                 </DropdownMenuItem>
-                {/* <DropdownMenuItem asChild>
-                  <Link href="/account/addresses">Addresses</Link>
-                </DropdownMenuItem> */}
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={async () => signOut()} className="text-destructive">
+                <DropdownMenuItem
+                  onClick={async () => signOut()}
+                  className="text-destructive">
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </DropdownMenuItem>
@@ -142,19 +150,15 @@ const NavComp: React.FC = () => {
           ) : (
             <Button
               size="sm"
-              className="bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
-              asChild
-              onClick={() => signIn()}
-            >
-             Login
+              className="bg-transparent text-secondary border mt-4 justify-center items-center text-sm sm:text-base"
+              onClick={() => signIn()}>
+              Login
             </Button>
           )}
-
           <Button
             size="icon"
-            className="relative bg-transparent text-secondary border bottom-full mt-4 justify-center items-center"
-            asChild
-          >
+            className="relative bg-transparent text-secondary border mt-4 justify-center items-center"
+            asChild>
             <Link href="/cart" className="text-secondary">
               <ShoppingCart className="h-5 w-5" />
               {totalItems > 0 && (
@@ -166,111 +170,178 @@ const NavComp: React.FC = () => {
           </Button>
         </div>
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-secondary py-6 w-full">
-            <AlignJustify className="h-8 w-8" />
-          </button>
+          <div className="flex flex-row-reverse gap-3 items-center">
+            <button
+              onClick={toggleMenu}
+              className="text-secondary py-4 sm:py-6">
+              <AlignJustify className="h-6 w-6 sm:h-8 sm:w-8" />
+            </button>
+            {user ? (
+              <Link
+                href="/cart"
+                className="text-secondary text-base sm:text-lg flex items-center"
+                onClick={closeMenu}>
+                <ShoppingCart className="h-5 w-5 mr-2" />
+                Cart
+                {totalItems > 0 && (
+                  <Badge className="ml-2 h-5 w-5 flex items-center justify-center p-0 text-primary-foreground">
+                    {totalItems}
+                  </Badge>
+                )}
+              </Link>
+            ) : (
+              <Button
+                size="sm"
+                className="bg-transparent text-secondary border py-2 sm:py-3 text-base sm:text-lg"
+                onClick={() => {
+                  signIn();
+                  closeMenu();
+                }}>
+                Login
+              </Button>
+            )}
+          </div>
           {isMenuOpen && (
-            <div className=" fixed  top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-primary p-4 space-y-4">
+            <div className="fixed top-0 left-0 w-screen h-screen flex flex-col justify-center items-center bg-primary p-4 space-y-4">
               <Image
                 src="/assets/close.svg"
                 width={20}
                 height={20}
                 alt="close"
-                className="absolute top-4 right-4 w-10 h-10 pr-4  object-contain cursor-pointer"
+                className="absolute top-4 right-4 w-8 h-8 sm:w-10 sm:h-10 object-contain cursor-pointer"
                 onClick={toggleMenu}
               />
               <div>
-                <ul className="list-none  flex flex-col mt-6 gap-6 items-center">
+                <ul className="list-none flex flex-col mt-6 gap-4 sm:gap-6 items-center">
                   <li>
                     <Link
-                      href="/#"
-                      className="text-secondary "
-                      onClick={closeMenu}
-                    >{`Home`}</Link>
+                      href="/"
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Home
+                    </Link>
                   </li>
                   <li>
                     <Link
                       href="/about"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`About Us`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      About Us
+                    </Link>
                   </li>
                   <li>
                     <Link
                       href="/services"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Services`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Services
+                    </Link>
                   </li>
                   <li>
                     <Link
                       href="/profile"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Profile`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Profile
+                    </Link>
                   </li>
                   <li>
                     <Link
                       href="/individual"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Individual`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Individual
+                    </Link>
                   </li>
                   <li>
                     <Link
                       href="/business"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Busines`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Business
+                    </Link>
                   </li>
-                   <li>
+                  <li>
                     <Link
-                      href="/#"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Store`}</Link>
+                      href="/store"
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Store
+                    </Link>
                   </li>
-                  {/*<li>
-                    <Link
-                      href="/#"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Join Us`}</Link>
-                  </li> */}
+
                   <li>
                     <Link
                       href="/contact"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Contact Us`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Contact Us
+                    </Link>
                   </li>
                   <li>
                     <Link
                       href="/blog"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Blog`}</Link>
+                      className="text-secondary text-base sm:text-lg"
+                      onClick={closeMenu}>
+                      Blog
+                    </Link>
                   </li>
-                  <Button className=" bg-transparent text-secondary border bottom-full mt-4 justify-center items-center ">
+                  <li>
+                    <Button
+                      className="bg-transparent text-secondary border justify-center items-center text-base sm:text-lg"
+                      asChild>
+                      <Link href="/quote" onClick={closeMenu}>
+                        GET A QUOTE
+                      </Link>
+                    </Button>
+                  </li>
+                  <li>
                     <Link
-                      href="/quote"
-                      className="text-secondary py-6 text-black"
-                    >{`GET A QUOTE`}</Link>
-                  </Button>
-                  {/* <li>
-										<Link
-											href='/#'
-											className='text-secondary'
-											onClick={closeMenu}
-										>{`Team`}</Link>
-									</li> */}
-                  {/* <li>
-                    <Link
-                      href="/#"
-                      className="text-secondary"
-                      onClick={closeMenu}
-                    >{`Blog`}</Link>
-                  </li> */}
+                      href="/cart"
+                      className="text-secondary text-base sm:text-lg flex items-center"
+                      onClick={closeMenu}>
+                      Cart
+                      {totalItems > 0 && (
+                        <Badge className="ml-2 h-5 w-5 flex items-center justify-center p-0 text-primary-foreground">
+                          {totalItems}
+                        </Badge>
+                      )}
+                    </Link>
+                  </li>
+                  {user ? (
+                    <>
+                      <li>
+                        <Link
+                          href="/orders"
+                          className="text-secondary text-base sm:text-lg"
+                          onClick={closeMenu}>
+                          Orders
+                        </Link>
+                      </li>
+                      <li>
+                        <Button
+                          onClick={async () => {
+                            await signOut();
+                            closeMenu();
+                          }}
+                          className="text-destructive text-base sm:text-lg flex items-center">
+                          <LogOut className="h-5 w-5 mr-2" />
+                          Logout
+                        </Button>
+                      </li>
+                    </>
+                  ) : (
+                    <li>
+                      <button
+                        onClick={() => {
+                          signIn();
+                          closeMenu();
+                        }}
+                        className="text-secondary text-base sm:text-lg">
+                        Login
+                      </button>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
