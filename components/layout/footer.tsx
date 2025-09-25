@@ -6,12 +6,12 @@ import MaxWidthContainer from "../ui/container";
 import { Separator } from "../ui/separator";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <div className="bg-background">
       <MaxWidthContainer
         className=" grid gap-5
-			"
-      >
+			">
         <div className=" w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
           <div className="flex flex-col">
             <div className="mb-[20px] font-bold ">Product</div>
@@ -30,12 +30,10 @@ export default function Footer() {
 
             <Button
               variant="link"
-              className=" justify-start px-0 font-bold text-accent-foreground gap-2"
-            >
+              className=" justify-start px-0 font-bold text-accent-foreground gap-2">
               <Link
                 href="/contact"
-                className="flex flex-row gap-2 items-center "
-              >
+                className="flex flex-row gap-2 items-center ">
                 Contact sales
                 <ArrowRightIcon className="h-4 w-4" />
               </Link>
@@ -86,9 +84,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
         <Separator />
-        <div className="flex flex-col md:flex-row justify-between gap-10  ">
+        <div className="flex flex-col items-center md:flex-row justify-between gap-10  ">
           <div className="max-w-96">
             {`ISCE's mission is to put the power, beauty, and magic of software
             development into the hands of a billion new creators. `}
@@ -129,6 +126,9 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="items-center justify-center mx-auto pt-6 ">
+          ©{currentYear} ISCE Digital Concept. All Rights Reserved.
         </div>
       </MaxWidthContainer>
     </div>

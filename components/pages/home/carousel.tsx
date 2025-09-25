@@ -26,7 +26,7 @@ export function HeaderCarouselComp() {
         <CarouselItem>
           <HeaderCarouselDisplayV2
             header="ISCE Tech"
-            content="We are providing world changing technology to empower your world. ISCE is a digital platform that equips individuals with innovative software and hardware with the aim to provide ease and top-notch security. "
+            content="We are providing world changing technology to empower your world. ISCE Digital Concept is an ecosystem that equips individuals with innovative software and hardware with the aim to provide ease and top-notch security. "
             link="/services"
             className="/images/first.jpg"
             buttonTitle="Explore Services"
@@ -35,7 +35,7 @@ export function HeaderCarouselComp() {
         <CarouselItem>
           <HeaderCarouselDisplay
             header="We Are Here"
-            content="Be bold, unique and different: Individuality is what makes us, Build your Digital Lifestyle."
+            content="Be bold, unique and different: Individuality is what makes us, Build your Digital Lifestyle. We are ISCE Digital Concept"
             link="/contact"
             className="/images/second.jpg"
             buttonTitle="Contact Us"
@@ -44,7 +44,7 @@ export function HeaderCarouselComp() {
         <CarouselItem>
           <HeaderCarouselDisplay
             header="NFC Cards"
-            content="Why print countless complementary cards yearly? Save trees, exchange contact information with one tap. Connect with style, Connect with ISCE."
+            content="Why print countless complementary cards yearly? Save trees, exchange contact information with one tap. Connect with style, Connect with ISCE Digital Concept."
             link="/store"
             className="/images/bg.gif"
             buttonTitle="Get card"
