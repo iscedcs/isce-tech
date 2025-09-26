@@ -20,10 +20,10 @@ const updateStatusSchema = z.object({
 });
 
 export async function updateOrderStatus(formData: FormData) {
-//   const session = await auth();
-//   if (!session?.user || session.user.userType !== "ADMIN") {
-//     return { success: false, message: "Unauthorized" };
-//   }
+  //   const session = await auth();
+  //   if (!session?.user || session.user.userType !== "ADMIN") {
+  //     return { success: false, message: "Unauthorized" };
+  //   }
 
   try {
     const validatedData = updateStatusSchema.parse({
@@ -37,9 +37,12 @@ export async function updateOrderStatus(formData: FormData) {
     });
 
     revalidatePath("/dashboard");
-    revalidatePath(`/order/${order.id}`);
+    revalidatePath(`/orders/${order.id}`);
 
-    return { success: true, message: `Order status updated to ${order.status.replace("_", " ").toLowerCase()}` };
+    return {
+      success: true,
+      message: `Order status updated to ${order.status.replace("_", " ").toLowerCase()}`,
+    };
   } catch (error) {
     console.error("Error updating order status:", error);
     if (error instanceof z.ZodError) {

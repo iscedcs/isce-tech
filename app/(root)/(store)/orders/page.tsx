@@ -1,18 +1,24 @@
 import { auth } from "@/auth";
-import { db } from "@/lib/prisma";
-import MaxWidthContainer from "@/components/ui/container";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import Link from "next/link";
-import { formatCurrency } from "@/lib/utils";
-import { redirect } from "next/navigation";
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
 import AnimatedCard from "@/components/animated-card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import MaxWidthContainer from "@/components/ui/container";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { db } from "@/lib/prisma";
+import { formatCurrency } from "@/lib/utils";
+import { Search } from "lucide-react";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function OrdersPage() {
   const session = await auth();
@@ -32,13 +38,15 @@ export default async function OrdersPage() {
         <Card className="bg-foreground text-background">
           <CardHeader>
             <div className="flex justify-between items-center">
-              <CardTitle className="text-3xl font-bold">Your Orders</CardTitle>
-              <div className="relative w-64">
+              <CardTitle className="text-sm md:text-lg lg:text-xl xl:text-3xl font-bold">
+                Your Orders
+              </CardTitle>
+              <div className="relative w-full sm:w-1/3 lg:w-1/4">
                 <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Search orders..."
                   className="pl-8 bg-background/10 border-none"
-                  disabled 
+                  disabled
                 />
               </div>
             </div>
@@ -69,8 +77,7 @@ export default async function OrdersPage() {
                   {orders.map((order) => (
                     <TableRow
                       key={order.id}
-                      className="hover:bg-background/5 transition-colors"
-                    >
+                      className="hover:bg-background/5 transition-colors">
                       <TableCell className="font-mono text-sm">
                         {order.id.slice(0, 8)}...
                       </TableCell>
@@ -89,16 +96,15 @@ export default async function OrdersPage() {
                           }
                           className={
                             order.status === "PAID"
-                            ? "bg-blue-500 text-white"
-                            : order.status === "DELIVERED"
-                            ? "bg-emerald-500 text-white"
-                            : order.status === "SHIPPED"
-                            ? "bg-yellow-300 text-white"
-                            : order.status === "CANCELLED"
-                            ? "bg-red-500 text-white"
-                            : "bg-gray-500 text-white"
-                          }
-                        >
+                              ? "bg-blue-500 text-white"
+                              : order.status === "DELIVERED"
+                                ? "bg-emerald-500 text-white"
+                                : order.status === "SHIPPED"
+                                  ? "bg-yellow-300 text-white"
+                                  : order.status === "CANCELLED"
+                                    ? "bg-red-500 text-white"
+                                    : "bg-gray-500 text-white"
+                          }>
                           {order.status}
                         </Badge>
                       </TableCell>
@@ -107,8 +113,7 @@ export default async function OrdersPage() {
                           asChild
                           variant="outline"
                           size="sm"
-                          className="text-emerald-500 border-emerald-500 hover:bg-emerald-500 hover:text-white"
-                        >
+                          className="text-emerald-500 border-emerald-500 hover:bg-emerald-500 hover:text-white">
                           <Link href={`/orders/${order.id}`}>View Details</Link>
                         </Button>
                       </TableCell>
@@ -119,7 +124,7 @@ export default async function OrdersPage() {
             )}
           </CardContent>
         </Card>
-</AnimatedCard>   
- </MaxWidthContainer>
+      </AnimatedCard>
+    </MaxWidthContainer>
   );
 }

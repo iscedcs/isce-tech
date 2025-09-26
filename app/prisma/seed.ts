@@ -6,6 +6,9 @@
 // const prisma = new PrismaClient();
 
 // async function main() {
+//   await prisma.orderItem.deleteMany();
+//   console.log("Cleared existing order items");
+
 //   await prisma.product.deleteMany();
 //   console.log("Cleared existing products");
 

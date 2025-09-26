@@ -1,4 +1,5 @@
 "use client";
+
 import type React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -85,7 +86,6 @@ export default function CheckoutPage() {
   );
   const deliveryPrice = selectedDelivery?.price || 0;
 
-  // Calculate customization fees
   const customizationFees = items.reduce((total, item) => {
     const customizationFee = item.customization?.customizationFee || 0;
     const designServiceFee = item.customization?.designServiceFee || 0;
@@ -96,13 +96,10 @@ export default function CheckoutPage() {
     );
   }, 0);
 
-  // Calculate base subtotal (without customization)
   const baseSubtotal = items.reduce(
     (total, item) => total + item.price * item.quantity,
     0
   );
-
-  // Calculate total with all fees
   const totalWithCustomization = baseSubtotal + customizationFees;
   const vatAmount = calculateVAT(totalWithCustomization);
   const totalPrice = totalWithCustomization + deliveryPrice + vatAmount;
@@ -189,7 +186,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <MaxWidthContainer className="pt-20 text-white">
+    <MaxWidthContainer className="py-20 sm:py-12 lg:pt-20 text-white">
       <motion.h1
         className="text-3xl font-bold my-8"
         initial={{ opacity: 0, y: -20 }}
@@ -198,7 +195,7 @@ export default function CheckoutPage() {
         Checkout
       </motion.h1>
       {error && (
-        <Alert variant="destructive" className="mb-6">
+        <Alert variant="destructive" className="mb-4 sm:mb-6">
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}

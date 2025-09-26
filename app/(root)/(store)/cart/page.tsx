@@ -18,7 +18,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <MaxWidthContainer className="text-center">
+      <MaxWidthContainer className="text-center py-10 sm:py-12">
         <motion.div
           className="flex flex-col items-center justify-center space-y-4 py-12"
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,6 @@ export default function CartPage() {
     );
   }
 
-  // Calculate the total with all fees
   const totalWithFees = items.reduce((total, item) => {
     const itemPrice = item.price * item.quantity;
     const customizationFee = item.customization?.customizationFee || 0;
@@ -78,6 +77,7 @@ export default function CartPage() {
                 <div className="col-span-2 text-center">Quantity</div>
                 <div className="col-span-2 text-right">Total</div>
               </div>
+              <div className="sm:hidden text-sm font-medium">Cart Items</div>
             </div>
 
             <AnimatePresence>
@@ -103,6 +103,8 @@ export default function CartPage() {
                               alt={item.name}
                               fill
                               className="object-cover"
+                              sizes="(max-width: 640px) 56px, (max-width: 1024px) 64px, 80px"
+                              priority={index < 2}
                             />
                           </div>
                           <div>

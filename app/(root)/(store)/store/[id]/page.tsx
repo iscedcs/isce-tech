@@ -19,7 +19,7 @@ interface ProductPageProps {
 export async function generateMetadata({
   params,
 }: ProductPageProps): Promise<Metadata> {
-  const {success, product} = await  getProductById(params.id);
+  const { success, product } = await getProductById(params.id);
 
   if (!success || !product) {
     return {
@@ -34,7 +34,7 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const  {success, product} = await getProductById(params.id);
+  const { success, product } = await getProductById(params.id);
 
   if (!success || !product) {
     notFound();
@@ -43,7 +43,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const isCustomizable = product.isCustomizable === true;
 
   return (
-        <MaxWidthContainer className="pt-24">
+    <MaxWidthContainer className="pt-24">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <ProductImageGallery
           images={product.images}
@@ -60,8 +60,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="mt-2">
               <Badge
                 variant="outline"
-                className="bg-primary/10 text-background"
-              >
+                className="bg-primary/10 text-background">
                 <Palette className="h-4 w-4 mr-1" />
                 Customizable
               </Badge>
@@ -83,16 +82,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
                       product.color === "Midnight Blue"
                         ? "#1a365d"
                         : product.color === "Emerald Green"
-                        ? "#046c4e"
-                        : product.color === "Rose Pink"
-                        ? "#eb6f92"
-                        : product.color === "Arctic White"
-                        ? "#f8fafc"
-                        : product.color === "Onyx Black"
-                        ? "#121212"
-                        : "",
-                  }}
-                ></div>
+                          ? "#046c4e"
+                          : product.color === "Rose Pink"
+                            ? "#eb6f92"
+                            : product.color === "Arctic White"
+                              ? "#f8fafc"
+                              : product.color === "Onyx Black"
+                                ? "#121212"
+                                : "",
+                  }}></div>
                 <span>{product.color}</span>
               </div>
             </div>
@@ -113,15 +111,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="mt-8 space-y-4">
             <div className="flex items-center text-sm">
               <div
-                className={`mr-2 rounded-full w-3 h-3 ${product.stock > 0 ? "bg-green-500" : "bg-red-500"}`}
-              ></div>
+                className={`mr-2 rounded-full w-3 h-3 ${product.stock > 0 ? "bg-green-500" : "bg-red-500"}`}></div>
               <span>{product.stock > 0 ? "In stock" : "Out of stock"}</span>
             </div>
             <Suspense fallback={<div>Loading...</div>}>
               {isCustomizable ? (
-                <CardCustomizationWrapper product={{ ...product, color: product.color ?? undefined }} />
+                <CardCustomizationWrapper
+                  product={{ ...product, color: product.color ?? undefined }}
+                />
               ) : (
-                <AddToCartButton product={{...product,color: product.color ?? undefined}} />
+                <AddToCartButton
+                  product={{ ...product, color: product.color ?? undefined }}
+                />
               )}
             </Suspense>
           </div>

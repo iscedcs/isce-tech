@@ -15,13 +15,13 @@ export default function VerifyPaymentPage() {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-    const [isSuccess, setIsSuccess] = useState(false);
-  
+  const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
     const verify = async () => {
       const orderId = searchParams.get("orderId");
-      const reference = searchParams.get("trxref") || searchParams.get("reference");
+      const reference =
+        searchParams.get("trxref") || searchParams.get("reference");
 
       if (!orderId || !reference) {
         setMessage("Missing order ID or transaction reference");
@@ -30,10 +30,10 @@ export default function VerifyPaymentPage() {
       }
 
       const result = await verifyPayment(orderId, reference);
-      if (result.success) {
+      if (result.success && result.orderId) {
         setMessage("Payment verified successfully! Your order is confirmed.");
         setIsSuccess(true);
-        router.push(`/orders/${orderId}`);
+        router.push(`/orders/${result.orderId}`);
       } else {
         setMessage(result.message || "Failed to verify payment.");
         setIsSuccess(false);
@@ -49,8 +49,7 @@ export default function VerifyPaymentPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+        transition={{ duration: 0.5 }}>
         <Card className="bg-foreground text-background max-w-md mx-auto">
           <CardHeader>
             <CardTitle className="text-center">Payment Verification</CardTitle>
@@ -73,8 +72,7 @@ export default function VerifyPaymentPage() {
                   <Button
                     variant="outline"
                     onClick={() => router.push("/orders")}
-                    className="mt-4"
-                  >
+                    className="mt-4 bg-transparent">
                     View Orders
                   </Button>
                 )}
