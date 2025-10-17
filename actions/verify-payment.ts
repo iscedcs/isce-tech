@@ -91,36 +91,37 @@ export async function verifyPayment(orderId: string, reference: string) {
     const AUTH_API =
       process.env.NEXT_PUBLIC_LIVE_ISCEAUTH_BACKEND_URL ||
       "https://stingray-app-clk8t.ondigitalocean.app";
-    const URLS = { device: { create: "/device/create" } };
+    const URLS = { device: { request_token: "/device/request-token" } };
 
     for (const item of orderData.orderItems) {
-      const product = await db.product.findUnique({
-        where: { id: item.productId },
-        select: { deviceType: true, name: true },
-      });
+      // const product = await db.product.findUnique({
+      //   where: { id: item.productId },
+      //   select: { deviceType: true, name: true },
+      // });
 
-      if (!product) {
-        console.error(
-          `Product (ID: ${item.productId}) not found for ISCE Auth integration`
-        );
-        continue;
-      }
+      // if (!product) {
+      //   console.error(
+      //     `Product (ID: ${item.productId}) not found for ISCE Auth integration`
+      //   );
+      //   continue;
+      // }
 
       const payload = {
-        userId: orderData.userId,
-        productId: item.productId,
-        deviceType: DEVICE_TYPE_MAPPING[product.deviceType] || "6214bdef7dbcb",
+        email: orderData.email || session?.user?.email,
       };
 
       try {
-        const response = await fetch(`${AUTH_API}${URLS.device.create}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${session?.user?.accessToken}`,
-          },
-          body: JSON.stringify(payload),
-        });
+        const response = await fetch(
+          `${AUTH_API}${URLS.device.request_token}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${session?.user?.accessToken}`,
+            },
+            body: JSON.stringify(payload),
+          }
+        );
 
         const logDetails = {
           status: response.status,
@@ -129,18 +130,19 @@ export async function verifyPayment(orderId: string, reference: string) {
 
         if (!response.ok) {
           console.error(
-            `Failed to create device for product ${item.productId}:`,
+            `Failed to request device token for product ${item.productId}:`,
             logDetails
           );
         } else {
           console.log(
-            `Successfully created device for product ${item.productId}:`,
-            logDetails
+            `Successfully requested device token for product ${item.productId}:`,
+            logDetails,
+            `kindly check your email`
           );
         }
       } catch (error) {
         console.error(
-          `Error sending request to ISCE Auth for product ${item.productId}:`,
+          `Error sending request to ISCE Auth for device token ${item.productId}:`,
           error
         );
       }
