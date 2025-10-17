@@ -484,6 +484,14 @@ export const URLS = {
     one: "/user/one/{id}",
   },
   device: {
+    request_token: "/device/request-token",
     create: "/device/create",
   },
+};
+
+const DEVICE_TYPE_MAPPING = {
+  CARD: "6214bdef7dbcb",
+  WRISTBAND: "6214bdef6dbcb",
+  STICKER: "6214bdef5dbcb",
+  KEYCHAIN: "6214bdef4dbcb",
 };
