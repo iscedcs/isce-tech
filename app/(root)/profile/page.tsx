@@ -4,22 +4,12 @@ import TeamCards from "@/components/pages/profile/team-cards";
 import Testimonials from "@/components/pages/profile/testimonials";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  LineChart,
-  Line,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-import {
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Separator } from "@/components/ui/separator";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   data,
   PRODUCTDISPLAY,
@@ -28,26 +18,27 @@ import {
   TEAMDISPLAY,
 } from "@/lib/const";
 import { StarIcon } from "@radix-ui/react-icons";
+import Autoplay from "embla-carousel-autoplay";
 import {
   ArrowDown,
   Info,
   InstagramIcon,
   LinkedinIcon,
-  LocateIcon,
   Mail,
-  Map,
   MapPin,
-  MessageCircle,
-  TwitchIcon,
   TwitterIcon,
   User,
-  X,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import Autoplay from "embla-carousel-autoplay";
+import {
+  CartesianGrid,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 export default function ProfilePage() {
   return (
@@ -70,8 +61,7 @@ export default function ProfilePage() {
           <p>Get to know ISCE</p>
           <Link
             href="#next"
-            className=" w-[50px] mt-[10px] flex items-center justify-center rounded-full bg-white h-[50px] "
-          >
+            className=" w-[50px] mt-[10px] flex items-center justify-center rounded-full bg-white h-[50px] ">
             <ArrowDown className="w-8 h-8 text-black " />
           </Link>
         </div>
@@ -92,10 +82,11 @@ export default function ProfilePage() {
           <div className="mt-[20px] md:absolute md:ml-[350px]  bottom-0 flex items-end gap-2 md:gap-4 ">
             <div className="md:w-[70%] mt-[50px] w-full rounded-l-[20px] rounded-tr-[20px] p-[30px]  bg-[#D9D9D9] ">
               <p className=" text-[13px]">
-                ISCE is that brand that brings digital solutions to daily
-                living, from equipping individuals with innovative software and
-                hardware solutions to offering business enterprises with the
-                solution in order to provide ease and top notch security.
+                ISCE Digital Concept is that brand that brings digital solutions
+                to daily living, from equipping individuals with innovative
+                software and hardware solutions to offering business enterprises
+                with the solution in order to provide ease and top notch
+                security.
               </p>
             </div>
             <div className=" bg-[#D9D9D9] flex items-center justify-center w-[40px] h-[30px] md:w-[50px] md:h-[50px]  rounded-full ">
@@ -219,8 +210,7 @@ export default function ProfilePage() {
                 delay: 2000,
               }),
             ]}
-            className="w-full"
-          >
+            className="w-full">
             <CarouselContent>
               {TEAMDISPLAY.map((team, k) => (
                 <TeamCards
@@ -294,8 +284,7 @@ export default function ProfilePage() {
               width={600}
               height={300}
               data={data}
-              margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-            >
+              margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
               <Line type="monotone" dataKey="uv" stroke="#8884d8" />
               <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
               <XAxis dataKey="name" />
@@ -347,26 +336,22 @@ export default function ProfilePage() {
             <div className=" mt-[100px] flex flex-row gap-3">
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={"https://linkedin.com/company/isceapp/"}
-              >
+                href={"https://linkedin.com/company/isceapp/"}>
                 <LinkedinIcon className="text-black w-5 h-5" />
               </Link>
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={"https://instagram.com/isce.app"}
-              >
+                href={"https://instagram.com/isce.app"}>
                 <InstagramIcon className="text-black w-5 h-5" />
               </Link>
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={"mailto:support@isce.tech"}
-              >
+                href={"mailto:support@isce.tech"}>
                 <Mail className="text-black w-5 h-5" />
               </Link>
               <Link
                 className="shadow-lg bg-white h-[50px] flex items-center justify-center rounded-full w-[50px]"
-                href={"https://twitter.com/isceapp"}
-              >
+                href={"https://twitter.com/isceapp"}>
                 <TwitterIcon className="text-black w-5 h-5" />
               </Link>
             </div>

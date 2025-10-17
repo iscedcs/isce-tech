@@ -49,13 +49,13 @@ export const deliveryOptions = [
     id: "lagos-delivery",
     name: "Lagos Delivery",
     description: "Delivery within Lagos (1-2 business days)",
-    price: 200000, // 2,000 NGN
+    price: 400000, // 2,000 NGN
   },
   {
     id: "nationwide-delivery",
     name: "Nationwide Delivery",
     description: "Delivery to other states in Nigeria (3-5 business days)",
-    price: 350000, // 3,500 NGN
+    price: 1000000, // 3,500 NGN
   },
 ];
 

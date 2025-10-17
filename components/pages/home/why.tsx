@@ -15,7 +15,7 @@ export default function WhyChooseIsce() {
   return (
     <MaxWidthContainer className="text-background grid gap-5">
       <div className="text-center">
-        <div className="text-5xl font-bold ">{`Why Choose ISCE`}</div>
+        <div className="text-5xl font-bold ">{`Why Choose ISCE Digital Concept`}</div>
       </div>
       <div className="grid md:grid-cols-2 gap-10 justify-center py-20">
         <div className="flex flex-col max-w-[500px]">
@@ -29,9 +29,9 @@ export default function WhyChooseIsce() {
         <div className="flex flex-col gap-5 text-2xl">
           <h1 className="font-bold"></h1>
           <p className="font-light text-lg">
-            {`Embrace the future with ISCE, a pioneering tech company committed to
+            {`Embrace the future with ISCE Digital Concept, a pioneering tech company committed to
             simplifying daily living through cutting-edge NFC (Near Field
-            Communication) solutions. Here's why choosing ISCE is a leap towards
+            Communication) solutions. Here's why choosing ISCE Digital Concept is a leap towards
             a seamless and contactless lifestyle:`}
           </p>
         </div>
@@ -40,8 +40,7 @@ export default function WhyChooseIsce() {
         {coreValues.map((value, index) => (
           <div
             key={index}
-            className="bg-gradient-to-br from-blue-600 via-[#f15a24] to-blue-600 text-white rounded-t rounded-b-lg"
-          >
+            className="bg-gradient-to-br from-blue-600 via-[#f15a24] to-blue-600 text-white rounded-t rounded-b-lg">
             <Card className="w-full bg-gray-800 back mt-1 ml-1 rounded-b-lg rounded-t-none border-none text-white mb-4 sm:mb-0">
               <CardHeader>
                 {value.icon}
@@ -60,8 +59,7 @@ export default function WhyChooseIsce() {
         <Button
           asChild
           type="button"
-          className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200"
-        >
+          className="pl-[20px] text-black bg-white hover:text-black hover:bg-slate-200">
           <Link href="/contact">Read More</Link>
         </Button>
       </div>

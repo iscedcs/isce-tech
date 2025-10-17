@@ -1,12 +1,12 @@
-import MaxWidthContainer from '@/components/ui/container';
-import { Separator } from '@/components/ui/separator';
-import { CircleIcon } from '@/lib/svg';
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
+import MaxWidthContainer from "@/components/ui/container";
+import { Separator } from "@/components/ui/separator";
+import { CircleIcon } from "@/lib/svg";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 export default function AboutIsce() {
-	return (
+  return (
     <MaxWidthContainer className="mx-auto ">
       <div className="mt-20 ">
         <div className=" text-white py-2 ">
@@ -17,7 +17,7 @@ export default function AboutIsce() {
           <Image
             width={1200}
             height={1200}
-            src="/images/group.jpg"
+            src="/images/isce_team.jpg"
             alt=""
             className="w-full h-full rounded-md"
           />
@@ -32,10 +32,10 @@ export default function AboutIsce() {
           <Separator orientation="vertical" />
           <div className="xl:w-2/3 w-full text-xl ">
             <p className="text-white py-3 font-normal">
-              {`At ISCE Tech, our journey began in 2021, fueled by a collective passion for innovation and a vision to redefine the landscape of technology. From humble beginnings, we embarked on a mission to simplify and enhance daily living through cutting-edge solutions.`}
+              {`At ISCE Digital Concept, our journey began in 2021, fueled by a collective passion for innovation and a vision to redefine the landscape of technology. From humble beginnings, we embarked on a mission to simplify and enhance daily living through cutting-edge solutions.`}
             </p>
             <p className="text-white">
-              {`Driven by the spirit of exploration, we embraced the challenges of our dynamic industry, adapting and evolving with each technological shift. Our commitment to being an Innovative Solution Creation & Exploration Company (ISCE) became the guiding force behind every endeavor.`}
+              {`Driven by the spirit of exploration, we embraced the challenges of our dynamic industry, adapting and evolving with each technological shift. Our commitment to being an Innovative Solution Creation & Exploration Company (ISCE Digital Concept) became the guiding force behind every endeavor.`}
             </p>
             <p className="text-white mt-4">
               {`Over the years, we've empowered communities, connected businesses, and facilitated a seamless integration of technology into the fabric of daily life. Our story is one of continuous learning, where each milestone is a testament to the dedication of our team, the brilliance of our solutions, and the relationships we've forged along the way.`}
@@ -44,10 +44,10 @@ export default function AboutIsce() {
               {`As we 'Stay ISCE', we revel in our craft, taking ownership of our contributions and celebrating the spirit of invention. Our journey is marked by a commitment to excellence, integrity, and the relentless pursuit of delivering results that make a difference.`}
             </p>
             <p className="text-white mt-4">
-              {`Looking ahead, we remain steadfast in our mission to pioneer transformative solutions, staying true to the innovative spirit that defines ISCE Tech. Our story is an ongoing narrative of exploration, creation, and the unwavering belief that technology, when harnessed thoughtfully, has the power to shape a better, more connected world.`}
+              {`Looking ahead, we remain steadfast in our mission to pioneer transformative solutions, staying true to the innovative spirit that defines ISCE Digital Concept. Our story is an ongoing narrative of exploration, creation, and the unwavering belief that technology, when harnessed thoughtfully, has the power to shape a better, more connected world.`}
             </p>
             <p className="text-blue-600 mt-4 ">
-              <Link href="/#">{`And that’s how ISCE was born.`}</Link>
+              <Link href="/#">{`And that’s how ISCE Digital Concept was born.`}</Link>
             </p>
           </div>
         </div>
@@ -67,14 +67,14 @@ export default function AboutIsce() {
                 <CircleIcon className="text-blue-600 xl:mr-4 mx-4" />
                 <div>
                   <h2 className="text-xl font-semibold mb-2">{`Revel in your craft`}</h2>
-                  <p>{`We encourage every member of the ISCE Tech family to revel in their craft. Innovation flourishes in an environment where passion and expertise converge. By embracing and celebrating the artistry of technology, we unlock boundless potential and push the boundaries of what's possible.`}</p>
+                  <p>{`We encourage every member of the ISCE Digital Concept family to revel in their craft. Innovation flourishes in an environment where passion and expertise converge. By embracing and celebrating the artistry of technology, we unlock boundless potential and push the boundaries of what's possible.`}</p>
                 </div>
               </div>
               <div className="flex">
                 <CircleIcon className="text-blue-600 xl:mr-4 mx-4" />
                 <div>
                   <h2 className="text-xl font-semibold mb-2">{`Stay ISCE`}</h2>
-                  <p>{`To 'Stay ISCE' is to embody the spirit of an Innovative Solution Creation & Exploration Company. It means embracing curiosity, constantly seeking new horizons, and fearlessly navigating uncharted territories. At ISCE Tech, we stay true to our roots as pioneers of exploration and creators of inventive solutions.`}</p>
+                  <p>{`To 'Stay ISCE' is to embody the spirit of an Innovative Solution Creation & Exploration Company. It means embracing curiosity, constantly seeking new horizons, and fearlessly navigating uncharted territories. At ISCE Digital Concept, we stay true to our roots as pioneers of exploration and creators of inventive solutions.`}</p>
                 </div>
               </div>
               <div className="flex">
@@ -105,5 +105,4 @@ export default function AboutIsce() {
       </div>
     </MaxWidthContainer>
   );
-
 }

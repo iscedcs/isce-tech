@@ -52,19 +52,19 @@ export const coreValues: CoreValues[] = [
     icon: <UserPlusIcon className="text-[#bd1e59] text-4xl mb-4" />,
     title: "Effortless Connectivity",
     description:
-      "ISCE harnesses the power of NFC technology to create an ecosystem where devices seamlessly communicate with a simple tap. Enjoy the convenience of effortless connectivity, making daily tasks smoother and more efficient. Our committment to redefining daily living.",
+      "ISCE Digital Concept harnesses the power of NFC technology to create an ecosystem where devices seamlessly communicate with a simple tap. Enjoy the convenience of effortless connectivity, making daily tasks smoother and more efficient. Our committment to redefining daily living.",
   },
   {
     icon: <HeartPulseIcon className="text-[#bd1e59] text-4xl mb-4" />,
     title: "Contactless Solutions for All",
     description:
-      "ISCE is dedicated to bringing the benefits of contactless technology to everyone. Whether its secure payments access control or smart interactions ISCEs solutions cater to diverse needs, ensuring a user-friendly experience for individuals and businesses alike",
+      "ISCE Digital Concept is dedicated to bringing the benefits of contactless technology to everyone. Whether its secure payments access control or smart interactions ISCEs solutions cater to diverse needs, ensuring a user-friendly experience for individuals and businesses alike",
   },
   {
     icon: <LightbulbIcon className="text-[#bd1e59] text-4xl mb-4" />,
     title: "Innovative Applications",
     description:
-      " ISCE goes beyond the ordinary by integrating NFC into innovative applications that redefine daily routines. From smart homes to connected workplaces, ISCE's solutions open doors to a world where technology enhances, rather than complicates, our lives ",
+      " ISCE Digital Concept goes beyond the ordinary by integrating NFC into innovative applications that redefine daily routines. From smart homes to connected workplaces, ISCE's solutions open doors to a world where technology enhances, rather than complicates, our lives ",
   },
 ];
 
@@ -349,31 +349,31 @@ export const PRODUCTIVITY: ISERVICEMAIN[] = [
   {
     title: "Secure Data",
     description:
-      "In an era where data is the lifeblood of productivity, ISCE stands at the forefront of ensuring the utmost security for our clients' valuable data. Recognizing the inseparable link between data security and organizational productivity, ISCE has strategically implemented a multifaceted approach to fortify client data.",
+      "In an era where data is the lifeblood of productivity, ISCE Digital Concept stands at the forefront of ensuring the utmost security for our clients' valuable data. Recognizing the inseparable link between data security and organizational productivity, ISCE Digital Concept has strategically implemented a multifaceted approach to fortify client data.",
     hasIcon: false,
   },
   {
     title: "Accessibility",
     description:
-      "ISCE has developed a client-centric approach to ensuring your data or products are easily accessed without any hassles. We recognize the correlation between accessibility and heightened productivity, fostering a secure yet accessible platform for your designed products.",
+      "ISCE Digital Concept has developed a client-centric approach to ensuring your data or products are easily accessed without any hassles. We recognize the correlation between accessibility and heightened productivity, fostering a secure yet accessible platform for your designed products.",
     hasIcon: false,
   },
   {
     title: "Integration",
     description:
-      "Whatever project that is a product of ISCE has an advantage to easy integration, we reduce the stress a client may face by ensuring the product can be easily integrated facilitating heightened productivity and efficient experience.",
+      "Whatever project that is a product of ISCE Digital Concept has an advantage to easy integration, we reduce the stress a client may face by ensuring the product can be easily integrated facilitating heightened productivity and efficient experience.",
     hasIcon: false,
   },
   {
     title: "Time Saving",
     description:
-      "With the understanding that time is a precious commodity, we ensure that our products are speed oriented with good optimization. ISCE looks towards seemless and efficient process whilst our product is in use which in turn boosts your productivity.",
+      "With the understanding that time is a precious commodity, we ensure that our products are speed oriented with good optimization. ISCE Digital Concept looks towards seemless and efficient process whilst our product is in use which in turn boosts your productivity.",
     hasIcon: false,
   },
   {
     title: "Performance Optimization",
     description:
-      "Product performance is key to ensuring efficient client productivity, with that in mind we ensure product speed, efficiency and workflow with our optimized products. ISCE aims at seeing to it that you never need any reason to complain as performance is a top priority.",
+      "Product performance is key to ensuring efficient client productivity, with that in mind we ensure product speed, efficiency and workflow with our optimized products. ISCE Digital Concept aims at seeing to it that you never need any reason to complain as performance is a top priority.",
     hasIcon: false,
   },
   {
@@ -484,6 +484,14 @@ export const URLS = {
     one: "/user/one/{id}",
   },
   device: {
+    request_token: "/device/request-token",
     create: "/device/create",
-  }
-}
+  },
+};
+
+const DEVICE_TYPE_MAPPING = {
+  CARD: "6214bdef7dbcb",
+  WRISTBAND: "6214bdef6dbcb",
+  STICKER: "6214bdef5dbcb",
+  KEYCHAIN: "6214bdef4dbcb",
+};

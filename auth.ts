@@ -9,17 +9,17 @@ export const {
   handlers: { GET, POST },
 } = NextAuth({
   pages: {
-		signIn: '/login',
-		error: '/error',
-	},
+    signIn: "/login",
+    error: "/error",
+  },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.email = user.email;
-        token.name = user.firstName,
-        token.name = user.lastName,
-        token.userType = user.userType;
+        (token.name = user.firstName),
+          (token.name = user.lastName),
+          (token.userType = user.userType);
         token.accessToken = user.accessToken;
       }
       // console.log("JWT Callback - User:", user, "Token:", token);
