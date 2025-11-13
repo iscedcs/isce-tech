@@ -159,9 +159,9 @@ export default function CardCustomization({
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}>
         <div className="flex items-center justify-between">
-          <div className="space-y-0.5">
+          <div className="space-y-3">
             <Label htmlFor="customize-card">Customize this card</Label>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground ">
               Add your design to personalize your NFC card
             </p>
           </div>

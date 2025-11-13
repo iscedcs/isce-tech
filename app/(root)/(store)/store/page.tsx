@@ -1,13 +1,11 @@
 "use client";
 
-import type React from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useFilterStore } from "@/lib/store/filter-store";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import LazyLoad from "react-lazyload";
 import { formatCurrency } from "@/lib/utils";
@@ -16,6 +14,7 @@ import ProductCard from "@/components/pages/store/product-card";
 import MaxWidthContainer from "@/components/ui/container";
 import { getProducts } from "@/actions/product";
 import { Product } from "@prisma/client";
+import { Label } from "@/components/ui/label";
 
 export default function ProductsPage() {
   const {
@@ -56,7 +55,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     async function fetchProducts() {
-      const { success, products, totalCount, error } = await getProducts({
+      const { success, products, totalCount } = await getProducts({
         deviceType,
         searchQuery,
         sortBy,
@@ -64,32 +63,20 @@ export default function ProductsPage() {
         page,
         pageSize,
       });
+
       if (success && products) {
         setDisplayProducts(products as Product[]);
         setTotalPages(Math.ceil(totalCount / pageSize));
       } else {
-        console.error(error);
         setDisplayProducts([]);
       }
     }
     fetchProducts();
   }, [deviceType, searchQuery, sortBy, priceRange, page]);
 
-  const handleDeviceTypeChange = (value: string) => {
-    setDeviceType(value);
-  };
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSearchQuery(localSearch);
-  };
-
-  const handlePriceRangeChange = (value: number[]) => {
-    setLocalPriceRange(value as [number, number]);
-  };
-
   const applyFilters = () => {
     setPriceRange(localPriceRange);
+    setSearchQuery(localSearch);
     setIsFilterOpen(false);
   };
 
@@ -101,196 +88,184 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="bg-foreground">
-      <MaxWidthContainer className="">
+    <div className="bg-foreground min-h-screen pb-24">
+      <MaxWidthContainer>
+        {/* Page Header */}
         <motion.div
-          className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:items-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}>
-          <div>
-            <h1 className="sm:text-sm md:text-lg lg:text-xl xl:text-3xl font-bold tracking-tight text-white">
-              Products
-            </h1>
-            <p className="text-muted-foreground m:text-sm md:text-lg lg:text-xl xl:text-2xl">
-              Browse our collection of NFC products
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <form
-              onSubmit={handleSearchSubmit}
-              className="relative flex-1 md:w-64">
-              <Input
-                type="search"
-                placeholder="Search products..."
-                value={localSearch}
-                onChange={(e) => setLocalSearch(e.target.value)}
-                className="pr-8"
-              />
-              <Button
-                type="submit"
-                variant="ghost"
-                size="icon"
-                className="absolute right-0 top-0 h-full">
-                <Search className="h-4 w-4" />
-              </Button>
-            </form>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-              className="relative">
-              <SlidersHorizontal className="h-4 w-4" />
-              {(priceRange[0] > 0 ||
-                priceRange[1] < 300000 ||
-                sortBy !== "featured") && (
-                <span className="absolute -top-1 -right-1 h-2 w-2 bg-primary rounded-full"></span>
-              )}
-            </Button>
-          </div>
+          className="mb-10">
+          <h1 className="text-3xl md:text-4xl font-bold text-white">Store</h1>
+          <p className="text-muted-foreground mt-1 md:text-lg">
+            Discover premium NFC products for your digital lifestyle
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 0.1 }}>
-          <Tabs
-            defaultValue={deviceType}
-            className="w-full"
-            onValueChange={handleDeviceTypeChange}>
-            <TabsList className="mb-8 flex flex-wrap h-auto bg-foreground">
-              {categories.map((cat) => (
-                <TabsTrigger key={cat.id} value={cat.id} className="mb-2">
-                  {cat.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+        {/* Search + Filter */}
+        <div className="flex items-center gap-3 mb-8">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              setSearchQuery(localSearch);
+            }}
+            className="relative flex-1">
+            <Input
+              placeholder="Search products..."
+              value={localSearch}
+              onChange={(e) => setLocalSearch(e.target.value)}
+              className="bg-primary/20 border border-primary/30 text-white h-11 rounded-full pl-10"
+            />
+            <Search className="h-4 w-4 absolute top-1/2 left-3 -translate-y-1/2 text-white/60" />
+          </form>
 
-            <AnimatePresence>
-              {isFilterOpen && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="mb-8 p-4 border border-border rounded-lg text-white">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="font-medium">Filters</h3>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => setIsFilterOpen(false)}>
-                      <X className="h-4 w-4" />
-                    </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="rounded-full border-white/20"
+            onClick={() => setIsFilterOpen(true)}>
+            <SlidersHorizontal className="h-5 w-5 text-primary" />
+          </Button>
+        </div>
+
+        {/* Category Tabs */}
+        <Tabs defaultValue={deviceType} onValueChange={setDeviceType}>
+          <TabsList
+            className="
+    flex gap-2 bg-transparent mb-6 
+    overflow-x-auto overflow-y-clip md:overflow-x-visible 
+    p-1 scrollbar-none md:pl-0 pl-56
+  ">
+            {" "}
+            {categories.map((c) => (
+              <TabsTrigger
+                key={c.id}
+                value={c.id}
+                className="rounded-full px-5 py-2 text-white data-[state=active]:bg-primary data-[state=active]:text-white">
+                {c.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {/* Product Grid */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={deviceType + searchQuery + sortBy + priceRange.join("-")}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.25 }}>
+              {displayProducts.length > 0 ? (
+                <>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {displayProducts.map((product, idx) => (
+                      <LazyLoad key={product.id} offset={200}>
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: idx * 0.03 }}>
+                          <ProductCard product={product} />
+                        </motion.div>
+                      </LazyLoad>
+                    ))}
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <Label className="mb-2 block">Price Range</Label>
-                      <div className="px-2">
-                        <Slider
-                          defaultValue={localPriceRange}
-                          min={0}
-                          max={300000}
-                          step={1000}
-                          value={localPriceRange}
-                          onValueChange={handlePriceRangeChange}
-                          className="my-6"
-                        />
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span>{formatCurrency(localPriceRange[0])}</span>
-                        <span>{formatCurrency(localPriceRange[1])}</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label className="mb-2 block">Sort By</Label>
-                      <div className="space-y-2">
-                        {sortOptions.map((option) => (
-                          <div key={option.id} className="flex items-center">
-                            <input
-                              type="radio"
-                              id={option.id}
-                              name="sortBy"
-                              value={option.id}
-                              checked={sortBy === option.id}
-                              onChange={() => setSortBy(option.id as any)}
-                              className="mr-2"
-                            />
-                            <Label
-                              htmlFor={option.id}
-                              className="text-sm cursor-pointer">
-                              {option.name}
-                            </Label>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-end gap-2 mt-6">
-                    <Button variant="outline" onClick={handleReset}>
-                      Reset
-                    </Button>
-                    <Button onClick={applyFilters}>Apply Filters</Button>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={deviceType + sortBy + searchQuery + priceRange.join("-")}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2 }}>
-                {displayProducts.length > 0 ? (
-                  <>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                      {displayProducts.map((product, index) => (
-                        <LazyLoad key={product.id} height={400} once>
-                          <ProductCard product={product} index={index} />
-                        </LazyLoad>
-                      ))}
-                    </div>
-                    {displayProducts.length > pageSize && (
-                      <div className="flex justify-center gap-2 mt-8">
+                  {/* Pagination */}
+                  <div className="flex justify-center items-center gap-3 mt-10">
+                    {totalPages > 1 && (
+                      <div className="flex justify-center items-center gap-3 mt-10">
                         <Button
+                          size="icon"
+                          variant="outline"
                           disabled={page === 1}
-                          onClick={() => setPage(page - 1)}>
-                          Previous
+                          onClick={() => setPage(page - 1)}
+                          className="rounded-full">
+                          ‹
                         </Button>
-                        <span>
+
+                        <span className="text-white text-sm">
                           Page {page} of {totalPages}
                         </span>
+
                         <Button
+                          size="icon"
+                          variant="outline"
                           disabled={page === totalPages}
-                          onClick={() => setPage(page + 1)}>
-                          Next
+                          onClick={() => setPage(page + 1)}
+                          className="rounded-full">
+                          ›
                         </Button>
                       </div>
                     )}
-                  </>
-                ) : (
-                  <div className="text-center py-12">
-                    <p className="text-muted-foreground">
-                      No products found matching your criteria.
-                    </p>
-                    <Button
-                      variant="outline"
-                      onClick={handleReset}
-                      className="mt-4">
-                      Reset Filters
-                    </Button>
                   </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </Tabs>
-        </motion.div>
+                </>
+              ) : (
+                <div className="text-center grid mx-auto  justify-center items-center  py-16 text-muted-foreground">
+                  No products found.
+                  <Button
+                    variant="outline"
+                    className="mt-4 md:w-96 w-full"
+                    onClick={handleReset}>
+                    Reset Filters
+                  </Button>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </Tabs>
+
+        {/* MOBILE FILTER DRAWER */}
+        <AnimatePresence>
+          {isFilterOpen && (
+            <motion.div
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ duration: 0.25 }}
+              className="fixed bottom-0 left-0 w-full h-[70vh] bg-primary z-50 p-6 rounded-t-3xl shadow-xl">
+              <div className="flex justify-between mb-6">
+                <h2 className="text-white text-lg font-semibold">Filters</h2>
+                <button onClick={() => setIsFilterOpen(false)}>
+                  <X className="h-6 w-6 text-white" />
+                </button>
+              </div>
+
+              <div className="space-y-6 text-white">
+                {/* Sort */}
+                <div>
+                  <Label className="block mb-3">Sort By</Label>
+                  <div className="space-y-2">
+                    {sortOptions.map((option) => (
+                      <label
+                        key={option.id}
+                        className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="sort"
+                          checked={sortBy === option.id}
+                          onChange={() => setSortBy(option.id as any)}
+                        />
+                        {option.name}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex justify-between mt-10">
+                <Button
+                  variant="outline"
+                  className="w-1/2 mr-2"
+                  onClick={handleReset}>
+                  Reset
+                </Button>
+                <Button className="w-1/2" onClick={applyFilters}>
+                  Apply
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </MaxWidthContainer>
     </div>
   );
