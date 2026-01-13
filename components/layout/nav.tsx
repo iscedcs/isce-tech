@@ -3,16 +3,21 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import MaxWidthContainer from "../ui/container";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import {
   AlignJustify,
   Badge,
   ChevronDown,
   LogOut,
   ShoppingCart,
+  ChevronDown,
   User,
   X,
 } from "lucide-react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
+import { AnimatePresence, motion } from "framer-motion";
 import { useCartStore } from "@/lib/store/cart-store";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -27,44 +32,33 @@ import {
 } from "../ui/dropdown-menu";
 import { Skeleton } from "../ui/skeleton";
 
-const NavComp: React.FC = () => {
+export default function NavComp() {
+  const { data: session, status } = useSession();
   const { totalItems } = useCartStore();
   const { data: session, status } = useSession();
   const user = session?.user;
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
-  const closeMenu = () => setMenuOpen(false);
+  const user = session?.user;
 
-  // Handle scroll for background change
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  // Change nav background on scroll
   useEffect(() => {
-    const handleScroll = () => setScrolling(window.scrollY > 0);
+    const handleScroll = () => setScrolling(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on click outside or Escape key
-  useClickOutside(menuRef as React.RefObject<HTMLElement>, closeMenu);
+  // Disable background scroll when mobile menu is open
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeMenu();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
 
   return (
@@ -140,6 +134,8 @@ const NavComp: React.FC = () => {
             className="text-secondary py-6 text-sm sm:text-base">
             Store
           </Link>
+
+          {/* Quote */}
           <Button
             className="bg-transparent text-secondary border mt-4 justify-center items-center text-sm sm:text-base"
             asChild
@@ -375,154 +371,141 @@ const NavComp: React.FC = () => {
               </div>
             </div>
           )}
-          <Button
-            variant="outline"
-            size="icon"
-            className="relative text-secondary border-secondary hover:bg-secondary hover:text-primary rounded-full"
-            asChild>
-            <Link href="/cart">
-              <ShoppingCart
-                className="h-5 w-5 text-primary font-bold"
-                aria-hidden="true"
-              />
-              {totalItems > 0 && (
-                <span className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center rounded-full bg-secondary text-primary text-xs">
-                  {totalItems}
-                </span>
-              )}
-            </Link>
-          </Button>
+
+          {/* Cart */}
+          <Link href="/cart" id="nav-cart-icon" className="relative">
+            <ShoppingCart className="h-5 w-5 text-secondary" />
+            {totalItems > 0 && (
+              <Badge className="absolute -top-2 -right-2 bg-secondary text-primary h-5 w-5 flex items-center justify-center p-0">
+                {totalItems}
+              </Badge>
+            )}
+          </Link>
         </div>
+
+        {/* Mobile: Burger Icon */}
+        <button className="md:hidden text-secondary" onClick={toggleMenu}>
+          <AlignJustify className="h-7 w-7" />
+        </button>
       </MaxWidthContainer>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed top-0 left-0 w-full h-screen bg-primary z-50 shadow-md"
-            ref={menuRef}>
-            <div className="flex justify-between items-center p-4 border-b border-secondary/20">
-              <Link href="/" onClick={closeMenu}>
-                <Image
-                  src="/fi-white.webp"
-                  alt="Logo"
-                  width={80}
-                  height={80}
-                  className="h-8 w-auto"
-                  sizes="80px"
-                  priority
-                />
-              </Link>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-secondary hover:bg-secondary/20"
-                onClick={closeMenu}
-                aria-label="Close mobile menu">
-                <X className="h-6 w-6" aria-hidden="true" />
-              </Button>
+            className="fixed top-0 right-0 w-3/4 sm:w-1/2 h-screen bg-primary z-50 shadow-xl p-6 flex flex-col">
+            {/* Header */}
+            <div className="flex justify-between items-center mb-8">
+              <Image
+                src="/fi-white.webp"
+                width={80}
+                height={80}
+                alt="logo"
+                className="h-7 w-auto"
+              />
+              <button onClick={closeMenu}>
+                <X className="h-7 w-7 text-secondary" />
+              </button>
             </div>
-            <div className="flex flex-col p-4 space-y-3">
-              <Link
-                href="/"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
+
+            {/* Links */}
+            <div className="flex flex-col space-y-6 text-secondary text-lg">
+              <Link href="/" onClick={closeMenu}>
                 Home
               </Link>
-              <Link
-                href="/about"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
+              <Link href="/about" onClick={closeMenu}>
                 About Us
               </Link>
-              <Link
-                href="/services"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
+              <Link href="/services" onClick={closeMenu}>
                 Services
               </Link>
-              <Link
-                href="/profile"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
+              <Link href="/profile" onClick={closeMenu}>
                 Profile
               </Link>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div className="text-secondary text-base hover:text-secondary/80 py-2 flex items-center">
-                    Products{" "}
-                    <ChevronDown className="ml-1 h-4 w-4" aria-hidden="true" />
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-48">
-                  <DropdownMenuLabel>ISCE Cards</DropdownMenuLabel>
-                  <DropdownMenuItem asChild>
+
+              {/* Products Accordion */}
+              <div>
+                <button
+                  className="flex items-center justify-between w-full"
+                  onClick={() => setShowProducts(!showProducts)}>
+                  Products{" "}
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform ${showProducts ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {showProducts && (
+                  <div className="ml-4 mt-2 flex flex-col space-y-3 text-base">
                     <Link href="/individual" onClick={closeMenu}>
                       For Individual
                     </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
                     <Link href="/business" onClick={closeMenu}>
                       For Business
                     </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              <Link
-                href="/contact"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
-                Contact Us
-              </Link>
-              <Link
-                href="/blog"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
-                Blog
-              </Link>
-              <Link
-                href="/store"
-                className="text-secondary text-base hover:text-secondary/80 py-2"
-                onClick={closeMenu}>
+                  </div>
+                )}
+              </div>
+
+              <Link href="/store" onClick={closeMenu}>
                 Store
               </Link>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-primary font-bold border-secondary hover:bg-secondary hover:text-primary rounded-full justify-start"
-                asChild>
-                <Link href="/quote" onClick={closeMenu}>
-                  Get a Quote
-                </Link>
-              </Button>
+              <Link href="/contact" onClick={closeMenu}>
+                Contact
+              </Link>
+              <Link href="/blog" onClick={closeMenu}>
+                Blog
+              </Link>
+
+              {/* Cart */}
+              <Link
+                href="/cart"
+                id="nav-cart-icon"
+                className="flex items-center gap-3"
+                onClick={closeMenu}>
+                <ShoppingCart className="h-5 w-5" /> Cart
+                {totalItems > 0 && (
+                  <Badge className="ml-2 bg-secondary text-primary h-5 w-5 flex items-center justify-center p-0">
+                    {totalItems}
+                  </Badge>
+                )}
+              </Link>
+              <Link href="/quote" onClick={closeMenu}>
+                <Button
+                  variant="outline"
+                  className="border-secondary text-primary w-full">
+                  GET A QUOTE
+                </Button>
+              </Link>
+
+              {/* User / Login */}
+              {user ? (
+                <Button
+                  className="text-destructive w-full"
+                  onClick={async () => {
+                    await signOut();
+                    closeMenu();
+                  }}>
+                  <LogOut className="mr-2 h-5 w-5" /> Logout
+                </Button>
+              ) : (
+                <Button
+                  className="border-secondary text-primary w-full"
+                  variant="outline"
+                  onClick={() => {
+                    signIn();
+                    closeMenu();
+                  }}>
+                  Login
+                </Button>
+              )}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </nav>
   );
-};
-
-export default NavComp;
-function useClickOutside(
-  ref: React.RefObject<HTMLElement>,
-  handler: () => void
-) {
-  useEffect(() => {
-    function handleClick(event: MouseEvent | TouchEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        handler();
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    document.addEventListener("touchstart", handleClick);
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("touchstart", handleClick);
-    };
-  }, [ref, handler]);
 }
