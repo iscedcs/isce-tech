@@ -1,12 +1,18 @@
-import React from "react";
-import { Assistant } from "next/font/google";
+import { Metadata } from 'next';
 
-const assistant = Assistant({ subsets: ["latin"] });
+export const metadata: Metadata = {
+  title: "My Profile",
+  description: "Manage your ISCE profile, view your digital cards, and access your account settings.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ProfileLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className={`${assistant.className}`}>{children}</div>;
+  return children;
 }
