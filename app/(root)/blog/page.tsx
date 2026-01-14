@@ -2,8 +2,23 @@ import FormError from '@/components/formError';
 import BlogCard from '@/components/pages/blog/blog-card';
 import MaxWidthContainer from '@/components/ui/container';
 import { client } from '@/sanity/lib/client';
-import React from 'react'
+import React from 'react';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: "Blog - The Time Square",
+  description: "Stay up-to-date with the latest news, insights, and updates from ISCE. Read our blog posts about NFC technology, digital solutions, and more.",
+  openGraph: {
+    title: "Blog - The Time Square | ISCE",
+    description: "Stay up-to-date with the latest news, insights, and updates from ISCE. Read our blog posts about NFC technology, digital solutions, and more.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog - The Time Square | ISCE",
+    description: "Stay up-to-date with the latest news, insights, and updates from ISCE. Read our blog posts about NFC technology, digital solutions, and more.",
+  },
+};
 
 async function getData() {
 	/**This query is to get the latest posts from sanity */
