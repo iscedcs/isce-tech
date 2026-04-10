@@ -5,10 +5,10 @@
 <style type="text/css">
 	.st0{fill:#FADA57;}
 	.st1{fill:none;}
-	.st2{fill:none;stroke:#FADA57;stroke-width:4;}
-	.st3{fill:#FDF0BA;stroke:#FADA57;stroke-width:4;}
+	.st2{fill:none;stroke:#FADA57;strokeWidth:4;}
+	.st3{fill:#FDF0BA;stroke:#FADA57;strokeWidth:4;}
 	.st4{fill:none;stroke:#F3DD80;}
-	.st5{fill:none;stroke:#EAC14E;stroke-width:2;}
+	.st5{fill:none;stroke:#EAC14E;strokeWidth:2;}
 </style>
 <g>
 	<ellipse class="st0" cx="127.5" cy="178.5" rx="47.5" ry="17.5"/>

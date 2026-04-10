@@ -14,6 +14,12 @@ const { auth } = NextAuth(authConfig);
 export default auth((req) => {
   const { nextUrl } = req;
 
+  // Redirect /store path to store.isce.tech subdomain
+  if (nextUrl.pathname.startsWith("/store")) {
+    const storeUrl = new URL(nextUrl.pathname + nextUrl.search, "https://store.isce.tech");
+    return NextResponse.redirect(storeUrl, 301);
+  }
+
   // Check if the user is logged in by verifying if the auth object exists in the request
   const isLoggedIn = !!req.auth;
 

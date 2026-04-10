@@ -3,14 +3,11 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import MaxWidthContainer from "../ui/container";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import {
   AlignJustify,
-  Badge,
   ChevronDown,
   LogOut,
   ShoppingCart,
-  ChevronDown,
   User,
   X,
 } from "lucide-react";
@@ -19,9 +16,6 @@ import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCartStore } from "@/lib/store/cart-store";
-import { AnimatePresence, motion } from "framer-motion";
-
-import { signIn, signOut, useSession } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,12 +29,8 @@ import { Skeleton } from "../ui/skeleton";
 export default function NavComp() {
   const { data: session, status } = useSession();
   const { totalItems } = useCartStore();
-  const { data: session, status } = useSession();
   const user = session?.user;
-  const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  const user = session?.user;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);

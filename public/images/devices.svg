@@ -30,9 +30,9 @@
 <rect x="62.0005" y="60" width="58" height="42" rx="5" fill="url(#pattern3)" fill-opacity="0.8" style="mix-blend-mode:overlay"/>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M85.9737 87.035C86.381 87.8893 87.0212 88.3455 87.7195 88.3455C88.4178 88.3455 88.9997 87.8893 89.4653 87.0925L89.989 85.9534L84.6352 74.8475L80.9108 76.5561L85.9737 87.035ZM92.9581 87.0926C93.3655 87.8893 94.0056 88.3455 94.7039 88.3455C95.4022 88.3455 96.0424 87.8893 96.4497 87.035L101.454 76.4986L97.73 74.79L92.4344 85.896L92.9581 87.0926ZM91.1523 88.4021C90.3376 89.712 89.0573 90.5099 87.6607 90.5099C86.1476 90.5099 84.751 89.5411 83.9945 88.0034L78.0005 75.4736L85.6239 72L91.1523 83.4471L96.6225 72L104.246 75.4736L98.3683 87.947C97.6118 89.5411 96.2152 90.4524 94.6439 90.5099C93.2473 90.5099 91.967 89.712 91.1523 88.4021Z" fill="white" fill-opacity="0.9"/>
 <g filter="url(#filter6_i_11174_88877)">
-<rect x="55.5" y="53.5" width="71" height="152" rx="9.5" stroke="black" stroke-width="3"/>
+<rect x="55.5" y="53.5" width="71" height="152" rx="9.5" stroke="black" strokeWidth="3"/>
 </g>
-<rect x="170" y="80" width="35" height="35" rx="6" fill="black" stroke="black" stroke-width="4"/>
+<rect x="170" y="80" width="35" height="35" rx="6" fill="black" stroke="black" strokeWidth="4"/>
 <g filter="url(#filter7_dii_11174_88877)">
 <rect x="174" y="88" width="26.7692" height="18" rx="2" fill="#17BEAA"/>
 <rect x="174" y="88" width="26.7692" height="18" rx="2" fill="url(#pattern4)" fill-opacity="0.8" style="mix-blend-mode:overlay"/>
