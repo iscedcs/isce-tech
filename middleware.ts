@@ -16,7 +16,8 @@ export default auth((req) => {
 
   // Redirect /store path to store.isce.tech subdomain
   if (nextUrl.pathname.startsWith("/store")) {
-    const storeUrl = new URL(nextUrl.pathname + nextUrl.search, "https://store.isce.tech");
+    const subPath = nextUrl.pathname.replace(/^\/store/, "") || "/";
+    const storeUrl = new URL(subPath + nextUrl.search, "https://store.isce.tech");
     return NextResponse.redirect(storeUrl, 301);
   }
 
